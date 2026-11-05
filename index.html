@@ -268,7 +268,7 @@ function animateCrowd(time){
    n.torso.rotation.x=-smooth*.055;
   }else{
    n.arms[1].rotation.x=-.2+Math.sin(t*.8)*.18;
-   if(n.seed===19){n.root.position.z=n.baseZ+Math.sin(time*.00034)*.38;n.root.position.x=n.baseX+Math.sin(time*.00034)*.12}
+   // Waiter movement is controlled exclusively by animateService().
   }
  }
 }
