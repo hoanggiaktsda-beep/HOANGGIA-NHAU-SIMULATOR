@@ -1,4 +1,4 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>BIA HƠI HOÀNG GIA · 3D V2</title><style>*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#19202a;color:white;font:14px system-ui}canvas{display:block;touch-action:none}#hud{position:fixed;top:12px;left:12px;background:#101820d9;padding:12px 14px;border-radius:12px;line-height:1.55;pointer-events:none}#controls{position:fixed;bottom:24px;left:18px;right:18px;display:flex;align-items:end;justify-content:space-between;gap:12px}#pad{width:116px;height:116px;flex:none;border:2px solid #ffffff99;border-radius:50%;display:grid;place-items:center;touch-action:none;background:#ffffff19}#nub{height:45px;width:45px;border-radius:50%;background:#e9b45e}#buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}button{border:0;background:#e9b45e;color:#30210c;font-weight:750;padding:13px 10px;border-radius:13px}#menu{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(350px,90vw);background:#26313d;padding:18px;border-radius:18px;box-shadow:0 12px 40px #0009}#menu button{margin:4px}#menu{width:min(610px,94vw);max-height:82vh;overflow-y:auto}#menuCatalog details{border-bottom:1px solid #ffffff28;padding:8px 0}#menuCatalog summary{cursor:pointer;font-weight:750;color:#f0c47e}#menuCatalog button{display:block;width:100%;text-align:left;background:#eee0c8;font-size:13px;padding:9px 11px}#billTotal{font-weight:750;color:#ffcf79}#toast{position:fixed;top:25%;width:100%;text-align:center;font-weight:bold;text-shadow:0 2px 8px black;pointer-events:none}#error{display:none;position:fixed;inset:20% 8% auto;background:#421b1b;padding:20px;border-radius:12px;z-index:8}#aim{position:fixed;top:50%;left:50%;width:13px;height:13px;transform:translate(-50%,-50%);pointer-events:none}#aim:before,#aim:after{content:'';position:absolute;background:#fff9}#aim:before{width:13px;height:2px;top:5px}#aim:after{height:13px;width:2px;left:5px}@media(min-width:900px){#pad{opacity:.5}}</style></head><body><div id="hud">🍻 <b>BIA HƠI HOÀNG GIA · WEBGL V5.7</b><br>WASD: đi · Vuốt: nhìn · E: ngồi / vào WC<br><span id="state">Đang đứng · Chọn bàn</span><br><span id="score">Cụng ly: 0 · Món: 0</span><br><span id="assetStatus">Ảnh tường: đang tải...</span><br><button id="audioToggle" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">🔇 Bật âm thanh</button><label style="display:inline-flex;align-items:center;gap:4px;font-size:12px">🔊 <input id="audioVolume" type="range" min="0" max="100" value="55" style="width:75px;vertical-align:middle"></label><br><button id="resetView" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">↺ Đặt lại góc nhìn</button></div><div id="aim"></div><div id="toast"></div><div id="error"></div><div id="controls"><div id="pad"><div id="nub"></div></div><div id="buttons"><button id="sit">🪑 Ngồi / Đứng</button><button id="order">📜 Gọi món</button><button id="cheer">🍻 Cụng ly</button><button id="drink">🍺 Uống bia</button><button id="eat">🥢 Gắp món</button></div></div><div id="menu"><h3>🍻 Thực đơn BIA HƠI HOÀNG GIA</h3><div id="menuCatalog"></div><p id="billTotal">Tổng bàn: 0đ</p><p><button id="close">Đóng</button></p></div><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><script type="module">
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>BIA HƠI HOÀNG GIA · 3D V2</title><style>*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#19202a;color:white;font:14px system-ui}canvas{display:block;touch-action:none}#hud{position:fixed;top:12px;left:12px;background:#101820d9;padding:12px 14px;border-radius:12px;line-height:1.55;pointer-events:none}#controls{position:fixed;bottom:24px;left:18px;right:18px;display:flex;align-items:end;justify-content:space-between;gap:12px}#pad{width:116px;height:116px;flex:none;border:2px solid #ffffff99;border-radius:50%;display:grid;place-items:center;touch-action:none;background:#ffffff19}#nub{height:45px;width:45px;border-radius:50%;background:#e9b45e}#buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}button{border:0;background:#e9b45e;color:#30210c;font-weight:750;padding:13px 10px;border-radius:13px}#menu{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(350px,90vw);background:#26313d;padding:18px;border-radius:18px;box-shadow:0 12px 40px #0009}#menu button{margin:4px}#menu{width:min(610px,94vw);max-height:82vh;overflow-y:auto}#menuCatalog details{border-bottom:1px solid #ffffff28;padding:8px 0}#menuCatalog summary{cursor:pointer;font-weight:750;color:#f0c47e}#menuCatalog button{display:block;width:100%;text-align:left;background:#eee0c8;font-size:13px;padding:9px 11px}#billTotal{font-weight:750;color:#ffcf79}#toast{position:fixed;top:25%;width:100%;text-align:center;font-weight:bold;text-shadow:0 2px 8px black;pointer-events:none}#error{display:none;position:fixed;inset:20% 8% auto;background:#421b1b;padding:20px;border-radius:12px;z-index:8}#aim{position:fixed;top:50%;left:50%;width:13px;height:13px;transform:translate(-50%,-50%);pointer-events:none}#aim:before,#aim:after{content:'';position:absolute;background:#fff9}#aim:before{width:13px;height:2px;top:5px}#aim:after{height:13px;width:2px;left:5px}@media(min-width:900px){#pad{opacity:.5}}</style></head><body><div id="hud">🍻 <b>BIA HƠI HOÀNG GIA · WEBGL V5.8</b><br>WASD: đi · Vuốt: nhìn · E: ngồi / vào WC<br><span id="state">Đang đứng · Chọn bàn</span><br><span id="score">Cụng ly: 0 · Món: 0</span><br><span id="assetStatus">Ảnh tường: đang tải...</span><br><button id="audioToggle" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">🔇 Bật âm thanh</button><label style="display:inline-flex;align-items:center;gap:4px;font-size:12px">🔊 <input id="audioVolume" type="range" min="0" max="100" value="55" style="width:75px;vertical-align:middle"></label><br><button id="resetView" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">↺ Đặt lại góc nhìn</button></div><div id="aim"></div><div id="toast"></div><div id="error"></div><div id="controls"><div id="pad"><div id="nub"></div></div><div id="buttons"><button id="sit">🪑 Ngồi / Đứng</button><button id="order">📜 Gọi món</button><button id="cheer">🍻 Cụng ly</button><button id="drink">🍺 Uống bia</button><button id="eat">🥢 Gắp món</button></div></div><div id="menu"><h3>🍻 Thực đơn BIA HƠI HOÀNG GIA</h3><div id="menuCatalog"></div><p id="billTotal">Tổng bàn: 0đ</p><p><button id="close">Đóng</button></p></div><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><script type="module">
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js';
 try{
 const scene=new THREE.Scene();scene.background=new THREE.Color('#182638');scene.fog=new THREE.Fog('#182638',14,40);
@@ -37,7 +37,7 @@ const tableBills=Array.from({length:6},()=>0);
 const money=n=>n.toLocaleString('vi-VN')+'đ';
 const menuEl=document.getElementById('menuCatalog');
 menuCatalog.forEach((section,i)=>{const details=document.createElement('details');details.open=i===0;const summary=document.createElement('summary');summary.textContent=section.title+' ('+section.items.length+')';details.appendChild(summary);section.items.forEach(item=>{const btn=document.createElement('button');btn.textContent=item.name+' — '+money(item.price);btn.onclick=()=>{if(!serveFood(item.name,item.drink))return;tableBills[seatIndex]+=item.price;foods++;score.textContent='Cụng ly: '+cheers+' · Món: '+foods;document.getElementById('billTotal').textContent='Tổng bàn '+(seatIndex+1)+': '+money(tableBills[seatIndex]);say('Đã gọi '+item.name+' · '+money(item.price));document.getElementById('menu').style.display='none'};details.appendChild(btn)});menuEl.appendChild(details)});
-const tableOrders=Array.from({length:6},()=>[]);function addTable(x,z){const g=new THREE.Group();g.position.set(x,0,z);scene.add(g);table(g);holder(g,-.46,-.24);bowl(g,-.37,.21);bowl(g,.38,.21);mug(g,-.43,-.02);mug(g,.43,-.02);tableGroups.push(g);for(const [dx,dz,color] of [[-1.04,0,red],[1.04,0,red],[0,-.94,blue],[0,.94,red]]){const chair=new THREE.Group();chair.position.set(dx,0,dz);g.add(chair);stool(chair,color)}}
+const tableOrders=Array.from({length:6},()=>[]);const tableVisuals=Array.from({length:6},()=>[]);function addTable(x,z){const g=new THREE.Group();g.position.set(x,0,z);scene.add(g);table(g);holder(g,-.46,-.24);bowl(g,-.37,.21);bowl(g,.38,.21);mug(g,-.43,-.02);mug(g,.43,-.02);tableGroups.push(g);for(const [dx,dz,color] of [[-1.04,0,red],[1.04,0,red],[0,-.94,blue],[0,.94,red]]){const chair=new THREE.Group();chair.position.set(dx,0,dz);g.add(chair);stool(chair,color)}}
 
 // Food is added to the player's table only after ordering; center starts clear.
 const plateMat=new THREE.MeshStandardMaterial({color:0xe9e3d6,roughness:.52}),greens=mat('#3d7136'),peanut=mat('#a76532'),meat=mat('#a4472b');
@@ -51,27 +51,44 @@ function foodPlate(group,type,slot){
  const herb=mat('#47792c'),herbLight=mat('#7a963d'),char=mat('#4d291c'),chicken=mat('#bb642d'),chickenLight=mat('#d89949'),pink=mat('#c87570'),pinkLight=mat('#e5a09a');
  function piece(geometry,material,px,py,pz,rx=0,ry=0,rz=0){const m=new THREE.Mesh(geometry,material);m.position.set(px,py,pz);m.rotation.set(rx,ry,rz);m.castShadow=true;dish.add(m);return m}
  function leaf(px,pz,angle=0,scale=1){const m=piece(new THREE.SphereGeometry(.023,8,5),Math.abs(px+pz)>.08?herb:herbLight,px,.027,pz,0,angle,.3);m.scale.set(.6*scale,.13,1.65*scale)}
- if(type==='Lạc rang'){
-  for(let i=0;i<48;i++){const a=i*2.399963,r=.014+Math.sqrt((i+.5)/48)*.103;const px=Math.cos(a)*r,pz=Math.sin(a)*r;const m=piece(new THREE.SphereGeometry(.012,8,6),i%5===0?mat('#c78a51'):i%3===0?mat('#8d4a2a'):peanut,px,.028+(i%4)*.008,pz,0,a,0);m.scale.set(.7,1.35,.78)}
-  for(let i=0;i<5;i++)leaf(Math.cos(i*2.5)*.085,Math.sin(i*2.5)*.085,i);
- }else if(type==='Nem chua'){
-  for(let i=0;i<7;i++)leaf(Math.cos(i*2.4)*.082,Math.sin(i*2.4)*.078,i,1.4);
-  for(let i=0;i<9;i++){const a=i*2.399963,r=.015+Math.sqrt(i/9)*.073;const px=Math.cos(a)*r,pz=Math.sin(a)*r;const m=piece(new THREE.CylinderGeometry(.028,.027,.013,10),i%3===0?pinkLight:pink,px,.038+(i%3)*.009,pz,.09,0,a);piece(new THREE.CylinderGeometry(.018,.018,.014,9),mat('#d88c83'),px,.039+(i%3)*.009,pz,.09,0,a);for(let j=0;j<3;j++)piece(new THREE.SphereGeometry(.0025,5,4),mat('#f0e0c4'),px+Math.cos(j*2.1)*.012,.048+(i%3)*.009,pz+Math.sin(j*2.1)*.012)}
-  for(let i=0;i<3;i++)piece(new THREE.ConeGeometry(.008,.075,7),herbLight,-.1+i*.02,.045,.06,.2,0,Math.PI/2);
+ // V5.8: menu-specific visual families instead of one generic chicken plate.
+ const n=type.toLowerCase();
+ const isNut=/lạc|đậu phộng/.test(n),isNem=/nem chua|nem phùng/.test(n),isVeg=/rau muống|rau lang|dưa chuột|nộm/.test(n);
+ const isTofu=/đậu phụ/.test(n),isFish=/mực|cá chỉ vàng/.test(n),isNoodle=/mì tôm|cháo|cơm rang/.test(n);
+ const isHotpot=/lẩu/.test(n),isFried=/chiên|rang muối|khoai/.test(n),isBeef=/bò|trâu/.test(n);
+ const colors=isVeg?['#3b7934','#579445','#82a94d']:isTofu?['#e9c777','#f4dc9c','#b78e46']:isFish?['#bc7540','#d29a5b','#6d432b']:isNem?['#cb857a','#e4a59b','#8b5648']:isFried?['#c78435','#e5aa51','#9e6428']:isBeef?['#854334','#a95a40','#6c352c']:['#a96835','#c58b48','#6f492b'];
+ const foodMats=colors.map(c=>mat(c));
+ if(isHotpot){
+  const pot=piece(new THREE.CylinderGeometry(.119,.107,.092,24),mat('#596368',.35,.65),0,.065,0);
+  piece(new THREE.CylinderGeometry(.108,.108,.008,24),mat('#b95b32'),0,.117,0);
+  for(let i=0;i<17;i++){const a=i*2.4,r=.075*Math.sqrt((i+.5)/17);piece(new THREE.SphereGeometry(.015,8,6),i%3===0?herb:foodMats[i%3],Math.cos(a)*r,.128,Math.sin(a)*r)}
+  for(const side of [-1,1])piece(new THREE.TorusGeometry(.025,.007,6,12),mat('#858b8d'),side*.13,.078,0,Math.PI/2);
+ }else if(isNoodle){
+  for(let i=0;i<27;i++){const a=i*2.399,r=.09*Math.sqrt((i+.5)/27);const noodle=piece(new THREE.TorusGeometry(.017,.004,4,10),i%5===0?herb:mat('#d6b06b'),Math.cos(a)*r,.036+i%4*.008,Math.sin(a)*r,Math.PI/2,a);noodle.scale.set(1.1,.8,1)}
  }else{
-  for(let i=0;i<6;i++)leaf(Math.cos(i*2.1)*.092,Math.sin(i*2.1)*.09,i,1.3);
-  for(let i=0;i<8;i++){const a=i*2.399963,r=.015+Math.sqrt(i/8)*.073,px=Math.cos(a)*r,pz=Math.sin(a)*r;const m=piece(new THREE.SphereGeometry(.035,12,8),i%3===0?chickenLight:chicken,px,.042+(i%3)*.012,pz,.15,a,.15);m.scale.set(1.25,.45,.7);for(let j=0;j<3;j++){const streak=piece(new THREE.SphereGeometry(.0035,6,4),char,px+(j-1)*.011,.059+(i%3)*.012,pz+(j%2)*.009);streak.scale.set(1,.35,3)}}
-  piece(new THREE.SphereGeometry(.027,10,6),mat('#d1a12d'),.092,.034,.068).scale.set(.7,.4,1);
+  const count=isNut?45:isVeg?27:isTofu?12:isFish?9:isNem?14:17;
+  for(let i=0;i<count;i++){
+   const a=i*2.399963,r=.012+Math.sqrt((i+.5)/count)*.103,xx=Math.cos(a)*r,zz=Math.sin(a)*r;
+   const geometry=isNut?new THREE.SphereGeometry(.012,8,6):isVeg?new THREE.CapsuleGeometry(.009,.048,3,6):isTofu?new THREE.BoxGeometry(.046,.027,.041):isFish?new THREE.CapsuleGeometry(.025,.055,4,8):new THREE.SphereGeometry(.024,10,8);
+   const m=piece(geometry,foodMats[i%3],xx,.039+(i%4)*.009,zz,.1,a,.1);
+   if(isNut)m.scale.set(.8,1.1,.75);
+   if(isVeg)m.rotation.z=a;
+   if(isFish)m.rotation.y=a;
+  }
+  if(!isVeg)for(let i=0;i<8;i++)leaf(Math.cos(i*2.1)*.09,Math.sin(i*2.1)*.09,i,1.2);
  }
+ dish.userData.menuName=type;
+ return dish;
 }
 function serveFood(type,isDrink=false){
  if(!seated||seatIndex<0){say('Hãy ngồi vào bàn rồi gọi món');return false}
  const items=tableOrders[seatIndex];
  const count=items.filter(v=>v.drink===isDrink).length;
  if(count>=(isDrink?8:5)){say(isDrink?'Bàn đã có nhiều đồ uống':'Bàn đã đầy, hãy dùng bớt món');return false}
- if(isDrink){mug(tableGroups[seatIndex],-.35+(count%4)*.22,-.12+Math.floor(count/4)*.22)}
- else{foodPlate(tableGroups[seatIndex],type,count)}
- items.push({name:type,drink:isDrink});refreshNeeds();return true
+ let visual=null;
+ if(isDrink){const parent=tableGroups[seatIndex],before=parent.children.length;mug(parent,-.35+(count%4)*.22,-.12+Math.floor(count/4)*.22);visual=parent.children[before]}
+ else{visual=foodPlate(tableGroups[seatIndex],type,count)}
+ items.push({name:type,drink:isDrink,visual});refreshNeeds();return true
 }
 const tables=[[-4.0,-4.5],[4.0,-4.5],[-4.1,-.5],[4.1,-.5],[-4.0,3.4],[4.0,3.4]];tables.forEach(t=>addTable(...t));
 // V5.1: Animated Hanoi beer garden guests and service crew; keep central aisle and WC access clear.
@@ -158,10 +175,10 @@ for(let i=0;i<tables.length;i++){
 }
 // V5.6: two dedicated staff behind service counters and independently animated drinkers.
 const waiter=beerPerson(-2.6,4.7,1,19,true);
-const foodWorker=beerPerson(-4.45,7.10,1,23,true);
-const pourer=beerPerson(4.4,7.12,2,21,true);
-foodWorker.rotation.y=Math.PI;
-pourer.rotation.y=Math.PI;
+const foodWorker=beerPerson(-4.25,6.93,1,23,true);
+const pourer=beerPerson(4.95,6.92,2,21,true);
+foodWorker.rotation.y=Math.PI+.25;
+pourer.rotation.y=Math.PI-.35;
 const foodStaff=crowd.find(n=>n.seed===23),beerStaff=crowd.find(n=>n.seed===21);
 if(foodStaff){foodStaff.role='food';foodStaff.root.scale.setScalar(.95)}
 if(beerStaff){beerStaff.role='beer';beerStaff.root.scale.setScalar(.95)}
@@ -786,11 +803,11 @@ function consumeAtTable(kind){
  const items=tableOrders[seatIndex];
  if(kind==='drink'){
   const idx=items.findIndex(v=>v.drink);if(idx<0)return say('Bàn chưa có bia — hãy gọi bia hơi');
-  items.splice(idx,1);beersConsumed++;hydration=Math.min(100,hydration+24);
+  const removed=items.splice(idx,1)[0];if(removed.visual)removed.visual.parent.remove(removed.visual);beersConsumed++;hydration=Math.min(100,hydration+24);
   diningMode='drink';audioSip();say('🍺 Nâng cốc, uống bia hơi!');
  }else{
   const idx=items.findIndex(v=>!v.drink);if(idx<0)return say('Bàn chưa có món nhậu — hãy gọi món');
-  const dish=items[idx].name;items.splice(idx,1);bitesConsumed++;fullness=Math.min(100,fullness+17);
+  const dish=items[idx].name;const removed=items.splice(idx,1)[0];if(removed.visual)removed.visual.parent.remove(removed.visual);bitesConsumed++;fullness=Math.min(100,fullness+17);
   diningMode='eat';audioFood();say('🥢 Gắp '+dish+' — ngon quá!');
  }
  diningStart=performance.now();refreshNeeds();
