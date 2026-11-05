@@ -1,4 +1,4 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>BIA HƠI HOÀNG GIA · 3D V2</title><style>*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#19202a;color:white;font:14px system-ui}canvas{display:block;touch-action:none}#hud{position:fixed;top:12px;left:12px;background:#101820d9;padding:12px 14px;border-radius:12px;line-height:1.55;pointer-events:none}#controls{position:fixed;bottom:24px;left:18px;right:18px;display:flex;align-items:end;justify-content:space-between;gap:12px}#pad{width:116px;height:116px;flex:none;border:2px solid #ffffff99;border-radius:50%;display:grid;place-items:center;touch-action:none;background:#ffffff19}#nub{height:45px;width:45px;border-radius:50%;background:#e9b45e}#buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}button{border:0;background:#e9b45e;color:#30210c;font-weight:750;padding:13px 10px;border-radius:13px}#menu{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(350px,90vw);background:#26313d;padding:18px;border-radius:18px;box-shadow:0 12px 40px #0009}#menu button{margin:4px}#menu{width:min(610px,94vw);max-height:82vh;overflow-y:auto}#menuCatalog details{border-bottom:1px solid #ffffff28;padding:8px 0}#menuCatalog summary{cursor:pointer;font-weight:750;color:#f0c47e}#menuCatalog button{display:block;width:100%;text-align:left;background:#eee0c8;font-size:13px;padding:9px 11px}#billTotal{font-weight:750;color:#ffcf79}#toast{position:fixed;top:25%;width:100%;text-align:center;font-weight:bold;text-shadow:0 2px 8px black;pointer-events:none}#error{display:none;position:fixed;inset:20% 8% auto;background:#421b1b;padding:20px;border-radius:12px;z-index:8}#aim{position:fixed;top:50%;left:50%;width:13px;height:13px;transform:translate(-50%,-50%);pointer-events:none}#aim:before,#aim:after{content:'';position:absolute;background:#fff9}#aim:before{width:13px;height:2px;top:5px}#aim:after{height:13px;width:2px;left:5px}@media(min-width:900px){#pad{opacity:.5}}</style></head><body><div id="hud">🍻 <b>BIA HƠI HOÀNG GIA · WEBGL V5.9</b><br>WASD: đi · Vuốt: nhìn · E: ngồi / vào WC<br><span id="state">Đang đứng · Chọn bàn</span><br><span id="score">Cụng ly: 0 · Món: 0</span><br><span id="assetStatus">Ảnh tường: đang tải...</span><br><button id="audioToggle" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">🔇 Bật âm thanh</button><label style="display:inline-flex;align-items:center;gap:4px;font-size:12px">🔊 <input id="audioVolume" type="range" min="0" max="100" value="55" style="width:75px;vertical-align:middle"></label><br><button id="resetView" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">↺ Đặt lại góc nhìn</button></div><div id="aim"></div><div id="toast"></div><div id="error"></div><div id="controls"><div id="pad"><div id="nub"></div></div><div id="buttons"><button id="sit">🪑 Ngồi / Đứng</button><button id="order">📜 Gọi món</button><button id="cheer">🍻 Cụng ly</button><button id="drink">🍺 Uống bia</button><button id="eat">🥢 Gắp món</button></div></div><div id="menu"><h3>🍻 Thực đơn BIA HƠI HOÀNG GIA</h3><div id="menuCatalog"></div><p id="billTotal">Tổng bàn: 0đ</p><p><button id="close">Đóng</button></p></div><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><script type="module">
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>BIA HƠI HOÀNG GIA · 3D V2</title><style>*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#19202a;color:white;font:14px system-ui}canvas{display:block;touch-action:none}#hud{position:fixed;top:12px;left:12px;background:#101820d9;padding:12px 14px;border-radius:12px;line-height:1.55;pointer-events:none}#controls{position:fixed;bottom:24px;left:18px;right:18px;display:flex;align-items:end;justify-content:space-between;gap:12px}#pad{width:116px;height:116px;flex:none;border:2px solid #ffffff99;border-radius:50%;display:grid;place-items:center;touch-action:none;background:#ffffff19}#nub{height:45px;width:45px;border-radius:50%;background:#e9b45e}#buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}button{border:0;background:#e9b45e;color:#30210c;font-weight:750;padding:13px 10px;border-radius:13px}#menu{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(350px,90vw);background:#26313d;padding:18px;border-radius:18px;box-shadow:0 12px 40px #0009}#menu button{margin:4px}#menu{width:min(610px,94vw);max-height:82vh;overflow-y:auto}#menuCatalog details{border-bottom:1px solid #ffffff28;padding:8px 0}#menuCatalog summary{cursor:pointer;font-weight:750;color:#f0c47e}#menuCatalog button{display:block;width:100%;text-align:left;background:#eee0c8;font-size:13px;padding:9px 11px}#billTotal{font-weight:750;color:#ffcf79}#toast{position:fixed;top:25%;width:100%;text-align:center;font-weight:bold;text-shadow:0 2px 8px black;pointer-events:none}#error{display:none;position:fixed;inset:20% 8% auto;background:#421b1b;padding:20px;border-radius:12px;z-index:8}#aim{position:fixed;top:50%;left:50%;width:13px;height:13px;transform:translate(-50%,-50%);pointer-events:none}#aim:before,#aim:after{content:'';position:absolute;background:#fff9}#aim:before{width:13px;height:2px;top:5px}#aim:after{height:13px;width:2px;left:5px}@media(min-width:900px){#pad{opacity:.5}}</style></head><body><div id="hud">🍻 <b>BIA HƠI HOÀNG GIA · WEBGL V6.0</b><br>WASD: đi · Vuốt: nhìn · E: ngồi / vào WC<br><span id="state">Đang đứng · Chọn bàn</span><br><span id="score">Cụng ly: 0 · Món: 0</span><br><span id="assetStatus">Ảnh tường: đang tải...</span><br><button id="audioToggle" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">🔇 Bật âm thanh</button><label style="display:inline-flex;align-items:center;gap:4px;font-size:12px">🔊 <input id="audioVolume" type="range" min="0" max="100" value="55" style="width:75px;vertical-align:middle"></label><br><button id="resetView" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">↺ Đặt lại góc nhìn</button></div><div id="aim"></div><div id="toast"></div><div id="error"></div><div id="controls"><div id="pad"><div id="nub"></div></div><div id="buttons"><button id="sit">🪑 Ngồi / Đứng</button><button id="order">📜 Gọi món</button><button id="cheer">🍻 Cụng ly</button><button id="drink">🍺 Uống bia</button><button id="eat">🥢 Gắp món</button></div></div><div id="menu"><h3>🍻 Thực đơn BIA HƠI HOÀNG GIA</h3><div id="menuCatalog"></div><p id="billTotal">Tổng bàn: 0đ</p><p><button id="close">Đóng</button></p></div><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><script type="module">
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js';
 try{
 const scene=new THREE.Scene();scene.background=new THREE.Color('#182638');scene.fog=new THREE.Fog('#182638',14,40);
@@ -731,23 +731,87 @@ function audioAmbience(now){
  if(!audioOn||!audioCtx||now-lastAmbient<1500)return;
  lastAmbient=now;
  const wc=insideWC?.20:1,tableDistance=Math.min(...tables.map(p=>Math.hypot(px-p[0],pz-p[1])));
- const crowdLevel=wc*(.025+.075/(1+tableDistance*.22));
+ const crowdLevel=wc*(.025+.075/(1+tableDistance*.22))*(spatialSamples.has('crowd')?.12:1);
  // Murmur is filtered noise with intermittent voice-like tones; not intelligible speech.
  audioRustle(1.7,crowdLevel,270+Math.random()*360);
  // Soft, overlapping syllabic envelopes rather than piercing sawtooth beeps.
  for(let i=0;i<4;i++){audioRustle(.18+Math.random()*.4,crowdLevel*(.22+Math.random()*.3),420+Math.random()*500,i*.27)}
  // Distant passing traffic outside the entrance.
- if(Math.random()<.46){audioRustle(1.3,wc*.024,110+Math.random()*180,.15);audioRustle(.95,wc*.026,95+Math.random()*100,.25)}
+ if(!spatialSamples.has('traffic')&&Math.random()<.46){audioRustle(1.3,wc*.024,110+Math.random()*180,.15);audioRustle(.95,wc*.026,95+Math.random()*100,.25)}
  if(Math.random()<.30)audioTone(1050+Math.random()*500,.13,wc*.028,'sine',.4);
- if(Math.hypot(px-4.4,pz-6.05)<4.2&&Math.random()<.38)audioPour();
- if(Math.hypot(px+4.45,pz-6)<4.2&&Math.random()<.4)audioFood();
+ if(!spatialSamples.has('pour')&&Math.hypot(px-4.4,pz-6.05)<4.2&&Math.random()<.38)audioPour();
+ if(!spatialSamples.has('dishes')&&Math.hypot(px+4.45,pz-6)<4.2&&Math.random()<.4)audioFood();
+}
+// V6.0: Spatial sound layer. Optional real recordings in assets/audio/*.mp3.
+// No claim of real field recordings until files are provided and loaded successfully.
+const soundZones=[
+ {id:'crowd',x:-1.2,z:0.2,file:'assets/audio/quan-bia-tro-chuyen.mp3',base:.28,range:11,loop:true},
+ {id:'traffic',x:0,z:-9,file:'assets/audio/xe-may-duong-pho.mp3',base:.24,range:16,loop:true},
+ {id:'pour',x:4.4,z:6.05,file:'assets/audio/rot-bia.mp3',base:.38,range:5,loop:false},
+ {id:'dishes',x:-4.45,z:6,file:'assets/audio/bat-dua.mp3',base:.28,range:5,loop:false},
+ {id:'cheers',x:0,z:0,file:'assets/audio/mot-hai-ba-dzo.mp3',base:.55,range:10,loop:false},
+ {id:'clink',x:0,z:0,file:'assets/audio/cung-ly.mp3',base:.6,range:6,loop:false}
+];
+const spatialSamples=new Map();let loadedSamples=0,nextCrowdCheer=0,lastPourClip=0,lastDishesClip=0;
+async function loadSpatialSamples(){
+ if(!audioCtx)return;
+ await Promise.all(soundZones.map(async zone=>{
+  if(spatialSamples.has(zone.id))return;
+  try{
+   const res=await fetch(zone.file,{cache:'force-cache'});
+   if(!res.ok)throw Error('missing');
+   const bytes=await res.arrayBuffer(),buffer=await audioCtx.decodeAudioData(bytes);
+   spatialSamples.set(zone.id,{zone,buffer,active:null});loadedSamples++;
+   if(zone.loop&&audioOn)playSpatial(zone.id);
+  }catch(e){/* optional sample unavailable: procedural fallback remains active */}
+ }));
+ audioButton.title=loadedSamples+' / '+soundZones.length+' bản thu âm đã nạp';
+}
+function spatialGain(zone){
+ const distance=Math.hypot(px-zone.x,pz-zone.z);
+ return zone.base/(1+Math.pow(distance/zone.range,2)*4)*(insideWC?.16:1);
+}
+function playSpatial(id){
+ if(!audioOn||!audioCtx||!audioMaster)return false;
+ const item=spatialSamples.get(id);if(!item)return false;
+ if(item.zone.loop&&item.active)return true;
+ const source=audioCtx.createBufferSource(),gain=audioCtx.createGain(),pan=audioCtx.createStereoPanner();
+ source.buffer=item.buffer;source.loop=!!item.zone.loop;
+ gain.gain.value=spatialGain(item.zone);
+ source.connect(gain);gain.connect(pan);pan.connect(audioMaster);
+ const node={source,gain,pan};item.active=node;
+ source.onended=()=>{if(item.active===node)item.active=null};
+ source.start();return true;
+}
+function updateSpatialAudio(now){
+ if(!audioOn||!audioCtx)return;
+ for(const item of spatialSamples.values()){
+  if(item.zone.loop&&!item.active)playSpatial(item.zone.id);
+  if(!item.active)continue;
+  const zone=item.zone,dx=zone.x-px,dz=zone.z-pz;
+  const side=Math.cos(yaw)*dx+Math.sin(yaw)*dz;
+  item.active.pan.pan.setTargetAtTime(Math.max(-.85,Math.min(.85,side/Math.max(2,zone.range))),audioCtx.currentTime,.12);
+  item.active.gain.gain.setTargetAtTime(spatialGain(zone),audioCtx.currentTime,.12);
+ }
+ if(!nextCrowdCheer)nextCrowdCheer=now+11000+Math.random()*14000;
+ if(now>nextCrowdCheer){
+  if(!playSpatial('cheers')&&'speechSynthesis' in window&&Math.random()<.6){
+   const voice=new SpeechSynthesisUtterance('Một, hai, ba, dzô!');
+   voice.lang='vi-VN';voice.rate=1.14;voice.volume=Math.min(.6,spatialGain(soundZones[4]));
+   speechSynthesis.speak(voice);
+  }
+  if(!playSpatial('clink'))audioClink();
+  nextCrowdCheer=now+14000+Math.random()*22000;
+ }
+ if(now-lastPourClip>6500&&Math.random()<.018){playSpatial('pour');lastPourClip=now}
+ if(now-lastDishesClip>4500&&Math.random()<.02){playSpatial('dishes');lastDishesClip=now}
 }
 audioButton.onclick=async()=>{
  audioInit();if(!audioCtx)return;
  if(audioCtx.state==='suspended')await audioCtx.resume();
  audioOn=!audioOn;audioButton.textContent=audioOn?'🔊 Tắt âm thanh':'🔇 Bật âm thanh';
  if(audioMaster)audioMaster.gain.setTargetAtTime(audioOn?Number(volumeInput.value)/100:0,audioCtx.currentTime,.04);
- if(audioOn){lastAmbient=0;audioClink()}
+ if(audioOn){lastAmbient=0;audioClink();loadSpatialSamples()}else{for(const item of spatialSamples.values()){if(item.active){item.active.source.stop();item.active=null}}if('speechSynthesis' in window)speechSynthesis.cancel()}
 };
 volumeInput.oninput=()=>{if(audioCtx&&audioMaster)audioMaster.gain.setTargetAtTime(audioOn?Number(volumeInput.value)/100:0,audioCtx.currentTime,.04)};
 function nearest(){return tables.map((p,i)=>({i,d:Math.hypot(p[0]-px,p[1]-pz)})).sort((a,b)=>a.d-b.d)[0]}
@@ -833,6 +897,6 @@ addEventListener('keydown',e=>{keys[e.key.toLowerCase()]=true;if(e.key.toLowerCa
 let joyX=0,joyY=0;const pad=document.getElementById('pad'),nub=document.getElementById('nub');function movePad(e){const r=pad.getBoundingClientRect(),x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2,k=Math.min(1,46/Math.max(1,Math.hypot(x,y)));joyX=x*k/46;joyY=y*k/46;nub.style.transform='translate('+joyX*37+'px,'+joyY*37+'px)'}pad.addEventListener('pointerdown',e=>{pad.setPointerCapture(e.pointerId);movePad(e)});pad.addEventListener('pointermove',e=>{if(pad.hasPointerCapture(e.pointerId))movePad(e)});function reset(){joyX=joyY=0;nub.style.transform=''}pad.addEventListener('pointerup',reset);pad.addEventListener('pointercancel',reset);
 let look=null,lastX=0,lastY=0;renderer.domElement.addEventListener('pointerdown',e=>{look=e.pointerId;lastX=e.clientX;lastY=e.clientY;renderer.domElement.setPointerCapture(e.pointerId)});renderer.domElement.addEventListener('pointermove',e=>{if(e.pointerId!==look)return;yaw-=(e.clientX-lastX)*.004;pitch=Math.max(-.9,Math.min(.9,pitch-(e.clientY-lastY)*.003));lastX=e.clientX;lastY=e.clientY});renderer.domElement.addEventListener('pointerup',()=>look=null);
 addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
-let prev=performance.now();function frame(now){audioAmbience(now);animateCrowd(now);animateDining(now);const dt=Math.min(.05,(now-prev)/1000);prev=now;const forward=(keys.w?1:0)-(keys.s?1:0)-joyY,side=(keys.d?1:0)-(keys.a?1:0)+joyX;if(!seated&&!insideWC){px+=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)*dt*2.4;pz+=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)*dt*2.4;px=Math.max(-5.65,Math.min(5.65,px));pz=Math.max(-7.55,Math.min(5.9,pz))}if(insideWC){px+=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)*dt*1.7;pz+=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)*dt*1.7;px=Math.max(-12.1,Math.min(-7.7,px));pz=Math.max(1.75,Math.min(4.25,pz))}if(keys.arrowleft)yaw+=dt*1.7;if(keys.arrowright)yaw-=dt*1.7;camera.position.set(px,seated?1.12:1.65,pz);camera.rotation.order='YXZ';camera.rotation.y=yaw;camera.rotation.x=pitch;try{animateClink(now)}catch(animationError){clinkActive=false;cheerRig.visible=false;console.error('Lỗi cụng ly:',animationError);say('Lỗi hiệu ứng cụng ly — game vẫn tiếp tục')}try{renderer.render(scene,camera)}catch(renderError){console.error('Lỗi dựng hình:',renderError);const e=document.getElementById('error');e.style.display='block';e.textContent='Lỗi dựng hình: '+renderError.message;return}requestAnimationFrame(frame)}requestAnimationFrame(frame);say('WebGL V4.6 · WC ở giữa tường cuối quán, nhấn E để vào');
+let prev=performance.now();function frame(now){updateSpatialAudio(now);audioAmbience(now);animateCrowd(now);animateDining(now);const dt=Math.min(.05,(now-prev)/1000);prev=now;const forward=(keys.w?1:0)-(keys.s?1:0)-joyY,side=(keys.d?1:0)-(keys.a?1:0)+joyX;if(!seated&&!insideWC){px+=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)*dt*2.4;pz+=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)*dt*2.4;px=Math.max(-5.65,Math.min(5.65,px));pz=Math.max(-7.55,Math.min(5.9,pz))}if(insideWC){px+=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)*dt*1.7;pz+=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)*dt*1.7;px=Math.max(-12.1,Math.min(-7.7,px));pz=Math.max(1.75,Math.min(4.25,pz))}if(keys.arrowleft)yaw+=dt*1.7;if(keys.arrowright)yaw-=dt*1.7;camera.position.set(px,seated?1.12:1.65,pz);camera.rotation.order='YXZ';camera.rotation.y=yaw;camera.rotation.x=pitch;try{animateClink(now)}catch(animationError){clinkActive=false;cheerRig.visible=false;console.error('Lỗi cụng ly:',animationError);say('Lỗi hiệu ứng cụng ly — game vẫn tiếp tục')}try{renderer.render(scene,camera)}catch(renderError){console.error('Lỗi dựng hình:',renderError);const e=document.getElementById('error');e.style.display='block';e.textContent='Lỗi dựng hình: '+renderError.message;return}requestAnimationFrame(frame)}requestAnimationFrame(frame);say('WebGL V4.6 · WC ở giữa tường cuối quán, nhấn E để vào');
 }catch(err){const e=document.getElementById('error');e.style.display='block';e.textContent='Không khởi tạo được WebGL: '+err.message}
 </script></body></html>
