@@ -1,0 +1,200 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>BIA HƠI HOÀNG GIA · 3D V2</title><style>*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#19202a;color:white;font:14px system-ui}canvas{display:block;touch-action:none}#hud{position:fixed;top:12px;left:12px;background:#101820d9;padding:12px 14px;border-radius:12px;line-height:1.55;pointer-events:none}#controls{position:fixed;bottom:24px;left:18px;right:18px;display:flex;align-items:end;justify-content:space-between;gap:12px}#pad{width:116px;height:116px;flex:none;border:2px solid #ffffff99;border-radius:50%;display:grid;place-items:center;touch-action:none;background:#ffffff19}#nub{height:45px;width:45px;border-radius:50%;background:#e9b45e}#buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}button{border:0;background:#e9b45e;color:#30210c;font-weight:750;padding:13px 10px;border-radius:13px}#menu{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(350px,90vw);background:#26313d;padding:18px;border-radius:18px;box-shadow:0 12px 40px #0009}#menu button{margin:4px}#toast{position:fixed;top:25%;width:100%;text-align:center;font-weight:bold;text-shadow:0 2px 8px black;pointer-events:none}#error{display:none;position:fixed;inset:20% 8% auto;background:#421b1b;padding:20px;border-radius:12px;z-index:8}#aim{position:fixed;top:50%;left:50%;width:13px;height:13px;transform:translate(-50%,-50%);pointer-events:none}#aim:before,#aim:after{content:'';position:absolute;background:#fff9}#aim:before{width:13px;height:2px;top:5px}#aim:after{height:13px;width:2px;left:5px}@media(min-width:900px){#pad{opacity:.5}}</style></head><body><div id="hud">🍻 <b>BIA HƠI HOÀNG GIA · WEBGL V2.9.1</b><br>WASD: đi · Vuốt: nhìn · E: ngồi<br><span id="state">Đang đứng · Chọn bàn</span><br><span id="score">Cụng ly: 0 · Món: 0</span><br><button id="resetView" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">↺ Đặt lại góc nhìn</button></div><div id="aim"></div><div id="toast"></div><div id="error"></div><div id="controls"><div id="pad"><div id="nub"></div></div><div id="buttons"><button id="sit">🪑 Ngồi / Đứng</button><button id="order">📜 Gọi món</button><button id="cheer">🍻 Cụng ly</button><button id="dice">🎲 Xúc xắc</button></div></div><div id="menu"><h3>Thực đơn bia hơi</h3><button data-food="Lạc rang">🥜 Lạc rang</button><button data-food="Nem chua">🍖 Nem chua</button><button data-food="Gà nướng">🍗 Gà nướng</button><button data-food="Bia hơi">🍺 Bia hơi</button><p><button id="close">Đóng</button></p></div><script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js';
+try{
+const scene=new THREE.Scene();scene.background=new THREE.Color('#182638');scene.fog=new THREE.Fog('#182638',14,40);
+const camera=new THREE.PerspectiveCamera(72,innerWidth/innerHeight,.06,90);const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio,1.7));renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;document.body.prepend(renderer.domElement);
+scene.add(new THREE.HemisphereLight(0xb4c7ed,0x453020,1.65));const sun=new THREE.DirectionalLight(0xffc18c,2.0);sun.position.set(1,10,-4);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);sun.shadow.camera.left=-14;sun.shadow.camera.right=14;sun.shadow.camera.top=14;sun.shadow.camera.bottom=-14;scene.add(sun);
+const mat=(c,rough=.85,metal=0)=>new THREE.MeshStandardMaterial({color:c,roughness:rough,metalness:metal});
+const wood=mat('#68402b'),woodDark=mat('#452818'),red=mat('#bd332b',.43),blue=mat('#305fa0',.43),white=mat('#eee7d9',.35),metal=mat('#9ba5a4',.4,.6),green=mat('#275c38'),glass=mat('#b68534',.25,.1);
+function cube(parent,w,h,d,x,y,z,m,shadow=true){const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);o.position.set(x,y,z);o.castShadow=shadow;o.receiveShadow=true;parent.add(o);return o}
+function cylinder(parent,r1,r2,h,x,y,z,m,n=24){const o=new THREE.Mesh(new THREE.CylinderGeometry(r1,r2,h,n),m);o.position.set(x,y,z);o.castShadow=true;parent.add(o);return o}
+function table(parent){cube(parent,1.2,.036,.75,0,.744,0,wood);for(const x of [-.51,.51])for(const z of [-.29,.29])cube(parent,.075,.71,.075,x,.355,z,woodDark);for(const z of [-.29,.29]){cube(parent,1.08,.14,.045,0,.64,z,woodDark);cube(parent,1.08,.045,.045,0,.19,z,wood)}for(const x of [-.51,.51])cube(parent,.045,.14,.6,x,.64,0,woodDark);cube(parent,.05,.045,.6,0,.19,0,wood)}
+function stool(parent,color){cube(parent,.37,.035,.37,0,.445,0,color);for(const x of [-1,1])for(const z of [-1,1]){const leg=cube(parent,.055,.40,.055,x*.135,.23,z*.135,color);leg.rotation.z=x*.045;leg.rotation.x=-z*.045}for(const x of [-.135,.135])cube(parent,.028,.035,.27,x,.20,0,color);for(const z of [-.135,.135])cube(parent,.27,.035,.028,0,.20,z,color)}
+function bowl(parent,x,z){const pts=[[0,.012],[.055,.012],[.085,.02],[.115,.05],[.145,.11],[.136,.115],[.124,.086],[.09,.035],[.03,.024],[0,.024]].map(p=>new THREE.Vector2(...p));const mesh=new THREE.Mesh(new THREE.LatheGeometry(pts,40),white);mesh.position.set(x,.77,z);mesh.castShadow=true;parent.add(mesh)}
+function holder(parent,x,z){const g=new THREE.Group();g.position.set(x,.76,z);parent.add(g);cube(g,.21,.095,.14,0,.048,0,woodDark);cube(g,.21,.008,.14,0,.10,0,wood);cube(g,.14,.065,.065,-.025,.135,.026,woodDark);for(let i=0;i<8;i++)cylinder(g,.003,.003,.18,-.076+i*.012,.23,.025,wood,8);cube(g,.075,.045,.003,.015,.125,-.071,white)}
+function mug(parent,x,z){
+ // Classic Hanoi sidewalk bia-hoi glass: thick aqua recycled glass, irregular ribs, bubbles.
+ const g=new THREE.Group();g.position.set(x,.763,z);parent.add(g);
+ const glassMat=new THREE.MeshPhysicalMaterial({color:0x77c5b4,roughness:.13,metalness:0,transmission:.35,thickness:.025,transparent:true,opacity:.65,side:THREE.DoubleSide,depthWrite:false});
+ const pts=[new THREE.Vector2(.045,0),new THREE.Vector2(.055,.006),new THREE.Vector2(.058,.02),new THREE.Vector2(.061,.045),new THREE.Vector2(.067,.09),new THREE.Vector2(.075,.14),new THREE.Vector2(.076,.155),new THREE.Vector2(.068,.155),new THREE.Vector2(.067,.14),new THREE.Vector2(.059,.09),new THREE.Vector2(.052,.045),new THREE.Vector2(.047,.018),new THREE.Vector2(.02,.015),new THREE.Vector2(0,.015)];
+ const body=new THREE.Mesh(new THREE.LatheGeometry(pts,36),glassMat);body.castShadow=true;g.add(body);
+ const base=new THREE.Mesh(new THREE.CylinderGeometry(.054,.047,.018,36),new THREE.MeshPhysicalMaterial({color:0x63ad9e,transparent:true,opacity:.78,roughness:.17,transmission:.55,thickness:.04}));base.position.y=.011;g.add(base);
+ // Uneven molded ribs on the lower half, as in the supplied real-world glass.
+ const ribMat=new THREE.MeshPhysicalMaterial({color:0x78d5c2,transparent:true,opacity:.52,roughness:.12,transmission:.4,thickness:.01});
+ for(let i=0;i<18;i++){const a=i*Math.PI*2/18;const h=.075+(i%4)*.007;const radius=.061;const rib=new THREE.Mesh(new THREE.CylinderGeometry(.0025,.0035,h,5),ribMat);rib.position.set(Math.cos(a)*radius,.029+h/2,Math.sin(a)*radius);rib.rotation.z=Math.cos(a)*.055;rib.rotation.x=-Math.sin(a)*.055;g.add(rib)}
+ const beerMat=new THREE.MeshPhysicalMaterial({color:0xd79c32,roughness:.22,metalness:0,transparent:true,opacity:.48,depthWrite:false});
+ const beer=new THREE.Mesh(new THREE.CylinderGeometry(.060,.048,.072,32),beerMat);beer.position.y=.049;g.add(beer);
+ const foamMat=new THREE.MeshStandardMaterial({color:0xf7f0d8,roughness:.8,transparent:true,opacity:.9});
+ const foam=new THREE.Mesh(new THREE.CylinderGeometry(.060,.060,.006,32),foamMat);foam.position.y=.087;g.add(foam);
+ const rim=new THREE.Mesh(new THREE.TorusGeometry(.073,.004,7,36),ribMat);rim.rotation.x=Math.PI/2;rim.position.y=.153;g.add(rim);
+ // Subtle tiny trapped air bubbles in the recycled glass.
+ const bubbles=new THREE.Mesh(new THREE.SphereGeometry(.0018,5,4),ribMat);
+ const inst=new THREE.InstancedMesh(bubbles.geometry,ribMat,46);const dummy=new THREE.Object3D();
+ for(let i=0;i<46;i++){const a=i*2.3999;const yy=.018+(i%23)/23*.13;const rr=.053+yy*.11;dummy.position.set(Math.cos(a)*rr,yy,Math.sin(a)*rr);dummy.scale.setScalar(.6+(i%5)*.17);dummy.updateMatrix();inst.setMatrixAt(i,dummy.matrix)}inst.instanceMatrix.needsUpdate=true;g.add(inst);
+}
+const tableGroups=[];const tableOrders=Array.from({length:6},()=>[]);function addTable(x,z){const g=new THREE.Group();g.position.set(x,0,z);scene.add(g);table(g);holder(g,-.46,-.24);bowl(g,-.37,.21);bowl(g,.38,.21);mug(g,-.43,-.02);mug(g,.43,-.02);tableGroups.push(g);for(const [dx,dz,color] of [[-1.04,0,red],[1.04,0,red],[0,-.94,blue],[0,.94,red]]){const chair=new THREE.Group();chair.position.set(dx,0,dz);g.add(chair);stool(chair,color)}}
+
+// Food is added to the player's table only after ordering; center starts clear.
+const plateMat=new THREE.MeshStandardMaterial({color:0xe9e3d6,roughness:.52}),greens=mat('#3d7136'),peanut=mat('#a76532'),meat=mat('#a4472b');
+function foodPlate(group,type,slot){
+ const coords=[[0,0],[0,-.24],[0,.24],[-.22,0],[.22,0]], [x,z]=coords[slot%coords.length];
+ const dish=new THREE.Group();dish.position.set(x,.772,z);group.add(dish);
+ const ceramic=new THREE.MeshStandardMaterial({color:0xf3e9d5,roughness:.31,metalness:0});
+ const plateProfile=[[0,0],[.085,0],[.112,.006],[.139,.018],[.15,.023],[.149,.029],[.136,.027],[.109,.015],[.08,.009],[0,.009]].map(p=>new THREE.Vector2(...p));
+ const plate=new THREE.Mesh(new THREE.LatheGeometry(plateProfile,48),ceramic);plate.castShadow=true;plate.receiveShadow=true;dish.add(plate);
+ const rim=new THREE.Mesh(new THREE.TorusGeometry(.14,.0028,6,48),mat('#8a765c'));rim.rotation.x=Math.PI/2;rim.position.y=.027;dish.add(rim);
+ const herb=mat('#47792c'),herbLight=mat('#7a963d'),char=mat('#4d291c'),chicken=mat('#bb642d'),chickenLight=mat('#d89949'),pink=mat('#c87570'),pinkLight=mat('#e5a09a');
+ function piece(geometry,material,px,py,pz,rx=0,ry=0,rz=0){const m=new THREE.Mesh(geometry,material);m.position.set(px,py,pz);m.rotation.set(rx,ry,rz);m.castShadow=true;dish.add(m);return m}
+ function leaf(px,pz,angle=0,scale=1){const m=piece(new THREE.SphereGeometry(.023,8,5),Math.abs(px+pz)>.08?herb:herbLight,px,.027,pz,0,angle,.3);m.scale.set(.6*scale,.13,1.65*scale)}
+ if(type==='Lạc rang'){
+  for(let i=0;i<48;i++){const a=i*2.399963,r=.014+Math.sqrt((i+.5)/48)*.103;const px=Math.cos(a)*r,pz=Math.sin(a)*r;const m=piece(new THREE.SphereGeometry(.012,8,6),i%5===0?mat('#c78a51'):i%3===0?mat('#8d4a2a'):peanut,px,.028+(i%4)*.008,pz,0,a,0);m.scale.set(.7,1.35,.78)}
+  for(let i=0;i<5;i++)leaf(Math.cos(i*2.5)*.085,Math.sin(i*2.5)*.085,i);
+ }else if(type==='Nem chua'){
+  for(let i=0;i<7;i++)leaf(Math.cos(i*2.4)*.082,Math.sin(i*2.4)*.078,i,1.4);
+  for(let i=0;i<9;i++){const a=i*2.399963,r=.015+Math.sqrt(i/9)*.073;const px=Math.cos(a)*r,pz=Math.sin(a)*r;const m=piece(new THREE.CylinderGeometry(.028,.027,.013,10),i%3===0?pinkLight:pink,px,.038+(i%3)*.009,pz,.09,0,a);piece(new THREE.CylinderGeometry(.018,.018,.014,9),mat('#d88c83'),px,.039+(i%3)*.009,pz,.09,0,a);for(let j=0;j<3;j++)piece(new THREE.SphereGeometry(.0025,5,4),mat('#f0e0c4'),px+Math.cos(j*2.1)*.012,.048+(i%3)*.009,pz+Math.sin(j*2.1)*.012)}
+  for(let i=0;i<3;i++)piece(new THREE.ConeGeometry(.008,.075,7),herbLight,-.1+i*.02,.045,.06,.2,0,Math.PI/2);
+ }else{
+  for(let i=0;i<6;i++)leaf(Math.cos(i*2.1)*.092,Math.sin(i*2.1)*.09,i,1.3);
+  for(let i=0;i<8;i++){const a=i*2.399963,r=.015+Math.sqrt(i/8)*.073,px=Math.cos(a)*r,pz=Math.sin(a)*r;const m=piece(new THREE.SphereGeometry(.035,12,8),i%3===0?chickenLight:chicken,px,.042+(i%3)*.012,pz,.15,a,.15);m.scale.set(1.25,.45,.7);for(let j=0;j<3;j++){const streak=piece(new THREE.SphereGeometry(.0035,6,4),char,px+(j-1)*.011,.059+(i%3)*.012,pz+(j%2)*.009);streak.scale.set(1,.35,3)}}
+  piece(new THREE.SphereGeometry(.027,10,6),mat('#d1a12d'),.092,.034,.068).scale.set(.7,.4,1);
+ }
+}
+function serveFood(type){if(!seated||seatIndex<0){say('Hãy ngồi vào bàn rồi gọi món');return false}const items=tableOrders[seatIndex];if(type==='Bia hơi'){if(items.filter(v=>v==='Bia hơi').length>=2){say('Bàn đã có đủ bia');return false}mug(tableGroups[seatIndex],-.26,-.02)}else{const dishes=items.filter(v=>v!=='Bia hơi').length;if(dishes>=5){say('Bàn đã đầy, hãy dùng bớt món');return false}foodPlate(tableGroups[seatIndex],type,dishes)}items.push(type);return true}
+const tables=[[-4.0,-4.5],[4.0,-4.5],[-4.1,-.5],[4.1,-.5],[-4.0,3.4],[4.0,3.4]];tables.forEach(t=>addTable(...t));
+const ground=mat('#766452');cube(scene,14,.16,20,0,-.1,0,ground,false);for(let x=-7;x<7;x++)for(let z=-10;z<10;z++){if((x+z)%2===0)cube(scene,.99,.006,.99,x+.5,-.014,z+.5,mat('#85725d'),false)}
+const wall=mat('#ab8a62');cube(scene,14,4,.25,0,2,8,wall,false);cube(scene,.25,4,17,-6.8,2,0,mat('#897052'),false);cube(scene,.25,4,17,6.8,2,0,mat('#897052'),false);
+for(const x of [-4.2,4.2]){cube(scene,2.3,1.7,.05,x,2.55,7.84,mat('#24433b'));for(let i=0;i<5;i++)cube(scene,2.4,.045,.09,x,1.9+i*.28,7.8,mat('#47675c'))}
+const sign=cube(scene,4,.85,.08,0,2.8,7.8,mat('#63311e'));const textCanvas=document.createElement('canvas');textCanvas.width=1024;textCanvas.height=256;const ctx=textCanvas.getContext('2d');ctx.fillStyle='#60311f';ctx.fillRect(0,0,1024,256);ctx.font='bold 92px system-ui';ctx.textAlign='center';ctx.fillStyle='#ffe1a0';ctx.fillText('BIA HƠI HOÀNG GIA',512,158);const texture=new THREE.CanvasTexture(textCanvas);const signMesh=new THREE.Mesh(new THREE.PlaneGeometry(3.95,.8),new THREE.MeshBasicMaterial({map:texture}));signMesh.position.set(0,2.8,7.746);signMesh.rotation.y=Math.PI;scene.add(signMesh);
+function tree(x,z){cylinder(scene,.13,.17,2.6,x,1.3,z,woodDark,10);for(const [dx,dy,dz,r] of [[0,2.9,0,.9],[-.55,2.55,.15,.65],[.6,2.6,-.1,.7]]){const mesh=new THREE.Mesh(new THREE.IcosahedronGeometry(r,1),green);mesh.position.set(x+dx,dy,z+dz);mesh.castShadow=true;scene.add(mesh)}}
+for(const p of [[-5,-3],[5,-3],[-5,4],[5,4]])tree(...p);
+for(const z of [-4,0,4])for(const x of [-4,-2,0,2,4]){const lamp=cylinder(scene,.17,.17,.32,x,3.4,z,mat((x+z)%3===0?'#e8784b':'#e4ac59',.6),12);const l=new THREE.PointLight(0xffb45d,.7,4);l.position.set(x,3.35,z);scene.add(l)}
+
+// SERVICE ZONE: beer dispensing station on the right, glass display and food prep on the left
+const steel=mat('#858b88',.36,.75),tile=mat('#b0a08c'),dark=mat('#2c211c'),amber=mat('#d0a053',.28);
+const beerBar=new THREE.Group();beerBar.position.set(4.4,0,6.05);scene.add(beerBar);
+cube(beerBar,2.8,.88,.84,0,.44,0,woodDark);cube(beerBar,2.94,.075,.94,0,.91,0,wood);
+for(let x=-1.1;x<1.2;x+=.35)cube(beerBar,.028,.75,.02,x,.45,-.435,wood);
+cube(beerBar,2.6,.045,.45,0,1.48,.3,steel);for(const x of [-1.12,1.12])cube(beerBar,.045,.5,.045,x,1.2,.3,steel);
+for(const x of [-.9,-.35,.2,.75]){cylinder(beerBar,.13,.13,.45,x,1.18,.12,steel);cylinder(beerBar,.055,.055,.10,x,1.46,.12,amber);cylinder(beerBar,.025,.025,.28,x,1.64,.12,steel);cube(beerBar,.18,.035,.035,x+.07,1.74,.12,steel)}
+for(let x=-.9;x<=1;x+=.38){cylinder(beerBar,.075,.075,.14,x,1.06,-.28,amber);cylinder(beerBar,.073,.073,.025,x,1.145,-.28,white)}
+const prep=new THREE.Group();prep.position.set(-4.45,0,6.0);scene.add(prep);
+cube(prep,2.9,.84,.92,0,.42,0,woodDark);cube(prep,3,.07,1,0,.88,0,steel);
+for(let x=-1.15;x<=1.15;x+=.58){cube(prep,.52,.38,.08,x,.43,-.48,mat('#786451'));cube(prep,.38,.055,.055,x,.61,-.53,steel)}
+// glazed display enclosure, visible food shelves and bowls
+const clear=new THREE.MeshPhysicalMaterial({color:0xdce8e9,transparent:true,opacity:.19,roughness:.12,metalness:0,depthWrite:false});
+cube(prep,2.55,.06,.68,0,1.93,.08,steel);for(const x of [-1.24,1.24])for(const z of [-.26,.39])cube(prep,.035,.99,.035,x,1.43,z,steel);
+for(const z of [-.26,.39])cube(prep,2.5,.91,.012,0,1.44,z,clear,false);
+for(const x of [-1.24,1.24])cube(prep,.012,.91,.67,x,1.44,.065,clear,false);
+cube(prep,2.48,.035,.63,0,1.42,.07,steel);
+for(const x of [-.88,-.3,.3,.88]){cylinder(prep,.18,.18,.04,x,1.46,.07,white);cylinder(prep,.12,.13,.07,x,1.52,.07,mat(x<0?'#9e6b37':'#547143'))}
+cube(prep,.9,.1,.45,-.72,1.01,-.15,wood);for(const x of [-.95,-.65,-.35])cylinder(prep,.10,.10,.05,x,1.08,-.1,white);
+// serving signboards
+function panelText(label,x,y,z,width){const c=document.createElement('canvas');c.width=512;c.height=128;const q=c.getContext('2d');q.fillStyle='#472b1c';q.fillRect(0,0,512,128);q.fillStyle='#f3d8a4';q.font='bold 49px system-ui';q.textAlign='center';q.fillText(label,256,81);const o=new THREE.Mesh(new THREE.PlaneGeometry(width,.5),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(c)}));o.position.set(x,y,z);o.rotation.y=Math.PI;scene.add(o)}
+panelText('BIA HƠI • RÓT TẠI QUẦY',4.4,2.33,7.73,3.5);
+panelText('BẾP NHÀ • MỒI NHẬU',-4.45,2.33,7.73,3.5);
+// pavement entrance and circulation strip through center
+const pathMat=mat('#655a4b');cube(scene,1.7,.008,14,0,-.003,-1,pathMat,false);
+
+
+// HANOI STREET BEYOND THE OPEN FRONTAGE (negative Z), modeled as navigable-depth scenery
+const streetAsphalt=mat('#444442',.97),sidewalk=mat('#77716b'),oldYellow=mat('#b69a6b'),agedCream=mat('#b9a887'),shutter=mat('#385b53'),roof=mat('#513b34'),linePaint=mat('#c3b49a');
+cube(scene,24,.12,10,0,-.09,-14,streetAsphalt,false);
+cube(scene,24,.13,2.1,0,-.055,-9.7,sidewalk,false);
+for(let x=-11;x<12;x+=1.4)cube(scene,1.36,.008,1.98,x,.02,-9.7,mat(x%3?'#888078':'#756c65'),false);
+for(let x=-11;x<12;x+=2.4)cube(scene,1.05,.012,.09,x,-.015,-16.8,linePaint,false);
+function facade(x,z,w,h,wallColor,shopName){
+ const g=new THREE.Group();g.position.set(x,0,z);scene.add(g);
+ cube(g,w,h,.65,0,h/2,0,wallColor,false);
+ cube(g,w+.22,.18,.95,0,h+.05,0,roof,false);
+ cube(g,w*.78,1.45,.07,0,1.45,-.38,shutter,false);
+ for(let u=-w*.32;u<=w*.32;u+=.22)cube(g,.035,1.43,.09,u,1.45,-.43,mat('#263f3a'),false);
+ for(let yy=2.6;yy<h-.4;yy+=1.6){for(let u of [-w*.27,w*.27]){cube(g,.8,1.0,.075,u,yy,-.37,shutter,false);cube(g,.88,.08,.12,u,yy+.5,-.43,roof,false)}}
+ cube(g,w*.85,.42,.12,0,2.55,-.52,roof,false);
+ const cc=document.createElement('canvas');cc.width=512;cc.height=96;const q=cc.getContext('2d');q.fillStyle='#6c3324';q.fillRect(0,0,512,96);q.fillStyle='#f7db9c';q.textAlign='center';q.font='bold 45px system-ui';q.fillText(shopName,256,63);const sign=new THREE.Mesh(new THREE.PlaneGeometry(w*.8,.38),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(cc)}));sign.position.set(0,2.55,-.591);g.add(sign);
+}
+facade(-7.8,-20,5.3,6.6,oldYellow,'BIA HƠI HÀ NỘI');
+facade(-2.4,-20.2,5.1,7.5,agedCream,'PHỞ GIA TRUYỀN');
+facade(3.1,-20,5.5,6.3,oldYellow,'TẠP HÓA PHỐ');
+facade(8.5,-20.3,5.2,7.0,agedCream,'CÀ PHÊ HÀ NỘI');
+// Streetfront shop houses framing both sides of the open alley
+facade(-9.1,-11.5,3.8,5.7,oldYellow,'QUÁN NƯỚC');
+facade(9.1,-11.5,3.8,5.8,agedCream,'CƠM BÌNH DÂN');
+function motorbike(x,z,angle,color){const g=new THREE.Group();g.position.set(x,.03,z);g.rotation.y=angle;scene.add(g);const rubber=mat('#222323');for(const dz of [-.52,.52]){const wheel=new THREE.Mesh(new THREE.TorusGeometry(.23,.055,9,16),rubber);wheel.rotation.y=Math.PI/2;wheel.position.set(0,.24,dz);g.add(wheel)}cube(g,.31,.19,.8,0,.58,0,mat(color));cube(g,.31,.09,.4,0,.73,.1,mat('#292929'));cube(g,.07,.55,.07,0,.68,-.48,metal);cube(g,.65,.045,.05,0,.94,-.49,metal);cube(g,.12,.15,.12,0,.78,-.58,white)}
+motorbike(-5.9,-10.7,.32,'#a52e28');motorbike(-4.7,-10.9,-.25,'#233c73');motorbike(5.6,-10.8,.2,'#444c50');
+function streetLamp(x,z){cylinder(scene,.055,.07,4.3,x,2.15,z,metal,10);const bulb=new THREE.PointLight(0xffcf88,1.6,9);bulb.position.set(x,4.25,z);scene.add(bulb);const shell=new THREE.Mesh(new THREE.SphereGeometry(.17,12,8),new THREE.MeshBasicMaterial({color:0xffd595}));shell.position.set(x,4.25,z);scene.add(shell)}
+streetLamp(-6.1,-11.8);streetLamp(6.1,-11.8);
+// Street threshold and gateposts, leaving the middle entirely open
+cube(scene,.42,3.5,.42,-6.45,1.75,-8.3,oldYellow);
+cube(scene,.42,3.5,.42,6.45,1.75,-8.3,oldYellow);
+cube(scene,13.3,.23,.48,0,3.52,-8.3,woodDark);
+
+// KHƯƠNG TRUNG ART DIRECTION V2.4: procedural, seamless material maps (not a flat backdrop).
+function texturePattern(kind){const c=document.createElement('canvas');c.width=c.height=512;const q=c.getContext('2d');let seed=kind.length*173+11;function rnd(){seed=(seed*1664525+1013904223)>>>0;return seed/4294967296}
+if(kind==='plaster'){q.fillStyle='#b99562';q.fillRect(0,0,512,512);for(let i=0;i<1500;i++){const x=rnd()*512,y=rnd()*512,r=1+rnd()*18;q.fillStyle=rnd()>.5?'rgba(75,58,40,.09)':'rgba(244,218,161,.15)';q.beginPath();q.ellipse(x,y,r,r*(.25+rnd()),rnd()*3,0,Math.PI*2);q.fill()}for(let i=0;i<90;i++){q.strokeStyle='rgba(80,61,43,.25)';q.lineWidth=.5+rnd()*2;q.beginPath();let x=rnd()*512,y=rnd()*512;q.moveTo(x,y);q.lineTo(x+rnd()*20,y+rnd()*36);q.stroke()}}
+else if(kind==='brick'){q.fillStyle='#8d5441';q.fillRect(0,0,512,512);for(let y=0;y<512;y+=64){for(let x=-64+(Math.floor(y/64)%2)*64;x<512;x+=128){q.fillStyle=rnd()>.5?'#975e47':'#a56b50';q.fillRect(x+3,y+3,122,58);q.fillStyle='rgba(45,28,22,.14)';for(let j=0;j<25;j++)q.fillRect(x+rnd()*120,y+rnd()*59,2+rnd()*10,1+rnd()*5)}}}
+else if(kind==='wood'){q.fillStyle='#67402b';q.fillRect(0,0,512,512);for(let i=0;i<280;i++){const y=rnd()*512;q.strokeStyle=rnd()>.5?'rgba(24,13,8,.16)':'rgba(210,148,90,.17)';q.lineWidth=.5+rnd()*3;q.beginPath();q.moveTo(0,y);q.bezierCurveTo(180,y+rnd()*12,300,y-rnd()*12,512,y+rnd()*8);q.stroke()}}
+const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=Math.min(renderer.capabilities.getMaxAnisotropy(),4);return t}
+const plasterMap=texturePattern('plaster'),brickMap=texturePattern('brick'),woodMap=texturePattern('wood');
+const plasterPBR=new THREE.MeshStandardMaterial({map:plasterMap,roughness:1});
+const brickPBR=new THREE.MeshStandardMaterial({map:brickMap,roughness:.94});
+const woodPBR=new THREE.MeshStandardMaterial({map:woodMap,roughness:.76});
+function recolorMesh(mesh,material){if(mesh&&mesh.isMesh)mesh.material=material}
+scene.traverse(o=>{if(!o.isMesh||!o.geometry)return;const box=new THREE.Box3().setFromObject(o);const size=new THREE.Vector3();box.getSize(size);const color=o.material?.color;if(!color)return;const hex=color.getHexString();if((hex==='b69a6b'||hex==='b9a887'||hex==='ab8a62'||hex==='897052')&&size.y>1)recolorMesh(o,plasterPBR);else if((hex==='766452'||hex==='85725d'||hex==='888078'||hex==='756c65')&&size.y<.3)recolorMesh(o,brickPBR);else if((hex==='68402b'||hex==='452818')&&size.y<1.5)recolorMesh(o,woodPBR)});
+// Old yellow courtyard walls: material replacement with aged plaster and green shutters.
+for(const x of [-6.68,6.68]){cube(scene,.055,3.7,15,x,1.85,-.1,plasterPBR,false)}
+// Warm tiled floor over original pavement, keeping path readable.
+for(let x=-6.1;x<6.2;x+=1.02)for(let z=-8.0;z<7.3;z+=.68){const tile=cube(scene,.995,.014,.65,x+.49,.008,z+.32,brickPBR,false);tile.receiveShadow=true}
+function plaque(text,x,y,z,w=.94){const c=document.createElement('canvas');c.width=512;c.height=256;const q=c.getContext('2d');q.fillStyle='#142f63';q.fillRect(0,0,512,256);q.strokeStyle='#f4d68e';q.lineWidth=9;q.strokeRect(13,13,486,230);q.fillStyle='#fff1cd';q.textAlign='center';q.font='bold 70px system-ui';const lines=text.split('|');lines.forEach((v,i)=>q.fillText(v,256,lines.length===1?151:96+i*90));const mesh=new THREE.Mesh(new THREE.PlaneGeometry(w,w*.5),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(c),side:THREE.DoubleSide}));mesh.position.set(x,y,z);scene.add(mesh);return mesh}
+// Place street name at the gate, facing into the courtyard.
+plaque('PHỐ|KHƯƠNG TRUNG',-5.65,2.55,-8.04,1.25);
+plaque('27',5.95,2.55,-8.04,.5);
+// Add layered tree foliage with a less geometric silhouette.
+const leafMaterials=['#304b24','#3d5929','#49632c','#607b34'].map(c=>mat(c,1));
+for(const [tx,tz] of [[-5,-3],[5,-3],[-5,4],[5,4]]){for(let i=0;i<23;i++){const a=i*2.399,rr=.4+Math.sqrt(i/23)*1.55;const ball=new THREE.Mesh(new THREE.IcosahedronGeometry(.24+(i%5)*.065,1),leafMaterials[i%4]);ball.position.set(tx+Math.cos(a)*rr,2.45+(i%6)*.17,tz+Math.sin(a)*rr);scene.add(ball)}}
+// Decorative string lights above seating: physically modeled cable and bulbs.
+function lightString(z){const curve=new THREE.CatmullRomCurve3([new THREE.Vector3(-6,3.8,z),new THREE.Vector3(0,3.35,z+.12),new THREE.Vector3(6,3.8,z)]);const cable=new THREE.Mesh(new THREE.TubeGeometry(curve,30,.011,5,false),mat('#25221e'));scene.add(cable);for(let i=1;i<15;i++){const p=curve.getPoint(i/15);cylinder(scene,.008,.008,.18,p.x,p.y-.11,p.z,metal,8);const bulb=new THREE.Mesh(new THREE.SphereGeometry(.065,10,8),new THREE.MeshBasicMaterial({color:0xffcf7a}));bulb.position.set(p.x,p.y-.22,p.z);scene.add(bulb);if(i%3===0){const l=new THREE.PointLight(0xffb768,.55,3.8);l.position.copy(bulb.position);scene.add(l)}}}
+lightString(-5.5);lightString(-1.5);lightString(2.5);
+// Low-cost scattered leaves, using instanced geometry to protect mobile frame rate.
+const leafGeom=new THREE.PlaneGeometry(.11,.06),leafMat=new THREE.MeshStandardMaterial({color:0x95703b,side:THREE.DoubleSide,roughness:1});
+const fallen=new THREE.InstancedMesh(leafGeom,leafMat,110);const dummy=new THREE.Object3D();let seedLeaves=91;function randLeaves(){seedLeaves=(seedLeaves*1664525+1013904223)>>>0;return seedLeaves/4294967296}for(let i=0;i<110;i++){dummy.position.set(randLeaves()*12-6,.026,randLeaves()*15-8);dummy.rotation.set(-Math.PI/2,0,randLeaves()*6.28);dummy.scale.setScalar(.5+randLeaves());dummy.updateMatrix();fallen.setMatrixAt(i,dummy.matrix)}fallen.instanceMatrix.needsUpdate=true;scene.add(fallen);
+let px=0,pz=-7,yaw=Math.PI,pitch=0,seated=false,seatIndex=-1,standPose=null,cheers=0,foods=0;const keys={},state=document.getElementById('state'),score=document.getElementById('score'),toast=document.getElementById('toast');let timer;function say(t){toast.textContent=t;clearTimeout(timer);timer=setTimeout(()=>toast.textContent='',1900)}
+function nearest(){return tables.map((p,i)=>({i,d:Math.hypot(p[0]-px,p[1]-pz)})).sort((a,b)=>a.d-b.d)[0]}
+function sit(){if(seated){seated=false;seatIndex=-1;if(standPose){px=standPose.x;pz=standPose.z;yaw=standPose.yaw;pitch=standPose.pitch}say('Đã đứng dậy')}else{const n=nearest();if(n.d>2.5)return say('Đi đến gần bàn trước nhé');standPose={x:px,z:pz,yaw,pitch};seated=true;seatIndex=n.i;const [tx,tz]=tables[n.i];px=tx;pz=tz-1.36;yaw=Math.PI;pitch=-.26;say('Đã ngồi bàn '+(n.i+1))}state.textContent=seated?'Đang ngồi bàn '+(seatIndex+1)+' · Nhìn xuống bàn':'Đang đứng · Chọn bàn'}
+document.getElementById('sit').onclick=sit;document.getElementById('resetView').onclick=()=>{if(seated){const [tx,tz]=tables[seatIndex];px=tx;pz=tz-1.36;yaw=Math.PI;pitch=-.26}else{yaw=Math.PI;pitch=0}say('Đã đặt lại góc nhìn')};document.getElementById('order').onclick=()=>document.getElementById('menu').style.display='block';document.getElementById('close').onclick=()=>document.getElementById('menu').style.display='none';document.querySelectorAll('[data-food]').forEach(b=>b.onclick=()=>{if(!serveFood(b.dataset.food))return;foods++;score.textContent='Cụng ly: '+cheers+' · Món: '+foods;say('Đã phục vụ '+b.dataset.food+' tại bàn '+(seatIndex+1));document.getElementById('menu').style.display='none'});
+// First-person 3D clink animation: player hand/glass and a second approaching glass.
+const cheerRig=new THREE.Group();camera.add(cheerRig);scene.add(camera);cheerRig.visible=false;
+const heldGlass=new THREE.Group();cheerRig.add(heldGlass);heldGlass.position.set(.27,-.38,-.65);
+const guestGlass=new THREE.Group();cheerRig.add(guestGlass);guestGlass.position.set(-.65,-.30,-1.1);
+function cheerCup(parent){
+ const bodyMat=new THREE.MeshPhysicalMaterial({color:0x7bb9aa,roughness:.15,metalness:0,transparent:true,opacity:.58,depthWrite:false,side:THREE.DoubleSide});
+ const shell=new THREE.Mesh(new THREE.CylinderGeometry(.087,.064,.21,28,1,true),bodyMat);shell.position.y=.11;parent.add(shell);
+ const base=new THREE.Mesh(new THREE.CylinderGeometry(.064,.062,.018,28),bodyMat);base.position.y=.011;parent.add(base);
+ const beer=new THREE.Mesh(new THREE.CylinderGeometry(.076,.058,.135,28),new THREE.MeshStandardMaterial({color:0xd9a138,transparent:true,opacity:.64,roughness:.28}));beer.position.y=.081;parent.add(beer);
+ const foam=new THREE.Mesh(new THREE.CylinderGeometry(.076,.076,.009,28),new THREE.MeshStandardMaterial({color:0xf5e5bd,roughness:.8}));foam.position.y=.15;parent.add(foam);
+ const rim=new THREE.Mesh(new THREE.TorusGeometry(.087,.006,7,28),bodyMat);rim.rotation.x=Math.PI/2;rim.position.y=.21;parent.add(rim);
+ for(let i=0;i<16;i++){const a=i*Math.PI/8;const rib=new THREE.Mesh(new THREE.CylinderGeometry(.003,.003,.105,5),bodyMat);rib.position.set(Math.cos(a)*.076,.071,Math.sin(a)*.076);parent.add(rib)}
+}
+cheerCup(heldGlass);cheerCup(guestGlass);
+const skinMat=new THREE.MeshStandardMaterial({color:0xc48b65,roughness:.88});
+const palm=new THREE.Mesh(new THREE.SphereGeometry(.075,10,8),skinMat);palm.scale.set(.8,1.35,.8);palm.position.set(.08,.038,.065);heldGlass.add(palm);
+const arm=new THREE.Mesh(new THREE.CylinderGeometry(.065,.085,.35,10),skinMat);arm.position.set(.13,-.18,.08);arm.rotation.z=-.4;heldGlass.add(arm);
+let clinkStart=-1,clinkActive=false;
+const ease=t=>t*t*(3-2*t);
+function animateClink(now){
+ if(!clinkActive){cheerRig.visible=false;return}
+ const t=Math.min(1,(now-clinkStart)/1850);cheerRig.visible=true;
+ const lift=ease(Math.min(1,t/.3)),touch=ease(Math.max(0,Math.min(1,(t-.27)/.16))),lower=ease(Math.max(0,Math.min(1,(t-.67)/.31)));
+ heldGlass.position.set(.27-.12*touch+.12*lower,-.43+.22*lift-.22*lower,-.65-.14*touch+.14*lower);
+ guestGlass.position.set(-.62+.43*touch-.43*lower,-.27+.10*lift-.10*lower,-1.02+.25*touch-.25*lower);
+ heldGlass.rotation.z=-.18*touch+.18*lower;guestGlass.rotation.z=.18*touch-.18*lower;
+ if(t>=1){clinkActive=false;cheerRig.visible=false}
+}
+
+document.getElementById('cheer').onclick=()=>{if(!seated)return say('Hãy ngồi vào bàn');if(clinkActive)return;clinkStart=performance.now();clinkActive=true;cheers++;score.textContent='Cụng ly: '+cheers+' · Món: '+foods;say('🍻 Dzô!')};document.getElementById('dice').onclick=()=>say('🎲 '+(1+Math.floor(Math.random()*6)));
+addEventListener('keydown',e=>{keys[e.key.toLowerCase()]=true;if(e.key.toLowerCase()==='e'&&!e.repeat)sit()});addEventListener('keyup',e=>keys[e.key.toLowerCase()]=false);
+let joyX=0,joyY=0;const pad=document.getElementById('pad'),nub=document.getElementById('nub');function movePad(e){const r=pad.getBoundingClientRect(),x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2,k=Math.min(1,46/Math.max(1,Math.hypot(x,y)));joyX=x*k/46;joyY=y*k/46;nub.style.transform='translate('+joyX*37+'px,'+joyY*37+'px)'}pad.addEventListener('pointerdown',e=>{pad.setPointerCapture(e.pointerId);movePad(e)});pad.addEventListener('pointermove',e=>{if(pad.hasPointerCapture(e.pointerId))movePad(e)});function reset(){joyX=joyY=0;nub.style.transform=''}pad.addEventListener('pointerup',reset);pad.addEventListener('pointercancel',reset);
+let look=null,lastX=0,lastY=0;renderer.domElement.addEventListener('pointerdown',e=>{look=e.pointerId;lastX=e.clientX;lastY=e.clientY;renderer.domElement.setPointerCapture(e.pointerId)});renderer.domElement.addEventListener('pointermove',e=>{if(e.pointerId!==look)return;yaw-=(e.clientX-lastX)*.004;pitch=Math.max(-.9,Math.min(.9,pitch-(e.clientY-lastY)*.003));lastX=e.clientX;lastY=e.clientY});renderer.domElement.addEventListener('pointerup',()=>look=null);
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
+let prev=performance.now();function frame(now){const dt=Math.min(.05,(now-prev)/1000);prev=now;const forward=(keys.w?1:0)-(keys.s?1:0)-joyY,side=(keys.d?1:0)-(keys.a?1:0)+joyX;if(!seated){px+=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)*dt*2.4;pz+=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)*dt*2.4;px=Math.max(-5.8,Math.min(5.8,px));pz=Math.max(-8.5,Math.min(6.8,pz))}if(keys.arrowleft)yaw+=dt*1.7;if(keys.arrowright)yaw-=dt*1.7;camera.position.set(px,seated?1.12:1.65,pz);camera.rotation.order='YXZ';camera.rotation.y=yaw;camera.rotation.x=pitch;try{animateClink(now)}catch(animationError){clinkActive=false;cheerRig.visible=false;console.error('Lỗi cụng ly:',animationError);say('Lỗi hiệu ứng cụng ly — game vẫn tiếp tục')}try{renderer.render(scene,camera)}catch(renderError){console.error('Lỗi dựng hình:',renderError);const e=document.getElementById('error');e.style.display='block';e.textContent='Lỗi dựng hình: '+renderError.message;return}requestAnimationFrame(frame)}requestAnimationFrame(frame);say('WebGL V2.9.1 · Đi vào sân vườn và chọn bàn');
+}catch(err){const e=document.getElementById('error');e.style.display='block';e.textContent='Không khởi tạo được WebGL: '+err.message}
+</script></body></html>
