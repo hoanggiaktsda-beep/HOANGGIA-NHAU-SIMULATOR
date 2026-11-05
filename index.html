@@ -1,4 +1,4 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>BIA HƠI HOÀNG GIA · 3D V2</title><style>*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#19202a;color:white;font:14px system-ui}canvas{display:block;touch-action:none}#hud{position:fixed;top:12px;left:12px;background:#101820d9;padding:12px 14px;border-radius:12px;line-height:1.55;pointer-events:none}#controls{position:fixed;bottom:24px;left:18px;right:18px;display:flex;align-items:end;justify-content:space-between;gap:12px}#pad{width:116px;height:116px;flex:none;border:2px solid #ffffff99;border-radius:50%;display:grid;place-items:center;touch-action:none;background:#ffffff19}#nub{height:45px;width:45px;border-radius:50%;background:#e9b45e}#buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}button{border:0;background:#e9b45e;color:#30210c;font-weight:750;padding:13px 10px;border-radius:13px}#menu{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(350px,90vw);background:#26313d;padding:18px;border-radius:18px;box-shadow:0 12px 40px #0009}#menu button{margin:4px}#toast{position:fixed;top:25%;width:100%;text-align:center;font-weight:bold;text-shadow:0 2px 8px black;pointer-events:none}#error{display:none;position:fixed;inset:20% 8% auto;background:#421b1b;padding:20px;border-radius:12px;z-index:8}#aim{position:fixed;top:50%;left:50%;width:13px;height:13px;transform:translate(-50%,-50%);pointer-events:none}#aim:before,#aim:after{content:'';position:absolute;background:#fff9}#aim:before{width:13px;height:2px;top:5px}#aim:after{height:13px;width:2px;left:5px}@media(min-width:900px){#pad{opacity:.5}}</style></head><body><div id="hud">🍻 <b>BIA HƠI HOÀNG GIA · WEBGL V5.2</b><br>WASD: đi · Vuốt: nhìn · E: ngồi / vào WC<br><span id="state">Đang đứng · Chọn bàn</span><br><span id="score">Cụng ly: 0 · Món: 0</span><br><span id="assetStatus">Ảnh tường: đang tải...</span><br><button id="resetView" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">↺ Đặt lại góc nhìn</button></div><div id="aim"></div><div id="toast"></div><div id="error"></div><div id="controls"><div id="pad"><div id="nub"></div></div><div id="buttons"><button id="sit">🪑 Ngồi / Đứng</button><button id="order">📜 Gọi món</button><button id="cheer">🍻 Cụng ly</button><button id="drink">🍺 Uống bia</button><button id="eat">🥢 Gắp món</button></div></div><div id="menu"><h3>Thực đơn bia hơi</h3><button data-food="Lạc rang">🥜 Lạc rang</button><button data-food="Nem chua">🍖 Nem chua</button><button data-food="Gà nướng">🍗 Gà nướng</button><button data-food="Bia hơi">🍺 Bia hơi</button><p><button id="close">Đóng</button></p></div><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><script type="module">
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>BIA HƠI HOÀNG GIA · 3D V2</title><style>*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#19202a;color:white;font:14px system-ui}canvas{display:block;touch-action:none}#hud{position:fixed;top:12px;left:12px;background:#101820d9;padding:12px 14px;border-radius:12px;line-height:1.55;pointer-events:none}#controls{position:fixed;bottom:24px;left:18px;right:18px;display:flex;align-items:end;justify-content:space-between;gap:12px}#pad{width:116px;height:116px;flex:none;border:2px solid #ffffff99;border-radius:50%;display:grid;place-items:center;touch-action:none;background:#ffffff19}#nub{height:45px;width:45px;border-radius:50%;background:#e9b45e}#buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}button{border:0;background:#e9b45e;color:#30210c;font-weight:750;padding:13px 10px;border-radius:13px}#menu{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(350px,90vw);background:#26313d;padding:18px;border-radius:18px;box-shadow:0 12px 40px #0009}#menu button{margin:4px}#toast{position:fixed;top:25%;width:100%;text-align:center;font-weight:bold;text-shadow:0 2px 8px black;pointer-events:none}#error{display:none;position:fixed;inset:20% 8% auto;background:#421b1b;padding:20px;border-radius:12px;z-index:8}#aim{position:fixed;top:50%;left:50%;width:13px;height:13px;transform:translate(-50%,-50%);pointer-events:none}#aim:before,#aim:after{content:'';position:absolute;background:#fff9}#aim:before{width:13px;height:2px;top:5px}#aim:after{height:13px;width:2px;left:5px}@media(min-width:900px){#pad{opacity:.5}}</style></head><body><div id="hud">🍻 <b>BIA HƠI HOÀNG GIA · WEBGL V5.3</b><br>WASD: đi · Vuốt: nhìn · E: ngồi / vào WC<br><span id="state">Đang đứng · Chọn bàn</span><br><span id="score">Cụng ly: 0 · Món: 0</span><br><span id="assetStatus">Ảnh tường: đang tải...</span><br><button id="resetView" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">↺ Đặt lại góc nhìn</button></div><div id="aim"></div><div id="toast"></div><div id="error"></div><div id="controls"><div id="pad"><div id="nub"></div></div><div id="buttons"><button id="sit">🪑 Ngồi / Đứng</button><button id="order">📜 Gọi món</button><button id="cheer">🍻 Cụng ly</button><button id="drink">🍺 Uống bia</button><button id="eat">🥢 Gắp món</button></div></div><div id="menu"><h3>Thực đơn bia hơi</h3><button data-food="Lạc rang">🥜 Lạc rang</button><button data-food="Nem chua">🍖 Nem chua</button><button data-food="Gà nướng">🍗 Gà nướng</button><button data-food="Bia hơi">🍺 Bia hơi</button><p><button id="close">Đóng</button></p></div><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><script type="module">
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js';
 try{
 const scene=new THREE.Scene();scene.background=new THREE.Color('#182638');scene.fog=new THREE.Fog('#182638',14,40);
@@ -68,26 +68,62 @@ const shirtTones=['#e2d5b5','#4d7b81','#b94c3d','#d2aa53','#536d48','#b4c5d0','#
 const trouser=mat('#353d43');
 function beerPerson(x,z,shirt,seed,standing=false){
  const root=new THREE.Group();root.position.set(x,0,z);scene.add(root);
- const skin=mat(skinTones[seed%skinTones.length],.9),cloth=mat(shirtTones[shirt%shirtTones.length]),hair=mat(seed%3===0?'#302822':'#1b1b1b');
- const torso=new THREE.Group();torso.position.y=standing?1.14:.92;root.add(torso);
- const body=cylinder(torso,.23,.20,.52,0,0,0,cloth,12);
- const neck=cylinder(torso,.075,.075,.13,0,.34,0,skin,12);
- const head=new THREE.Mesh(new THREE.SphereGeometry(.17,14,10),skin);head.position.y=.55;torso.add(head);
- const cap=new THREE.Mesh(new THREE.SphereGeometry(.174,14,8,0,Math.PI*2,0,Math.PI*.42),hair);cap.position.y=.58;torso.add(cap);
+ const skin=mat(skinTones[seed%skinTones.length],.83),cloth=mat(shirtTones[shirt%shirtTones.length],.88),hair=mat(seed%3===0?'#302822':'#1b1b1b',.91);
+ const darkEyes=mat('#27201d'),whiteEye=mat('#e9d9c6'),lip=mat('#9d635a'),shoe=mat('#292b2d');
+ const torso=new THREE.Group();torso.position.y=standing?1.23:.99;root.add(torso);
+ function ell(parent,x,y,z,rx,ry,rz,m,seg=16){const mesh=new THREE.Mesh(new THREE.SphereGeometry(1,seg,12),m);mesh.position.set(x,y,z);mesh.scale.set(rx,ry,rz);parent.add(mesh);return mesh}
+ // Tapered torso, curved shoulders, collar and trouser waist.
+ ell(torso,0,-.04,0,.255,.33,.155,cloth,20);
+ ell(torso,0,-.24,0,.205,.17,.145,cloth);
+ ell(torso,0,.265,0,.26,.085,.14,cloth);
+ const collar=mat(seed%2?'#e8d9c6':'#414b4b');
+ ell(torso,0,.265,-.127,.092,.035,.018,collar);
+ cylinder(torso,.068,.074,.14,0,.32,0,skin,16);
+ const face=ell(torso,0,.565,-.012,.163,.218,.145,skin,24);
+ ell(torso,0,.445,-.085,.115,.073,.086,skin);
+ // Facial landmarks point toward local -Z.
+ for(const side of [-1,1]){
+  ell(torso,side*.068,.592,-.141,.036,.021,.013,whiteEye);
+  ell(torso,side*.068,.592,-.153,.013,.015,.008,darkEyes);
+  const brow=ell(torso,side*.068,.632,-.145,.047,.010,.011,hair);
+  brow.rotation.z=side*.08;
+  ell(torso,side*.156,.548,-.006,.025,.049,.024,skin);
+ }
+ ell(torso,0,.535,-.165,.033,.058,.035,skin);
+ ell(torso,0,.460,-.153,.052,.012,.014,lip);
+ // Different haircuts, hairline, sideburns and subtle facial hair.
+ const hairTop=ell(torso,0,.738,.01,.172,.092,.145,hair,20);
+ for(const side of [-1,1])ell(torso,side*.15,.675,.018,.032,.075,.09,hair);
+ if(seed%4===0)ell(torso,0,.425,-.112,.082,.022,.023,hair);
+ if(seed%5===0){const fringe=ell(torso,-.055,.705,-.11,.108,.042,.053,hair);fringe.rotation.z=.22}
  const arms=[];
  for(const side of [-1,1]){
-  const pivot=new THREE.Group();pivot.position.set(side*.235,.18,0);torso.add(pivot);
-  const arm=cylinder(pivot,.068,.085,.39,side*.07,-.19,0,cloth,10);arm.rotation.z=side*.18;
-  const hand=new THREE.Mesh(new THREE.SphereGeometry(.068,9,7),skin);hand.position.set(side*.14,-.39,0);pivot.add(hand);
+  const pivot=new THREE.Group();pivot.position.set(side*.235,.175,0);torso.add(pivot);
+  ell(pivot,side*.055,-.12,0,.093,.18,.09,cloth);
+  const elbow=new THREE.Group();elbow.position.set(side*.085,-.27,-.01);pivot.add(elbow);
+  const forearm=ell(elbow,side*.02,-.105,-.07,.068,.16,.065,skin);
+  forearm.rotation.x=-.5;
+  ell(elbow,side*.035,-.245,-.13,.063,.084,.044,skin);
   arms.push(pivot);
  }
+ // Seated legs bend forward; standing legs have shoes and a distinct hip line.
+ ell(root,0,standing?.84:.59,0,.23,.14,.16,trouser);
  for(const side of [-1,1]){
-  const leg=cylinder(root,.105,.115,standing?.68:.42,side*.115,standing?.39:.38,standing?0:.15,trouser,10);
-  if(!standing)leg.rotation.x=Math.PI/2.8;
+  if(standing){
+   ell(root,side*.115,.43,0,.107,.38,.11,trouser);
+   ell(root,side*.115,.09,-.07,.118,.09,.20,shoe);
+  }else{
+   const thigh=ell(root,side*.125,.43,-.16,.105,.12,.31,trouser);thigh.rotation.x=-.08;
+   ell(root,side*.125,.25,-.37,.09,.23,.095,trouser);
+   ell(root,side*.125,.065,-.46,.105,.07,.16,shoe);
+  }
  }
- const cup=new THREE.Group();cup.position.set(.39,-.26,-.17);arms[1].add(cup);
- const glass=new THREE.Mesh(new THREE.CylinderGeometry(.075,.055,.16,12,1,true),new THREE.MeshPhysicalMaterial({color:0x83c6bd,transparent:true,opacity:.63,roughness:.17,side:THREE.DoubleSide,depthWrite:false}));glass.position.y=.08;cup.add(glass);
- cylinder(cup,.067,.067,.025,0,.12,0,mat('#d7a344'),12);
+ // Small individual wardrobe variations.
+ if(seed%3===1)cube(torso,.015,.31,.008,0,-.035,-.159,collar,false);
+ if(seed%4===2)ell(torso,-.12,.08,-.139,.038,.028,.014,collar);
+ const cup=new THREE.Group();cup.position.set(.10,-.43,-.15);arms[1].add(cup);
+ const glass=new THREE.Mesh(new THREE.CylinderGeometry(.075,.055,.16,16,1,true),new THREE.MeshPhysicalMaterial({color:0x83c6bd,transparent:true,opacity:.63,roughness:.17,side:THREE.DoubleSide,depthWrite:false}));glass.position.y=.08;cup.add(glass);
+ cylinder(cup,.067,.067,.025,0,.12,0,mat('#d7a344'),16);
  crowd.push({root,torso,arms,seed,standing,baseX:x,baseZ:z});
  return root;
 }
