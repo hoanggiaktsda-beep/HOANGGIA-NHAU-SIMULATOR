@@ -1,4 +1,4 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>BIA HƠI HOÀNG GIA · WEBGL V9.9</title><style>*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#19202a;color:white;font:14px system-ui}canvas{display:block;touch-action:none}#hud{position:fixed;top:12px;left:12px;background:#101820d9;padding:12px 14px;border-radius:12px;line-height:1.55;pointer-events:none}#controls{position:fixed;bottom:24px;left:18px;right:18px;display:flex;align-items:end;justify-content:space-between;gap:12px}#pad{width:116px;height:116px;flex:none;border:2px solid #ffffff99;border-radius:50%;display:grid;place-items:center;touch-action:none;background:#ffffff19}#nub{height:45px;width:45px;border-radius:50%;background:#e9b45e}#buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}button{border:0;background:#e9b45e;color:#30210c;font-weight:750;padding:13px 10px;border-radius:13px}#menu{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(350px,90vw);background:#26313d;padding:18px;border-radius:18px;box-shadow:0 12px 40px #0009}#menu button{margin:4px}#menu{width:min(610px,94vw);max-height:82vh;overflow-y:auto}#menuCatalog details{border-bottom:1px solid #ffffff28;padding:8px 0}#menuCatalog summary{cursor:pointer;font-weight:750;color:#f0c47e}#menuCatalog button{display:block;width:100%;text-align:left;background:#eee0c8;font-size:13px;padding:9px 11px}#billTotal{font-weight:750;color:#ffcf79}#toast{position:fixed;top:25%;width:100%;text-align:center;font-weight:bold;text-shadow:0 2px 8px black;pointer-events:none}#error{display:none;position:fixed;inset:20% 8% auto;background:#421b1b;padding:20px;border-radius:12px;z-index:8}#aim{position:fixed;top:50%;left:50%;width:13px;height:13px;transform:translate(-50%,-50%);pointer-events:none}#aim:before,#aim:after{content:'';position:absolute;background:#fff9}#aim:before{width:13px;height:2px;top:5px}#aim:after{height:13px;width:2px;left:5px}@media(min-width:900px){#pad{opacity:.5}}@media(max-width:680px){#hud{top:env(safe-area-inset-top,5px);left:6px;padding:7px 9px;font-size:11px;max-width:75vw;line-height:1.35}#controls{bottom:max(8px,env(safe-area-inset-bottom));left:8px;right:8px;gap:5px}#pad{width:92px;height:92px}#nub{width:37px;height:37px}#buttons{gap:5px;max-width:60vw}#buttons button{padding:9px 6px;font-size:12px;min-height:40px}#menu{max-height:75dvh}}@media(max-height:520px){#hud{font-size:10px;padding:5px}#controls{bottom:5px}#pad{width:78px;height:78px}}button,select{touch-action:manipulation}#hudExpand{display:none}#hudDetails{margin-top:5px}#hud{z-index:12}#controls{z-index:11}
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>BIA HƠI HOÀNG GIA · WEBGL V10.0</title><style>*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#19202a;color:white;font:14px system-ui}canvas{display:block;touch-action:none}#hud{position:fixed;top:12px;left:12px;background:#101820d9;padding:12px 14px;border-radius:12px;line-height:1.55;pointer-events:none}#controls{position:fixed;bottom:24px;left:18px;right:18px;display:flex;align-items:end;justify-content:space-between;gap:12px}#pad{width:116px;height:116px;flex:none;border:2px solid #ffffff99;border-radius:50%;display:grid;place-items:center;touch-action:none;background:#ffffff19}#nub{height:45px;width:45px;border-radius:50%;background:#e9b45e}#buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}button{border:0;background:#e9b45e;color:#30210c;font-weight:750;padding:13px 10px;border-radius:13px}#menu{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(350px,90vw);background:#26313d;padding:18px;border-radius:18px;box-shadow:0 12px 40px #0009}#menu button{margin:4px}#menu{width:min(610px,94vw);max-height:82vh;overflow-y:auto}#menuCatalog details{border-bottom:1px solid #ffffff28;padding:8px 0}#menuCatalog summary{cursor:pointer;font-weight:750;color:#f0c47e}#menuCatalog button{display:block;width:100%;text-align:left;background:#eee0c8;font-size:13px;padding:9px 11px}#billTotal{font-weight:750;color:#ffcf79}#toast{position:fixed;top:25%;width:100%;text-align:center;font-weight:bold;text-shadow:0 2px 8px black;pointer-events:none}#error{display:none;position:fixed;inset:20% 8% auto;background:#421b1b;padding:20px;border-radius:12px;z-index:8}#aim{position:fixed;top:50%;left:50%;width:13px;height:13px;transform:translate(-50%,-50%);pointer-events:none}#aim:before,#aim:after{content:'';position:absolute;background:#fff9}#aim:before{width:13px;height:2px;top:5px}#aim:after{height:13px;width:2px;left:5px}@media(min-width:900px){#pad{opacity:.5}}@media(max-width:680px){#hud{top:env(safe-area-inset-top,5px);left:6px;padding:7px 9px;font-size:11px;max-width:75vw;line-height:1.35}#controls{bottom:max(8px,env(safe-area-inset-bottom));left:8px;right:8px;gap:5px}#pad{width:92px;height:92px}#nub{width:37px;height:37px}#buttons{gap:5px;max-width:60vw}#buttons button{padding:9px 6px;font-size:12px;min-height:40px}#menu{max-height:75dvh}}@media(max-height:520px){#hud{font-size:10px;padding:5px}#controls{bottom:5px}#pad{width:78px;height:78px}}button,select{touch-action:manipulation}#hudExpand{display:none}#hudDetails{margin-top:5px}#hud{z-index:12}#controls{z-index:11}
 @media(max-width:680px){
 #hud{top:max(7px,env(safe-area-inset-top));left:8px;right:8px;width:auto;max-width:none;padding:9px 10px;border-radius:12px;background:#101820e8;pointer-events:auto;border:1px solid #ffffff25;font-size:12px}
 #hud>b{display:inline-block;max-width:calc(100% - 115px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;vertical-align:middle}
@@ -34,7 +34,7 @@
 }
 @media(pointer:coarse) and (orientation:landscape) and (max-height:600px){#hud{top:5px;padding:5px 9px}#controls{bottom:5px;left:max(10px,env(safe-area-inset-left));right:max(10px,env(safe-area-inset-right))}#pad{width:clamp(104px,23vh,155px);height:clamp(104px,23vh,155px)}#buttons{width:150px}#buttons button{min-height:34px;padding:6px 4px}#buttons.expanded{width:215px}}
 
-/* V9.9: Safari orientation reflow: the WebGL canvas must fill the visual viewport. */
+/* V10.0: Safari orientation reflow: the WebGL canvas must fill the visual viewport. */
 html,body{width:100%;height:100%;height:100dvh;margin:0;overflow:hidden}
 body>canvas{position:fixed!important;inset:0;display:block;max-width:none!important;max-height:none!important}
 @media(pointer:coarse) and (orientation:landscape){
@@ -51,7 +51,7 @@ body>canvas{position:fixed!important;inset:0;display:block;max-width:none!import
 #rotateHint{bottom:12px}
 }
 
-/* V9.9 RPG drinking progression and always-visible action */
+/* V10.0 RPG drinking progression and always-visible action */
 #rpgHud{position:fixed;top:78px;right:12px;width:210px;z-index:13;padding:10px;background:#101820e8;border:1px solid #e6bb6e77;border-radius:13px;color:#fff;font-size:11px;box-shadow:0 4px 20px #0005;pointer-events:auto}
 .rpgTop,.rpgLine{display:flex;align-items:center;justify-content:space-between;gap:5px}.rpgTop{margin-bottom:6px}.rpgTop button{font-size:10px;padding:5px;background:#e4b76b;color:#2a1c0d;border-radius:7px}.rpgLine{margin:5px 0 3px}
 .rpgTrack{height:9px;background:#0009;border-radius:20px;overflow:hidden}.rpgTrack>div{height:100%;width:0%;transition:width .3s ease;background:linear-gradient(90deg,#60c7ac,#e9bd5f)}#drunkBar{background:linear-gradient(90deg,#e5ba58,#db634b)}
@@ -72,7 +72,7 @@ body>canvas{position:fixed!important;inset:0;display:block;max-width:none!import
 @keyframes phonePulse{from{box-shadow:0 0 6px #e5b25a66}to{box-shadow:0 0 24px #e5b25acc}}
 @media(pointer:coarse) and (orientation:landscape){#phoneToast{top:8%}.phoneCard{max-height:88dvh}}
 
-/* V9.9 phone screen with responsive HUD and verified wallpaper fallback. */
+/* V10.0 phone screen with responsive HUD and verified wallpaper fallback. */
 #phoneToast{top:50%;width:min(320px,88vw);padding:0;background:transparent;border:0;animation:none;transform:translate(-50%,-50%)}
 .phoneDevice{width:100%;padding:7px;border-radius:36px;background:#0a0d10;border:2px solid #555e68;box-shadow:0 20px 65px #000c,0 0 0 2px #111;position:relative}
 .phoneNotch{position:absolute;z-index:2;top:11px;left:35%;width:30%;height:17px;border-radius:0 0 13px 13px;background:#080a0b}
@@ -88,7 +88,7 @@ body>canvas{position:fixed!important;inset:0;display:block;max-width:none!import
 .phoneScreen small{background:#0008;padding:4px 9px;border-radius:12px}
 #phoneCountdown{font-size:12px;color:#fff0b3;margin-top:10px;font-variant-numeric:tabular-nums}
 @media(max-width:680px){#phoneToast{z-index:90}.phoneDevice{width:min(300px,85vw);margin:auto}}
-/* V9.9: responsive on every platform, not just iOS or touch devices. */
+/* V10.0: responsive on every platform, not just iOS or touch devices. */
 @media(min-width:901px) and (pointer:fine){
  #controls{pointer-events:none}#controls button{pointer-events:auto}
  #pad{display:none}
@@ -105,7 +105,7 @@ body>canvas{position:fixed!important;inset:0;display:block;max-width:none!import
  #rpgHud{top:48px;max-height:calc(100dvh - 55px);overflow-y:auto}
  #drinkQuick{bottom:105px}
 }
-</style></head><body><div id="hud">🍻 <b>BIA HƠI HOÀNG GIA · WEBGL V9.9</b><button id="hudExpand" type="button">☰ Tùy chọn</button><button id="landscapeBtn" type="button">⛶ Ngang</button><div id="hudDetails">WASD: đi · Vuốt: nhìn · E: ngồi / vào WC<br><span id="state">Đang đứng · Chọn bàn</span><br><span id="score">Cụng ly: 0 · Món: 0</span><br><span id="assetStatus">Ảnh tường: đang tải...</span><br><label style="display:inline-flex;gap:5px;align-items:center;font-size:12px;pointer-events:auto">⚙️ Đồ họa <select id="qualityMode" style="padding:4px;border-radius:6px;background:#e9b45e"><option value="auto">Tự động</option><option value="low">Thấp</option><option value="balanced">Cân bằng</option><option value="high">Cao</option></select></label> <span id="fpsMeter" style="font-size:12px">FPS: --</span><br><button id="audioLibraryBtn" style="pointer-events:auto;padding:5px 9px;font-size:12px">🎚️ Thư viện âm thanh</button><br><span id="audioStatus" style="font-size:11px;color:#ffd88e">Âm thanh: chưa bật</span><br><button id="audioTest" style="pointer-events:auto;padding:5px 9px;font-size:12px">🔔 Thử tiếng</button> <button id="audioToggle" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">🔇 Bật âm thanh</button><label style="display:inline-flex;align-items:center;gap:4px;font-size:12px">🔊 <input id="audioVolume" type="range" min="0" max="100" value="55" style="width:75px;vertical-align:middle"></label><br><button id="resetView" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">↺ Đặt lại góc nhìn</button></div></div><div id="aim"></div><div id="toast"></div><div id="error"></div><div id="controls"><div id="pad"><div id="nub"></div></div><div id="buttons"><button id="actionsToggle">☷ Thao tác</button><button id="sit">🪑 Ngồi / Đứng</button><button id="wcAction">🚻 Vào WC</button><button id="order">📜 Gọi món</button><button id="cheer">🍻 Cụng ly</button><button id="drink">🍺 Uống bia</button><button id="eat">🥢 Gắp món</button></div></div><div id="rpgHud"><div class="rpgTop"><b id="rpgDay">📅 Ngày 1</b><b id="rpgLevel">LV 1</b><button id="questToggle" type="button">📋 Nhiệm vụ</button></div><div class="rpgLine">🍺 Kinh nghiệm <span id="xpLabel">0/50</span></div><div class="rpgTrack"><div id="xpBar"></div></div><div class="rpgLine">💗 Uy tín <span id="trustLabel">75%</span></div><div class="rpgTrack"><div id="trustBar"></div></div><div class="rpgLine">🥴 Độ say <span id="drunkLabel">0%</span></div><div class="rpgTrack"><div id="drunkBar"></div></div><div id="questPanel" hidden><b id="questTitle">Nhiệm vụ ngày</b><div id="questList"></div><button id="nextDayBtn" type="button" disabled>🌅 Qua ngày mới</button></div></div><button id="drinkQuick" type="button">🍺 UỐNG BIA</button><div id="phoneToast" hidden><div class="phoneDevice"><div class="phoneNotch"></div><div class="phoneScreen"><div class="phoneClock">HOANGGIA AI · INCOMING CALL</div><div class="phoneAvatar">📞</div><strong id="phoneToastName">Đang gọi...</strong><small>Cuộc gọi đến</small><div id="phoneCountdown" aria-live="off">16 giây để nghe máy</div><div class="phoneActions"><button id="declinePhone" type="button" aria-label="Từ chối cuộc gọi">🔴<span>Từ chối</span></button><button id="answerPhone" type="button" aria-label="Nghe điện thoại">🟢<span>Nghe máy</span></button></div></div></div></div><div id="phoneModal" hidden><div class="phoneCard"><div class="phoneBrand">HOANGGIA AI · CUỘC GỌI</div><div class="phoneHeader">📱 CUỘC GỌI ĐẾN <button id="phoneMute" type="button" aria-label="Đóng">✕</button></div><div id="callerName"></div><p id="callerQuestion"></p><div id="phoneChoices"></div><div id="phoneFeedback" aria-live="polite"></div></div></div><div id="blackout" aria-live="polite"><div id="blackoutText">🥴 Say quá! Gục xuống bàn...</div></div><div id="rotateHint"><b>📱 Xoay điện thoại sang ngang</b><p>Safari có thể không hỗ trợ xoay tự động. Tắt khóa xoay màn hình rồi xoay máy.</p><button id="rotateClose">Đã hiểu</button></div><div id="audioLibrary" style="display:none;position:fixed;z-index:30;inset:5% 5%;max-width:580px;margin:auto;max-height:85dvh;overflow:auto;background:#17252a;color:#fff;border:1px solid #e9b45e;border-radius:14px;padding:18px;box-shadow:0 12px 45px #000a"><h3>🎚️ Nạp bản thu âm thanh quán bia</h3><p style="font-size:12px">Chọn MP3/WAV/OGG cho từng khu vực. File chỉ được nạp vào phiên chơi trên thiết bị này, không tự tải lên GitHub.</p><div id="audioUploadSlots"></div><p id="audioUploadInfo" style="color:#ffe2a2;font-size:12px"></p><button id="audioLibraryClose">Đóng</button></div><div id="menu"><h3>🍻 Thực đơn BIA HƠI HOÀNG GIA</h3><div id="menuCatalog"></div><p id="billTotal">Tổng bàn: 0đ</p><p><button id="close">Đóng</button></p></div><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><script type="module">
+</style></head><body><div id="hud">🍻 <b>BIA HƠI HOÀNG GIA · WEBGL V10.0</b><button id="hudExpand" type="button">☰ Tùy chọn</button><button id="landscapeBtn" type="button">⛶ Ngang</button><div id="hudDetails">WASD: đi · Vuốt: nhìn · E: ngồi / vào WC<br><span id="state">Đang đứng · Chọn bàn</span><br><span id="score">Cụng ly: 0 · Món: 0</span><br><span id="assetStatus">Ảnh tường: đang tải...</span><br><label style="display:inline-flex;gap:5px;align-items:center;font-size:12px;pointer-events:auto">⚙️ Đồ họa <select id="qualityMode" style="padding:4px;border-radius:6px;background:#e9b45e"><option value="auto">Tự động</option><option value="low">Thấp</option><option value="balanced">Cân bằng</option><option value="high">Cao</option></select></label> <span id="fpsMeter" style="font-size:12px">FPS: --</span><br><button id="audioLibraryBtn" style="pointer-events:auto;padding:5px 9px;font-size:12px">🎚️ Thư viện âm thanh</button><br><span id="audioStatus" style="font-size:11px;color:#ffd88e">Âm thanh: chưa bật</span><br><button id="audioTest" style="pointer-events:auto;padding:5px 9px;font-size:12px">🔔 Thử tiếng</button> <button id="audioToggle" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">🔇 Bật âm thanh</button><label style="display:inline-flex;align-items:center;gap:4px;font-size:12px">🔊 <input id="audioVolume" type="range" min="0" max="100" value="55" style="width:75px;vertical-align:middle"></label><br><button id="resetView" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">↺ Đặt lại góc nhìn</button></div></div><div id="aim"></div><div id="toast"></div><div id="error"></div><div id="controls"><div id="pad"><div id="nub"></div></div><div id="buttons"><button id="actionsToggle">☷ Thao tác</button><button id="sit">🪑 Ngồi / Đứng</button><button id="wcAction">🚻 Vào WC</button><button id="order">📜 Gọi món</button><button id="cheer">🍻 Cụng ly</button><button id="drink">🍺 Uống bia</button><button id="eat">🥢 Gắp món</button></div></div><div id="rpgHud"><div class="rpgTop"><b id="rpgDay">📅 Ngày 1</b><b id="rpgLevel">LV 1</b><button id="questToggle" type="button">📋 Nhiệm vụ</button></div><div class="rpgLine">🍺 Kinh nghiệm <span id="xpLabel">0/50</span></div><div class="rpgTrack"><div id="xpBar"></div></div><div class="rpgLine">💗 Uy tín <span id="trustLabel">75%</span></div><div class="rpgTrack"><div id="trustBar"></div></div><div class="rpgLine">🥴 Độ say <span id="drunkLabel">0%</span></div><div class="rpgTrack"><div id="drunkBar"></div></div><div id="questPanel" hidden><b id="questTitle">Nhiệm vụ ngày</b><div id="questList"></div><button id="nextDayBtn" type="button" disabled>🌅 Qua ngày mới</button></div></div><button id="drinkQuick" type="button">🍺 UỐNG BIA</button><div id="phoneToast" hidden><div class="phoneDevice"><div class="phoneNotch"></div><div class="phoneScreen"><div class="phoneClock">HOANGGIA AI · INCOMING CALL</div><div class="phoneAvatar">📞</div><strong id="phoneToastName">Đang gọi...</strong><small>Cuộc gọi đến</small><div id="phoneCountdown" aria-live="off">16 giây để nghe máy</div><div class="phoneActions"><button id="declinePhone" type="button" aria-label="Từ chối cuộc gọi">🔴<span>Từ chối</span></button><button id="answerPhone" type="button" aria-label="Nghe điện thoại">🟢<span>Nghe máy</span></button></div></div></div></div><div id="phoneModal" hidden><div class="phoneCard"><div class="phoneBrand">HOANGGIA AI · CUỘC GỌI</div><div class="phoneHeader">📱 CUỘC GỌI ĐẾN <button id="phoneMute" type="button" aria-label="Đóng">✕</button></div><div id="callerName"></div><p id="callerQuestion"></p><div id="phoneChoices"></div><div id="phoneFeedback" aria-live="polite"></div></div></div><div id="blackout" aria-live="polite"><div id="blackoutText">🥴 Say quá! Gục xuống bàn...</div></div><div id="rotateHint"><b>📱 Xoay điện thoại sang ngang</b><p>Safari có thể không hỗ trợ xoay tự động. Tắt khóa xoay màn hình rồi xoay máy.</p><button id="rotateClose">Đã hiểu</button></div><div id="audioLibrary" style="display:none;position:fixed;z-index:30;inset:5% 5%;max-width:580px;margin:auto;max-height:85dvh;overflow:auto;background:#17252a;color:#fff;border:1px solid #e9b45e;border-radius:14px;padding:18px;box-shadow:0 12px 45px #000a"><h3>🎚️ Nạp bản thu âm thanh quán bia</h3><p style="font-size:12px">Chọn MP3/WAV/OGG cho từng khu vực. File chỉ được nạp vào phiên chơi trên thiết bị này, không tự tải lên GitHub.</p><div id="audioUploadSlots"></div><p id="audioUploadInfo" style="color:#ffe2a2;font-size:12px"></p><button id="audioLibraryClose">Đóng</button></div><div id="menu"><h3>🍻 Thực đơn BIA HƠI HOÀNG GIA</h3><div id="menuCatalog"></div><p id="billTotal">Tổng bàn: 0đ</p><p><button id="close">Đóng</button></p></div><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><script type="module">
 const hud=document.getElementById("hud"),hudExpand=document.getElementById("hudExpand");hudExpand.addEventListener("click",()=>{const opened=hud.classList.toggle("open");hudExpand.setAttribute("aria-expanded",String(opened));hudExpand.textContent=opened?"✕ Thu gọn":"☰ Tùy chọn"});
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js';
 try{
@@ -228,7 +228,7 @@ function foodPlate(group,type,slot){
  };
  return dish;
 }
-// V9.9: animate only active hotpot steam, with a small bounded mesh count.
+// V10.0: animate only active hotpot steam, with a small bounded mesh count.
 const activeFoodSteam=[];
 function animateFoodSteam(now){
  const t=now*.001;
@@ -264,10 +264,10 @@ const skinTones=['#c68c65','#d7a27c','#b97e5c','#e0b08a'];
 const shirtTones=['#e2d5b5','#4d7b81','#b94c3d','#d2aa53','#536d48','#b4c5d0','#7d6083'];
 const trouser=mat('#353d43');
 const npcSphereGeometry=new THREE.SphereGeometry(1,20,14);
-// V9.9: Fully free procedural skeletal characters (Three.js Bones and skinning).
+// V10.0: Fully free procedural skeletal characters (Three.js Bones and skinning).
 // Every NPC owns an articulated skeleton: hips, spine, neck, head, shoulders,
 // elbows, wrists, upper/lower legs and ankles. No external model licenses.
-// V9.9: two-joint skinning, with smooth blended weights near elbow/knee.
+// V10.0: two-joint skinning, with smooth blended weights near elbow/knee.
 function makeSkinnedSegment(parent,start,end,topRadius,bottomRadius,material,length,offsetX=0,offsetZ=0){
  const geo=new THREE.CylinderGeometry(topRadius,bottomRadius,length,12,10,false);
  geo.translate(offsetX,-length*.5,offsetZ);
@@ -290,12 +290,14 @@ function beerPerson(x,z,shirt,seed,standing=false){
  const root=new THREE.Group();root.position.set(x,0,z);scene.add(root);
  const skin=mat(skinTones[seed%skinTones.length],.84),cloth=mat(shirtTones[shirt%shirtTones.length],.9),hair=mat(seed%3===0?'#302822':'#1b1b1b',.94);
  const darkEyes=mat('#27201d'),whiteEye=mat('#e9d9c6'),lip=mat('#9d635a'),shoe=mat('#292b2d');
+ const isFemale=!standing&&seed%3===1;
  function ell(parent,x,y,z,rx,ry,rz,m){const mesh=new THREE.Mesh(npcSphereGeometry,m);mesh.position.set(x,y,z);mesh.scale.set(rx,ry,rz);parent.add(mesh);return mesh}
  function bone(parent,x,y,z,name){const b=new THREE.Bone();b.name=name;b.position.set(x,y,z);parent.add(b);return b}
  const hips=bone(root,0,standing?.84:.59,0,'hips');
  const torso=bone(hips,0,standing?.39:.40,0,'spine');
  ell(torso,0,-.04,0,.255,.33,.155,cloth);
  ell(torso,0,-.24,0,.205,.17,.145,cloth);
+ if(isFemale){const dress=new THREE.Mesh(new THREE.CylinderGeometry(.16,.285,.38,12),cloth);dress.position.set(0,-.39,0);torso.add(dress)}
  ell(torso,0,.265,0,.26,.085,.14,cloth);
  const collar=mat(seed%2?'#e8d9c6':'#414b4b');
  ell(torso,0,.265,-.127,.092,.035,.018,collar);
@@ -313,6 +315,11 @@ function beerPerson(x,z,shirt,seed,standing=false){
  ell(head,0,.170,-.165,.033,.058,.035,skin);
  ell(head,0,.095,-.153,.052,.012,.014,lip);
  ell(head,0,.373,.01,.172,.092,.145,hair);
+ if(isFemale){
+  ell(head,-.14,.08,.085,.075,.29,.12,hair);
+  ell(head,.14,.08,.085,.075,.29,.12,hair);
+  const pony=ell(head,0,.22,.17,.11,.28,.105,hair);pony.rotation.x=-.17;
+ }
  for(const side of [-1,1])ell(head,side*.15,.310,.018,.032,.075,.09,hair);
  if(seed%4===0)ell(head,0,.060,-.112,.082,.022,.023,hair);
  if(seed%5===0){const fringe=ell(head,-.055,.340,-.11,.108,.042,.053,hair);fringe.rotation.z=.22}
@@ -361,7 +368,7 @@ function beerPerson(x,z,shirt,seed,standing=false){
   part.mesh.frustumCulled=false;
  }
  const skeleton=new THREE.Skeleton([hips,torso,neck,head,...arms,...elbows,...wrists,...legs,...knees]);
- crowd.push({root,torso,head,arms,elbows,wrists,legs,knees,skeleton,seed,standing,baseX:x,baseZ:z});
+ crowd.push({root,torso,head,arms,elbows,wrists,legs,knees,skeleton,seed,standing,isFemale,baseX:x,baseZ:z});
  return root;
 }
 // V5.4: Assign exactly one NPC per physical stool; front stool remains free for player.
@@ -573,23 +580,28 @@ const wall=mat('#ab8a62');cube(scene,14,4,.25,0,2,8,wall,false);cube(scene,.25,4
  for(let z=10.25;z<15.1;z+=.6)cube(wcGroup,3.45,.006,.012,0,.006,z,joint,false);
  for(let x=-1.7;x<1.75;x+=.6)cube(wcGroup,.012,.006,4.9,x,.007,12.6,joint,false);
  for(let y=.55;y<3.1;y+=.6){cube(wcGroup,3.45,.012,.012,0,y,15.12,joint,false);for(const xx of [-1.71,1.71])cube(wcGroup,.012,.012,5,xx,y,12.6,joint,false)}
+ const wcFixtureFallback=[];
  // Two black compact-HPL cubicles on right, with an open circulation zone.
  for(const z of [12.45,14.25]){
   cube(wcGroup,.045,2.12,1.68,1.04,1.2,z,hpl,false);
   cube(wcGroup,.045,2.12,1.68,1.73,1.2,z,hpl,false);
   cube(wcGroup,.72,2.12,.045,1.38,1.2,z+.81,hpl,false);
   cube(wcGroup,.06,.18,.07,1.09,1.12,z+.84,chrome,false);
-  cube(wcGroup,.52,.62,.64,1.37,.57,z+.26,ceramic,false);
-  cylinder(wcGroup,.25,.24,.1,1.37,.95,z+.26,ceramic,24);
+  const oldToilet=new THREE.Group();wcGroup.add(oldToilet);
+  cube(oldToilet,.52,.62,.64,1.37,.57,z+.26,ceramic,false);
+  cylinder(oldToilet,.25,.24,.1,1.37,.95,z+.26,ceramic,24);
+  wcFixtureFallback.push(oldToilet);
  }
  // Two sinks along the opposite wall, oak vanity with white basins.
  cube(wcGroup,.72,.6,2.3,-1.35,.73,13.42,oak,false);
  cube(wcGroup,.86,.07,2.42,-1.32,1.07,13.42,ceramic,false);
  for(const z of [12.82,14.02]){
-  cylinder(wcGroup,.27,.25,.065,-1.29,1.14,z,ceramic,32);
-  cylinder(wcGroup,.035,.035,.24,-1.62,1.25,z,chrome,12);
-  cube(wcGroup,.28,.035,.05,-1.5,1.37,z,chrome,false);
-  cube(wcGroup,.045,.86,.92,-1.685,1.86,z,mirror,false);
+  const oldSink=new THREE.Group();wcGroup.add(oldSink);
+  cylinder(oldSink,.27,.25,.065,-1.29,1.14,z,ceramic,32);
+  cylinder(oldSink,.035,.035,.24,-1.62,1.25,z,chrome,12);
+  cube(oldSink,.28,.035,.05,-1.5,1.37,z,chrome,false);
+  cube(oldSink,.045,.86,.92,-1.685,1.86,z,mirror,false);
+  wcFixtureFallback.push(oldSink);
  }
  for(let z=10.75;z<15;z+=.6)cube(wcGroup,3.4,.008,.008,0,3.105,z,joint,false);
  for(let x=-1.55;x<1.65;x+=.6)cube(wcGroup,.008,.008,4.85,x,3.105,12.6,joint,false);
@@ -597,9 +609,35 @@ const wall=mat('#ab8a62');cube(scene,14,4,.25,0,2,8,wall,false);cube(scene,.25,4
  cube(wcGroup,.06,.2,.32,-1.66,1.35,11.6,hpl,false);
  const indoor=new THREE.PointLight(0xffedcb,2.3,7);indoor.position.set(0,2.85,12.6);wcGroup.add(indoor);
  const exitSign=new THREE.Mesh(new THREE.PlaneGeometry(1.8,.48),new THREE.MeshBasicMaterial({map:t,side:THREE.DoubleSide}));exitSign.rotation.y=Math.PI;exitSign.position.set(0,2.35,10.02);wcGroup.add(exitSign);
+ // CC0 Kenney Furniture Kit GLB: replace fixtures only after successful loading.
+ // Retain WC architecture, doors, circulation and photo walls unchanged.
+ (async()=>{
+  try{
+   const {GLTFLoader}=await import('https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/loaders/GLTFLoader.js');
+   const loader=new GLTFLoader(),base='https://cdn.jsdelivr.net/gh/Hidencod/tge-assets@main/packs/furniture-kit/';
+   const paths=['toilet.glb','bathroomsink.glb'];
+   const templates=await Promise.all(paths.map(name=>new Promise(resolve=>loader.load(base+name,g=>resolve(g.scene),undefined,()=>resolve(null)))));
+   const positions=[
+    {type:0,x:1.37,y:0,z:12.71,height:1.02},
+    {type:0,x:1.37,y:0,z:14.51,height:1.02},
+    {type:1,x:-1.29,y:1.09,z:12.82,height:.24},
+    {type:1,x:-1.29,y:1.09,z:14.02,height:.24}
+   ];
+   positions.forEach((p,i)=>{
+    const src=templates[p.type];if(!src)return;
+    const model=src.clone(true),b=new THREE.Box3().setFromObject(model),size=b.getSize(new THREE.Vector3());
+    model.scale.setScalar(p.height/Math.max(size.y,.001));
+    const bb=new THREE.Box3().setFromObject(model),center=bb.getCenter(new THREE.Vector3());
+    model.position.set(p.x-center.x,p.y-bb.min.y,p.z-center.z);
+    model.traverse(o=>{if(o.isMesh){o.castShadow=false;o.receiveShadow=true}});
+    wcGroup.add(model);wcFixtureFallback[i].visible=false;
+   });
+   console.info('WC CC0 furniture GLBs:',templates.filter(Boolean).length,'/2');
+  }catch(error){console.warn('WC free model load failed; using existing fixtures',error)}
+ })();
 })();;
 
-// V9.9: eight uploaded original photos in WC only, separate from main bar posters.
+// V10.0: eight uploaded original photos in WC only, separate from main bar posters.
 // Mount on unused back-wall and circulation wall zones, keeping cubicles, sinks and door clear.
 async function addWCPhotoGallery(){
  try{
@@ -632,8 +670,8 @@ async function addWCPhotoGallery(){
     loaded++;
    }finally{URL.revokeObjectURL(url)}
   }
-  console.info('WC gallery V9.9 loaded:',loaded,'/8');
- }catch(error){console.warn('WC gallery V9.9 unavailable:',error)}
+  console.info('WC gallery V10.0 loaded:',loaded,'/8');
+ }catch(error){console.warn('WC gallery V10.0 unavailable:',error)}
 }
 addWCPhotoGallery();
 
@@ -711,7 +749,7 @@ async function addApprovedPosters(){
  }catch(e){console.warn('Poster V4.4 chưa sẵn sàng',e)}
 }
 addApprovedPosters();
-/* V9.9: five additional original photographs, preserved as separate textures.
+/* V10.0: five additional original photographs, preserved as separate textures.
    The archive is uploaded separately as hoanggia-wall-photos-v70.zip. */
 async function addExtraWallPhotos(){
  try{
@@ -741,8 +779,8 @@ async function addExtraWallPhotos(){
     image.position.z=.025;group.add(image);loaded++;
    }finally{URL.revokeObjectURL(url)}
   }
-  console.info('HOANGGIA V9.9 wall photos:',loaded+'/5');
- }catch(e){console.warn('Ảnh tường V9.9 đang chờ ZIP được tải lên GitHub',e)}
+  console.info('HOANGGIA V10.0 wall photos:',loaded+'/5');
+ }catch(e){console.warn('Ảnh tường V10.0 đang chờ ZIP được tải lên GitHub',e)}
 }
 addExtraWallPhotos();
 
@@ -779,7 +817,7 @@ addExtraWallPhotos();
 })();
 
 for(const x of [-4.2,4.2]){cube(scene,2.3,1.7,.05,x,2.55,7.84,mat('#24433b'));for(let i=0;i<5;i++)cube(scene,2.4,.045,.09,x,1.9+i*.28,7.8,mat('#47675c'))}
-// V9.9: One unified vintage advertising sign inspired by the supplied reference.
+// V10.0: One unified vintage advertising sign inspired by the supplied reference.
 // Raised above the gallery; no text panels are allowed to overlap the photographs.
 const signCanvas=document.createElement('canvas');signCanvas.width=1536;signCanvas.height=360;
 const sg=signCanvas.getContext('2d');
@@ -822,7 +860,7 @@ function tree(x,z){
  }
 }
 for(const p of [[-5,-3],[5,-3],[-5,4],[5,4]])tree(...p);
-// V9.9: real CC0 GLB nature models (Kenney Nature Kit), progressively loaded.
+// V10.0: real CC0 GLB nature models (Kenney Nature Kit), progressively loaded.
 // The built-in trees remain visible until their replacement succeeds.
 // Shared templates are cloned, not downloaded repeatedly. No paid assets.
 const natureModels=[];
@@ -861,7 +899,7 @@ async function loadFreeNatureModels(){
  }catch(e){console.warn('CC0 nature load failed; using procedural fallback',e)}
 }
 loadFreeNatureModels();
-// V9.9: Free procedural outdoor stage beneath the rear advertising sign.
+// V10.0: Free procedural outdoor stage beneath the rear advertising sign.
 // Low platform preserves the sign and the photo gallery above it.
 const stage=new THREE.Group();stage.position.set(0,0,6.87);scene.add(stage);
 cube(stage,5.45,.24,1.55,0,.12,0,mat('#33221f',.68));
@@ -873,13 +911,16 @@ const danceCrew=[];
 const danceColors=['#a94765','#3f83a0','#c68d36'];
 function makeDancer(x,seed){
  const root=new THREE.Group();root.position.set(x,.31,6.87);root.scale.setScalar(.84);scene.add(root);
- const cloth=mat(danceColors[seed%danceColors.length],.7),skin=mat('#d6a17f',.9),pants=mat('#262d3a',.85);
+ const cloth=mat(danceColors[seed%danceColors.length],.7),skin=mat('#d6a17f',.9),pants=mat('#262d3a',.85),hairMat=mat(seed===0?'#33211e':seed===1?'#533626':'#251d1d');
  const joint=(parent,name,px,py,pz)=>{const b=new THREE.Bone();b.name=name;b.position.set(px,py,pz);parent.add(b);return b};
  const ell=(parent,px,py,pz,sx,sy,sz,m)=>{const o=new THREE.Mesh(npcSphereGeometry,m);o.position.set(px,py,pz);o.scale.set(sx,sy,sz);parent.add(o);return o};
  const hips=joint(root,'hips',0,.87,0),spine=joint(hips,'spine',0,.34,0),neck=joint(spine,'neck',0,.29,0),head=joint(neck,'head',0,.06,0);
  ell(spine,0,0,0,.22,.30,.13,cloth);ell(hips,0,-.05,0,.20,.15,.13,pants);
  ell(head,0,.13,0,.135,.18,.13,skin);
- ell(head,0,.27,.025,.14,.07,.13,mat('#27201e'));
+ ell(head,0,.27,.025,.14,.07,.13,hairMat);
+ ell(head,-.115,.01,.075,.065,.28,.09,hairMat);
+ ell(head,.115,.01,.075,.065,.28,.09,hairMat);
+ const skirt=new THREE.Mesh(new THREE.CylinderGeometry(.17,.29,.32,12),cloth);skirt.position.set(0,-.16,0);hips.add(skirt);
  const arms=[],elbows=[],legs=[],knees=[];
  for(const side of [-1,1]){
   const shoulder=joint(spine,'shoulder',side*.22,.18,0),elbow=joint(shoulder,'elbow',side*.045,-.27,0);
@@ -1135,7 +1176,7 @@ const foliage=new THREE.MeshStandardMaterial({color:0x416d39,roughness:1});
 const terracotta=new THREE.MeshStandardMaterial({color:0x98543b,roughness:1});
 const light=new THREE.MeshBasicMaterial({color:0xffd39a});
 for(const side of [-1,1]){
- // V9.9: removed 3D brick accent blocks that occluded wall artwork.
+ // V10.0: removed 3D brick accent blocks that occluded wall artwork.
  for(const z of [-5.8,-3.8,-1.8,.2,2.2,4.2]){
   const x=side*6.15;
   cylinder(scene,.18,.15,.28,x,.14,z,terracotta,9);
@@ -1462,7 +1503,7 @@ document.getElementById('questToggle').onclick=()=>{const p=document.getElementB
 document.getElementById('nextDayBtn').onclick=()=>{if(questDone()&&!blackoutActive)newRpgDay()};
 document.getElementById('drinkQuick').onclick=()=>consumeAtTable('drink');
 renderRpg();
-// V9.9: interruptible phone-call narrative. Choices have deterministic consequences.
+// V10.0: interruptible phone-call narrative. Choices have deterministic consequences.
 const phoneStories=[
  {name:'💼 Sếp gọi',questions:[
   {q:'Bản vẽ khách hàng sáng mai đã xong chưa?',choices:[['Em đã hoàn thành, em gửi lại ngay sau khi kiểm tra lần cuối.',12,'stay','Sếp ghi nhận thái độ chuyên nghiệp.'],['Em đang nhậu, mai tính sếp nhé!',-34,'caught','Sếp yêu cầu dừng cuộc vui để xử lý công việc.'],['Em chưa xong, em xin phép về hoàn thiện ngay.',16,'home','Giữ trách nhiệm với tiến độ.']]},
@@ -1677,7 +1718,7 @@ function animateDining(now){
 }
 document.getElementById('drink').onclick=()=>consumeAtTable('drink');
 document.getElementById('eat').onclick=()=>consumeAtTable('eat');
-// V9.9: keyboard, touch and standard browser Gamepad API share one action layer.
+// V10.0: keyboard, touch and standard browser Gamepad API share one action layer.
 addEventListener('keydown',e=>{
  const tag=document.activeElement?.tagName;
  if(tag==='INPUT'||tag==='TEXTAREA'||tag==='SELECT')return;
@@ -1757,6 +1798,6 @@ let prev=performance.now();let lastRender=0;function frame(now){
  const renderInterval=quality==='low'?1000/30:0;
  if(now-lastRender<renderInterval){requestAnimationFrame(frame);return}
  lastRender=now;
- adaptiveTick(now);tickPhone(now);animateService(now);updateSpatialAudio(now);audioAmbience(now);animateCrowd(now);animateStageAndWind(now);animateFoodSteam(now);animateDining(now);const dt=Math.min(.05,(now-prev)/1000);prev=now;pollGamepad(dt);const forward=(keys.w||keys.arrowup?1:0)-(keys.s||keys.arrowdown?1:0)-joyY-gamepadY,side=(keys.d?1:0)-(keys.a?1:0)+joyX+gamepadX;if(!seated&&!insideWC){px+=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)*dt*2.4;pz+=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)*dt*2.4;px=Math.max(-5.65,Math.min(5.65,px));pz=Math.max(-7.55,Math.min(5.9,pz));[px,pz]=resolvePlayerCollision(px,pz)}if(insideWC){px+=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)*dt*1.7;pz+=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)*dt*1.7;px=Math.max(-12.1,Math.min(-7.7,px));pz=Math.max(1.75,Math.min(4.25,pz))}if(keys.arrowleft)yaw+=dt*1.7;if(keys.arrowright)yaw-=dt*1.7;updateWCButton();camera.position.set(px,seated?1.12:1.65,pz);camera.rotation.order='YXZ';camera.rotation.y=yaw;camera.rotation.x=pitch;try{animateClink(now)}catch(animationError){clinkActive=false;cheerRig.visible=false;console.error('Lỗi cụng ly:',animationError);say('Lỗi hiệu ứng cụng ly — game vẫn tiếp tục')}try{renderer.render(scene,camera)}catch(renderError){console.error('Lỗi dựng hình:',renderError);const e=document.getElementById('error');e.style.display='block';e.textContent='Lỗi dựng hình: '+renderError.message;return}requestAnimationFrame(frame)}requestAnimationFrame(frame);say('V9.9 · Thêm bộ ảnh tường mới · Chọn bàn và trải nghiệm!');
+ adaptiveTick(now);tickPhone(now);animateService(now);updateSpatialAudio(now);audioAmbience(now);animateCrowd(now);animateStageAndWind(now);animateFoodSteam(now);animateDining(now);const dt=Math.min(.05,(now-prev)/1000);prev=now;pollGamepad(dt);const forward=(keys.w||keys.arrowup?1:0)-(keys.s||keys.arrowdown?1:0)-joyY-gamepadY,side=(keys.d?1:0)-(keys.a?1:0)+joyX+gamepadX;if(!seated&&!insideWC){px+=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)*dt*2.4;pz+=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)*dt*2.4;px=Math.max(-5.65,Math.min(5.65,px));pz=Math.max(-7.55,Math.min(5.9,pz));[px,pz]=resolvePlayerCollision(px,pz)}if(insideWC){px+=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)*dt*1.7;pz+=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)*dt*1.7;px=Math.max(-12.1,Math.min(-7.7,px));pz=Math.max(1.75,Math.min(4.25,pz))}if(keys.arrowleft)yaw+=dt*1.7;if(keys.arrowright)yaw-=dt*1.7;updateWCButton();camera.position.set(px,seated?1.12:1.65,pz);camera.rotation.order='YXZ';camera.rotation.y=yaw;camera.rotation.x=pitch;try{animateClink(now)}catch(animationError){clinkActive=false;cheerRig.visible=false;console.error('Lỗi cụng ly:',animationError);say('Lỗi hiệu ứng cụng ly — game vẫn tiếp tục')}try{renderer.render(scene,camera)}catch(renderError){console.error('Lỗi dựng hình:',renderError);const e=document.getElementById('error');e.style.display='block';e.textContent='Lỗi dựng hình: '+renderError.message;return}requestAnimationFrame(frame)}requestAnimationFrame(frame);say('V10.0 · Thêm bộ ảnh tường mới · Chọn bàn và trải nghiệm!');
 }catch(err){const e=document.getElementById('error');e.style.display='block';e.textContent='Không khởi tạo được WebGL: '+err.message}
 </script></body></html>
