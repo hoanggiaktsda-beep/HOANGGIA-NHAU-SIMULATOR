@@ -1,4 +1,4 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>BIA HƠI HOÀNG GIA · WEBGL V9.5</title><style>*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#19202a;color:white;font:14px system-ui}canvas{display:block;touch-action:none}#hud{position:fixed;top:12px;left:12px;background:#101820d9;padding:12px 14px;border-radius:12px;line-height:1.55;pointer-events:none}#controls{position:fixed;bottom:24px;left:18px;right:18px;display:flex;align-items:end;justify-content:space-between;gap:12px}#pad{width:116px;height:116px;flex:none;border:2px solid #ffffff99;border-radius:50%;display:grid;place-items:center;touch-action:none;background:#ffffff19}#nub{height:45px;width:45px;border-radius:50%;background:#e9b45e}#buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}button{border:0;background:#e9b45e;color:#30210c;font-weight:750;padding:13px 10px;border-radius:13px}#menu{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(350px,90vw);background:#26313d;padding:18px;border-radius:18px;box-shadow:0 12px 40px #0009}#menu button{margin:4px}#menu{width:min(610px,94vw);max-height:82vh;overflow-y:auto}#menuCatalog details{border-bottom:1px solid #ffffff28;padding:8px 0}#menuCatalog summary{cursor:pointer;font-weight:750;color:#f0c47e}#menuCatalog button{display:block;width:100%;text-align:left;background:#eee0c8;font-size:13px;padding:9px 11px}#billTotal{font-weight:750;color:#ffcf79}#toast{position:fixed;top:25%;width:100%;text-align:center;font-weight:bold;text-shadow:0 2px 8px black;pointer-events:none}#error{display:none;position:fixed;inset:20% 8% auto;background:#421b1b;padding:20px;border-radius:12px;z-index:8}#aim{position:fixed;top:50%;left:50%;width:13px;height:13px;transform:translate(-50%,-50%);pointer-events:none}#aim:before,#aim:after{content:'';position:absolute;background:#fff9}#aim:before{width:13px;height:2px;top:5px}#aim:after{height:13px;width:2px;left:5px}@media(min-width:900px){#pad{opacity:.5}}@media(max-width:680px){#hud{top:env(safe-area-inset-top,5px);left:6px;padding:7px 9px;font-size:11px;max-width:75vw;line-height:1.35}#controls{bottom:max(8px,env(safe-area-inset-bottom));left:8px;right:8px;gap:5px}#pad{width:92px;height:92px}#nub{width:37px;height:37px}#buttons{gap:5px;max-width:60vw}#buttons button{padding:9px 6px;font-size:12px;min-height:40px}#menu{max-height:75dvh}}@media(max-height:520px){#hud{font-size:10px;padding:5px}#controls{bottom:5px}#pad{width:78px;height:78px}}button,select{touch-action:manipulation}#hudExpand{display:none}#hudDetails{margin-top:5px}#hud{z-index:12}#controls{z-index:11}
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>BIA HƠI HOÀNG GIA · WEBGL V9.6</title><style>*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#19202a;color:white;font:14px system-ui}canvas{display:block;touch-action:none}#hud{position:fixed;top:12px;left:12px;background:#101820d9;padding:12px 14px;border-radius:12px;line-height:1.55;pointer-events:none}#controls{position:fixed;bottom:24px;left:18px;right:18px;display:flex;align-items:end;justify-content:space-between;gap:12px}#pad{width:116px;height:116px;flex:none;border:2px solid #ffffff99;border-radius:50%;display:grid;place-items:center;touch-action:none;background:#ffffff19}#nub{height:45px;width:45px;border-radius:50%;background:#e9b45e}#buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}button{border:0;background:#e9b45e;color:#30210c;font-weight:750;padding:13px 10px;border-radius:13px}#menu{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(350px,90vw);background:#26313d;padding:18px;border-radius:18px;box-shadow:0 12px 40px #0009}#menu button{margin:4px}#menu{width:min(610px,94vw);max-height:82vh;overflow-y:auto}#menuCatalog details{border-bottom:1px solid #ffffff28;padding:8px 0}#menuCatalog summary{cursor:pointer;font-weight:750;color:#f0c47e}#menuCatalog button{display:block;width:100%;text-align:left;background:#eee0c8;font-size:13px;padding:9px 11px}#billTotal{font-weight:750;color:#ffcf79}#toast{position:fixed;top:25%;width:100%;text-align:center;font-weight:bold;text-shadow:0 2px 8px black;pointer-events:none}#error{display:none;position:fixed;inset:20% 8% auto;background:#421b1b;padding:20px;border-radius:12px;z-index:8}#aim{position:fixed;top:50%;left:50%;width:13px;height:13px;transform:translate(-50%,-50%);pointer-events:none}#aim:before,#aim:after{content:'';position:absolute;background:#fff9}#aim:before{width:13px;height:2px;top:5px}#aim:after{height:13px;width:2px;left:5px}@media(min-width:900px){#pad{opacity:.5}}@media(max-width:680px){#hud{top:env(safe-area-inset-top,5px);left:6px;padding:7px 9px;font-size:11px;max-width:75vw;line-height:1.35}#controls{bottom:max(8px,env(safe-area-inset-bottom));left:8px;right:8px;gap:5px}#pad{width:92px;height:92px}#nub{width:37px;height:37px}#buttons{gap:5px;max-width:60vw}#buttons button{padding:9px 6px;font-size:12px;min-height:40px}#menu{max-height:75dvh}}@media(max-height:520px){#hud{font-size:10px;padding:5px}#controls{bottom:5px}#pad{width:78px;height:78px}}button,select{touch-action:manipulation}#hudExpand{display:none}#hudDetails{margin-top:5px}#hud{z-index:12}#controls{z-index:11}
 @media(max-width:680px){
 #hud{top:max(7px,env(safe-area-inset-top));left:8px;right:8px;width:auto;max-width:none;padding:9px 10px;border-radius:12px;background:#101820e8;pointer-events:auto;border:1px solid #ffffff25;font-size:12px}
 #hud>b{display:inline-block;max-width:calc(100% - 115px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;vertical-align:middle}
@@ -34,7 +34,7 @@
 }
 @media(pointer:coarse) and (orientation:landscape) and (max-height:600px){#hud{top:5px;padding:5px 9px}#controls{bottom:5px;left:max(10px,env(safe-area-inset-left));right:max(10px,env(safe-area-inset-right))}#pad{width:clamp(104px,23vh,155px);height:clamp(104px,23vh,155px)}#buttons{width:150px}#buttons button{min-height:34px;padding:6px 4px}#buttons.expanded{width:215px}}
 
-/* V9.5: Safari orientation reflow: the WebGL canvas must fill the visual viewport. */
+/* V9.6: Safari orientation reflow: the WebGL canvas must fill the visual viewport. */
 html,body{width:100%;height:100%;height:100dvh;margin:0;overflow:hidden}
 body>canvas{position:fixed!important;inset:0;display:block;max-width:none!important;max-height:none!important}
 @media(pointer:coarse) and (orientation:landscape){
@@ -51,7 +51,7 @@ body>canvas{position:fixed!important;inset:0;display:block;max-width:none!import
 #rotateHint{bottom:12px}
 }
 
-/* V9.5 RPG drinking progression and always-visible action */
+/* V9.6 RPG drinking progression and always-visible action */
 #rpgHud{position:fixed;top:78px;right:12px;width:210px;z-index:13;padding:10px;background:#101820e8;border:1px solid #e6bb6e77;border-radius:13px;color:#fff;font-size:11px;box-shadow:0 4px 20px #0005;pointer-events:auto}
 .rpgTop,.rpgLine{display:flex;align-items:center;justify-content:space-between;gap:5px}.rpgTop{margin-bottom:6px}.rpgTop button{font-size:10px;padding:5px;background:#e4b76b;color:#2a1c0d;border-radius:7px}.rpgLine{margin:5px 0 3px}
 .rpgTrack{height:9px;background:#0009;border-radius:20px;overflow:hidden}.rpgTrack>div{height:100%;width:0%;transition:width .3s ease;background:linear-gradient(90deg,#60c7ac,#e9bd5f)}#drunkBar{background:linear-gradient(90deg,#e5ba58,#db634b)}
@@ -72,7 +72,7 @@ body>canvas{position:fixed!important;inset:0;display:block;max-width:none!import
 @keyframes phonePulse{from{box-shadow:0 0 6px #e5b25a66}to{box-shadow:0 0 24px #e5b25acc}}
 @media(pointer:coarse) and (orientation:landscape){#phoneToast{top:8%}.phoneCard{max-height:88dvh}}
 
-/* V9.5 phone screen with responsive HUD and verified wallpaper fallback. */
+/* V9.6 phone screen with responsive HUD and verified wallpaper fallback. */
 #phoneToast{top:50%;width:min(320px,88vw);padding:0;background:transparent;border:0;animation:none;transform:translate(-50%,-50%)}
 .phoneDevice{width:100%;padding:7px;border-radius:36px;background:#0a0d10;border:2px solid #555e68;box-shadow:0 20px 65px #000c,0 0 0 2px #111;position:relative}
 .phoneNotch{position:absolute;z-index:2;top:11px;left:35%;width:30%;height:17px;border-radius:0 0 13px 13px;background:#080a0b}
@@ -88,7 +88,7 @@ body>canvas{position:fixed!important;inset:0;display:block;max-width:none!import
 .phoneScreen small{background:#0008;padding:4px 9px;border-radius:12px}
 #phoneCountdown{font-size:12px;color:#fff0b3;margin-top:10px;font-variant-numeric:tabular-nums}
 @media(max-width:680px){#phoneToast{z-index:90}.phoneDevice{width:min(300px,85vw);margin:auto}}
-/* V9.5: responsive on every platform, not just iOS or touch devices. */
+/* V9.6: responsive on every platform, not just iOS or touch devices. */
 @media(min-width:901px) and (pointer:fine){
  #controls{pointer-events:none}#controls button{pointer-events:auto}
  #pad{display:none}
@@ -105,7 +105,7 @@ body>canvas{position:fixed!important;inset:0;display:block;max-width:none!import
  #rpgHud{top:48px;max-height:calc(100dvh - 55px);overflow-y:auto}
  #drinkQuick{bottom:105px}
 }
-</style></head><body><div id="hud">🍻 <b>BIA HƠI HOÀNG GIA · WEBGL V9.5</b><button id="hudExpand" type="button">☰ Tùy chọn</button><button id="landscapeBtn" type="button">⛶ Ngang</button><div id="hudDetails">WASD: đi · Vuốt: nhìn · E: ngồi / vào WC<br><span id="state">Đang đứng · Chọn bàn</span><br><span id="score">Cụng ly: 0 · Món: 0</span><br><span id="assetStatus">Ảnh tường: đang tải...</span><br><label style="display:inline-flex;gap:5px;align-items:center;font-size:12px;pointer-events:auto">⚙️ Đồ họa <select id="qualityMode" style="padding:4px;border-radius:6px;background:#e9b45e"><option value="auto">Tự động</option><option value="low">Thấp</option><option value="balanced">Cân bằng</option><option value="high">Cao</option></select></label> <span id="fpsMeter" style="font-size:12px">FPS: --</span><br><button id="audioLibraryBtn" style="pointer-events:auto;padding:5px 9px;font-size:12px">🎚️ Thư viện âm thanh</button><br><span id="audioStatus" style="font-size:11px;color:#ffd88e">Âm thanh: chưa bật</span><br><button id="audioTest" style="pointer-events:auto;padding:5px 9px;font-size:12px">🔔 Thử tiếng</button> <button id="audioToggle" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">🔇 Bật âm thanh</button><label style="display:inline-flex;align-items:center;gap:4px;font-size:12px">🔊 <input id="audioVolume" type="range" min="0" max="100" value="55" style="width:75px;vertical-align:middle"></label><br><button id="resetView" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">↺ Đặt lại góc nhìn</button></div></div><div id="aim"></div><div id="toast"></div><div id="error"></div><div id="controls"><div id="pad"><div id="nub"></div></div><div id="buttons"><button id="actionsToggle">☷ Thao tác</button><button id="sit">🪑 Ngồi / Đứng</button><button id="wcAction">🚻 Vào WC</button><button id="order">📜 Gọi món</button><button id="cheer">🍻 Cụng ly</button><button id="drink">🍺 Uống bia</button><button id="eat">🥢 Gắp món</button></div></div><div id="rpgHud"><div class="rpgTop"><b id="rpgDay">📅 Ngày 1</b><b id="rpgLevel">LV 1</b><button id="questToggle" type="button">📋 Nhiệm vụ</button></div><div class="rpgLine">🍺 Kinh nghiệm <span id="xpLabel">0/50</span></div><div class="rpgTrack"><div id="xpBar"></div></div><div class="rpgLine">💗 Uy tín <span id="trustLabel">75%</span></div><div class="rpgTrack"><div id="trustBar"></div></div><div class="rpgLine">🥴 Độ say <span id="drunkLabel">0%</span></div><div class="rpgTrack"><div id="drunkBar"></div></div><div id="questPanel" hidden><b id="questTitle">Nhiệm vụ ngày</b><div id="questList"></div><button id="nextDayBtn" type="button" disabled>🌅 Qua ngày mới</button></div></div><button id="drinkQuick" type="button">🍺 UỐNG BIA</button><div id="phoneToast" hidden><div class="phoneDevice"><div class="phoneNotch"></div><div class="phoneScreen"><div class="phoneClock">HOANGGIA AI · INCOMING CALL</div><div class="phoneAvatar">📞</div><strong id="phoneToastName">Đang gọi...</strong><small>Cuộc gọi đến</small><div id="phoneCountdown" aria-live="off">16 giây để nghe máy</div><div class="phoneActions"><button id="declinePhone" type="button" aria-label="Từ chối cuộc gọi">🔴<span>Từ chối</span></button><button id="answerPhone" type="button" aria-label="Nghe điện thoại">🟢<span>Nghe máy</span></button></div></div></div></div><div id="phoneModal" hidden><div class="phoneCard"><div class="phoneBrand">HOANGGIA AI · CUỘC GỌI</div><div class="phoneHeader">📱 CUỘC GỌI ĐẾN <button id="phoneMute" type="button" aria-label="Đóng">✕</button></div><div id="callerName"></div><p id="callerQuestion"></p><div id="phoneChoices"></div><div id="phoneFeedback" aria-live="polite"></div></div></div><div id="blackout" aria-live="polite"><div id="blackoutText">🥴 Say quá! Gục xuống bàn...</div></div><div id="rotateHint"><b>📱 Xoay điện thoại sang ngang</b><p>Safari có thể không hỗ trợ xoay tự động. Tắt khóa xoay màn hình rồi xoay máy.</p><button id="rotateClose">Đã hiểu</button></div><div id="audioLibrary" style="display:none;position:fixed;z-index:30;inset:5% 5%;max-width:580px;margin:auto;max-height:85dvh;overflow:auto;background:#17252a;color:#fff;border:1px solid #e9b45e;border-radius:14px;padding:18px;box-shadow:0 12px 45px #000a"><h3>🎚️ Nạp bản thu âm thanh quán bia</h3><p style="font-size:12px">Chọn MP3/WAV/OGG cho từng khu vực. File chỉ được nạp vào phiên chơi trên thiết bị này, không tự tải lên GitHub.</p><div id="audioUploadSlots"></div><p id="audioUploadInfo" style="color:#ffe2a2;font-size:12px"></p><button id="audioLibraryClose">Đóng</button></div><div id="menu"><h3>🍻 Thực đơn BIA HƠI HOÀNG GIA</h3><div id="menuCatalog"></div><p id="billTotal">Tổng bàn: 0đ</p><p><button id="close">Đóng</button></p></div><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><script type="module">
+</style></head><body><div id="hud">🍻 <b>BIA HƠI HOÀNG GIA · WEBGL V9.6</b><button id="hudExpand" type="button">☰ Tùy chọn</button><button id="landscapeBtn" type="button">⛶ Ngang</button><div id="hudDetails">WASD: đi · Vuốt: nhìn · E: ngồi / vào WC<br><span id="state">Đang đứng · Chọn bàn</span><br><span id="score">Cụng ly: 0 · Món: 0</span><br><span id="assetStatus">Ảnh tường: đang tải...</span><br><label style="display:inline-flex;gap:5px;align-items:center;font-size:12px;pointer-events:auto">⚙️ Đồ họa <select id="qualityMode" style="padding:4px;border-radius:6px;background:#e9b45e"><option value="auto">Tự động</option><option value="low">Thấp</option><option value="balanced">Cân bằng</option><option value="high">Cao</option></select></label> <span id="fpsMeter" style="font-size:12px">FPS: --</span><br><button id="audioLibraryBtn" style="pointer-events:auto;padding:5px 9px;font-size:12px">🎚️ Thư viện âm thanh</button><br><span id="audioStatus" style="font-size:11px;color:#ffd88e">Âm thanh: chưa bật</span><br><button id="audioTest" style="pointer-events:auto;padding:5px 9px;font-size:12px">🔔 Thử tiếng</button> <button id="audioToggle" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">🔇 Bật âm thanh</button><label style="display:inline-flex;align-items:center;gap:4px;font-size:12px">🔊 <input id="audioVolume" type="range" min="0" max="100" value="55" style="width:75px;vertical-align:middle"></label><br><button id="resetView" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">↺ Đặt lại góc nhìn</button></div></div><div id="aim"></div><div id="toast"></div><div id="error"></div><div id="controls"><div id="pad"><div id="nub"></div></div><div id="buttons"><button id="actionsToggle">☷ Thao tác</button><button id="sit">🪑 Ngồi / Đứng</button><button id="wcAction">🚻 Vào WC</button><button id="order">📜 Gọi món</button><button id="cheer">🍻 Cụng ly</button><button id="drink">🍺 Uống bia</button><button id="eat">🥢 Gắp món</button></div></div><div id="rpgHud"><div class="rpgTop"><b id="rpgDay">📅 Ngày 1</b><b id="rpgLevel">LV 1</b><button id="questToggle" type="button">📋 Nhiệm vụ</button></div><div class="rpgLine">🍺 Kinh nghiệm <span id="xpLabel">0/50</span></div><div class="rpgTrack"><div id="xpBar"></div></div><div class="rpgLine">💗 Uy tín <span id="trustLabel">75%</span></div><div class="rpgTrack"><div id="trustBar"></div></div><div class="rpgLine">🥴 Độ say <span id="drunkLabel">0%</span></div><div class="rpgTrack"><div id="drunkBar"></div></div><div id="questPanel" hidden><b id="questTitle">Nhiệm vụ ngày</b><div id="questList"></div><button id="nextDayBtn" type="button" disabled>🌅 Qua ngày mới</button></div></div><button id="drinkQuick" type="button">🍺 UỐNG BIA</button><div id="phoneToast" hidden><div class="phoneDevice"><div class="phoneNotch"></div><div class="phoneScreen"><div class="phoneClock">HOANGGIA AI · INCOMING CALL</div><div class="phoneAvatar">📞</div><strong id="phoneToastName">Đang gọi...</strong><small>Cuộc gọi đến</small><div id="phoneCountdown" aria-live="off">16 giây để nghe máy</div><div class="phoneActions"><button id="declinePhone" type="button" aria-label="Từ chối cuộc gọi">🔴<span>Từ chối</span></button><button id="answerPhone" type="button" aria-label="Nghe điện thoại">🟢<span>Nghe máy</span></button></div></div></div></div><div id="phoneModal" hidden><div class="phoneCard"><div class="phoneBrand">HOANGGIA AI · CUỘC GỌI</div><div class="phoneHeader">📱 CUỘC GỌI ĐẾN <button id="phoneMute" type="button" aria-label="Đóng">✕</button></div><div id="callerName"></div><p id="callerQuestion"></p><div id="phoneChoices"></div><div id="phoneFeedback" aria-live="polite"></div></div></div><div id="blackout" aria-live="polite"><div id="blackoutText">🥴 Say quá! Gục xuống bàn...</div></div><div id="rotateHint"><b>📱 Xoay điện thoại sang ngang</b><p>Safari có thể không hỗ trợ xoay tự động. Tắt khóa xoay màn hình rồi xoay máy.</p><button id="rotateClose">Đã hiểu</button></div><div id="audioLibrary" style="display:none;position:fixed;z-index:30;inset:5% 5%;max-width:580px;margin:auto;max-height:85dvh;overflow:auto;background:#17252a;color:#fff;border:1px solid #e9b45e;border-radius:14px;padding:18px;box-shadow:0 12px 45px #000a"><h3>🎚️ Nạp bản thu âm thanh quán bia</h3><p style="font-size:12px">Chọn MP3/WAV/OGG cho từng khu vực. File chỉ được nạp vào phiên chơi trên thiết bị này, không tự tải lên GitHub.</p><div id="audioUploadSlots"></div><p id="audioUploadInfo" style="color:#ffe2a2;font-size:12px"></p><button id="audioLibraryClose">Đóng</button></div><div id="menu"><h3>🍻 Thực đơn BIA HƠI HOÀNG GIA</h3><div id="menuCatalog"></div><p id="billTotal">Tổng bàn: 0đ</p><p><button id="close">Đóng</button></p></div><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><script type="module">
 const hud=document.getElementById("hud"),hudExpand=document.getElementById("hudExpand");hudExpand.addEventListener("click",()=>{const opened=hud.classList.toggle("open");hudExpand.setAttribute("aria-expanded",String(opened));hudExpand.textContent=opened?"✕ Thu gọn":"☰ Tùy chọn"});
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js';
 try{
@@ -153,13 +153,19 @@ function foodPlate(group,type,slot){
  const coords=[[0,0],[0,-.24],[0,.24],[-.22,0],[.22,0]], [x,z]=coords[slot%coords.length];
  const dish=new THREE.Group();dish.position.set(x,.772,z);group.add(dish);
  const edibleMeshes=[];
+ const steamPuffs=[];
  const ceramic=new THREE.MeshStandardMaterial({color:0xf3e9d5,roughness:.31,metalness:0});
  const plateProfile=[[0,0],[.085,0],[.112,.006],[.139,.018],[.15,.023],[.149,.029],[.136,.027],[.109,.015],[.08,.009],[0,.009]].map(p=>new THREE.Vector2(...p));
  const plate=new THREE.Mesh(new THREE.LatheGeometry(plateProfile,48),ceramic);plate.castShadow=true;plate.receiveShadow=true;dish.add(plate);
  const rim=new THREE.Mesh(new THREE.TorusGeometry(.14,.0028,6,48),mat('#8a765c'));rim.rotation.x=Math.PI/2;rim.position.y=.027;dish.add(rim);
  const herb=mat('#47792c'),herbLight=mat('#7a963d'),char=mat('#4d291c'),chicken=mat('#bb642d'),chickenLight=mat('#d89949'),pink=mat('#c87570'),pinkLight=mat('#e5a09a');
  function piece(geometry,material,px,py,pz,rx=0,ry=0,rz=0){const m=new THREE.Mesh(geometry,material);m.position.set(px,py,pz);m.rotation.set(rx,ry,rz);m.castShadow=true;dish.add(m);if(geometry.type!=='CylinderGeometry'||Math.abs(py-.065)>.001)edibleMeshes.push(m);return m}
- function leaf(px,pz,angle=0,scale=1){const m=piece(new THREE.SphereGeometry(.023,8,5),Math.abs(px+pz)>.08?herb:herbLight,px,.027,pz,0,angle,.3);m.scale.set(.6*scale,.13,1.65*scale)}
+ function leaf(px,pz,angle=0,scale=1){
+  const m=piece(new THREE.SphereGeometry(.023,8,5),Math.abs(px+pz)>.08?herb:herbLight,px,.036,pz,0,angle,.3);
+  m.scale.set(.6*scale,.13,1.65*scale);
+  const stem=piece(new THREE.CylinderGeometry(.002,.003,.048,5),herb,px,.029,pz);
+  stem.rotation.z=angle*.16;
+ }
  // V5.8: menu-specific visual families instead of one generic chicken plate.
  const n=type.toLowerCase();
  const isNut=/lạc|đậu phộng/.test(n),isNem=/nem chua|nem phùng/.test(n),isVeg=/rau muống|rau lang|dưa chuột|nộm/.test(n);
@@ -172,6 +178,13 @@ function foodPlate(group,type,slot){
   piece(new THREE.CylinderGeometry(.108,.108,.008,24),mat('#b95b32'),0,.117,0);
   for(let i=0;i<17;i++){const a=i*2.4,r=.075*Math.sqrt((i+.5)/17);piece(new THREE.SphereGeometry(.015,8,6),i%3===0?herb:foodMats[i%3],Math.cos(a)*r,.128,Math.sin(a)*r)}
   for(const side of [-1,1])piece(new THREE.TorusGeometry(.025,.007,6,12),mat('#858b8d'),side*.13,.078,0,Math.PI/2);
+  // Translucent steam: four tiny meshes, no particles or external assets.
+  const steamMat=new THREE.MeshBasicMaterial({color:0xf5e7d2,transparent:true,opacity:.16,depthWrite:false});
+  for(let k=0;k<4;k++){
+   const puff=new THREE.Mesh(new THREE.SphereGeometry(.017,7,5),steamMat.clone());
+   puff.position.set(Math.cos(k*2.1)*.043,.16+k*.021,Math.sin(k*2.1)*.035);
+   puff.scale.set(.7,1.6,.7);dish.add(puff);steamPuffs.push(puff);
+  }
  }else if(isNoodle){
   for(let i=0;i<27;i++){const a=i*2.399,r=.09*Math.sqrt((i+.5)/27);const noodle=piece(new THREE.TorusGeometry(.017,.004,4,10),i%5===0?herb:mat('#d6b06b'),Math.cos(a)*r,.036+i%4*.008,Math.sin(a)*r,Math.PI/2,a);noodle.scale.set(1.1,.8,1)}
  }else{
@@ -181,8 +194,18 @@ function foodPlate(group,type,slot){
    const geometry=isNut?new THREE.SphereGeometry(.012,8,6):isVeg?new THREE.CapsuleGeometry(.009,.048,3,6):isTofu?new THREE.BoxGeometry(.046,.027,.041):isFish?new THREE.CapsuleGeometry(.025,.055,4,8):new THREE.SphereGeometry(.024,10,8);
    const m=piece(geometry,foodMats[i%3],xx,.039+(i%4)*.009,zz,.1,a,.1);
    if(isNut)m.scale.set(.8,1.1,.75);
-   if(isVeg)m.rotation.z=a;
+   if(isVeg){m.rotation.z=a;leaf(xx*.9,zz*.9,a,.65)}
    if(isFish)m.rotation.y=a;
+   if(isTofu){
+    // Pan-fried golden top surface on each tofu cube.
+    const crust=piece(new THREE.BoxGeometry(.043,.0025,.038),mat(i%2?'#a96b2f':'#c48a40'),xx,.055+(i%4)*.009,zz);
+    crust.rotation.y=a;
+   }
+   if((isBeef||isFried)&&i%2===0){
+    // Dark sear stripe to distinguish grilled meat from plain spheres.
+    const sear=piece(new THREE.CapsuleGeometry(.002,.023,2,4),char,xx,.061+(i%4)*.009,zz);
+    sear.rotation.z=Math.PI/2;sear.rotation.y=a;
+   }
   }
   if(!isVeg)for(let i=0;i<8;i++)leaf(Math.cos(i*2.1)*.09,Math.sin(i*2.1)*.09,i,1.2);
  }
@@ -190,15 +213,37 @@ function foodPlate(group,type,slot){
  // Five visual portions per ordered dish. Keep the ceramic plate in place.
  dish.userData.portions=5;
  dish.userData.edibleMeshes=edibleMeshes;
+ dish.userData.steamPuffs=steamPuffs;
+ dish.userData.steamSeed=slot*.73;
  dish.userData.consumePortion=function(){
   const before=this.portions;if(before<=0)return 0;
   const next=before-1;
   const n=edibleMeshes.length;
   // Spread the removals over the whole plate rather than deleting one side.
   for(let i=0;i<n;i++)if((i*3)%5===next)edibleMeshes[i].visible=false;
-  this.portions=next;return next;
+  this.portions=next;
+  // Steam weakens as the hotpot is consumed.
+  for(const puff of steamPuffs)puff.material.opacity=.16*(next/5);
+  return next;
  };
  return dish;
+}
+// V9.6: animate only active hotpot steam, with a small bounded mesh count.
+const activeFoodSteam=[];
+function animateFoodSteam(now){
+ const t=now*.001;
+ for(let i=activeFoodSteam.length-1;i>=0;i--){
+  const dish=activeFoodSteam[i];
+  if(!dish.parent){activeFoodSteam.splice(i,1);continue}
+  const puffs=dish.userData.steamPuffs||[];
+  for(let k=0;k<puffs.length;k++){
+   const p=puffs[k],phase=(t*.31+k*.24+dish.userData.steamSeed)%1;
+   p.position.y=.145+phase*.13;
+   p.position.x=Math.cos(t*.8+k*1.8)*.038;
+   p.scale.set(.6+phase*.6,1.0+phase*1.2,.6+phase*.6);
+   p.material.opacity=.15*(1-phase)*(dish.userData.portions/5);
+  }
+ }
 }
 const serviceQueue=[];
 function serveFood(type,isDrink=false){
@@ -219,10 +264,10 @@ const skinTones=['#c68c65','#d7a27c','#b97e5c','#e0b08a'];
 const shirtTones=['#e2d5b5','#4d7b81','#b94c3d','#d2aa53','#536d48','#b4c5d0','#7d6083'];
 const trouser=mat('#353d43');
 const npcSphereGeometry=new THREE.SphereGeometry(1,20,14);
-// V9.5: Fully free procedural skeletal characters (Three.js Bones and skinning).
+// V9.6: Fully free procedural skeletal characters (Three.js Bones and skinning).
 // Every NPC owns an articulated skeleton: hips, spine, neck, head, shoulders,
 // elbows, wrists, upper/lower legs and ankles. No external model licenses.
-// V9.5: two-joint skinning, with smooth blended weights near elbow/knee.
+// V9.6: two-joint skinning, with smooth blended weights near elbow/knee.
 function makeSkinnedSegment(parent,start,end,topRadius,bottomRadius,material,length,offsetX=0,offsetZ=0){
  const geo=new THREE.CylinderGeometry(topRadius,bottomRadius,length,12,10,false);
  geo.translate(offsetX,-length*.5,offsetZ);
@@ -364,7 +409,7 @@ function deliverOrder(job){
  const item=job.item,table=job.table,group=tableGroups[table];
  if(!tableOrders[table].includes(item))return;
  if(item.drink){const before=group.children.length;mug(group,-.35+(item.slot%4)*.22,-.12+Math.floor(item.slot/4)*.22);item.visual=group.children[before]}
- else{item.visual=foodPlate(group,item.name,item.slot);item.portions=5}
+ else{item.visual=foodPlate(group,item.name,item.slot);item.portions=5;if(item.visual.userData.steamPuffs?.length)activeFoodSteam.push(item.visual)}
  item.delivered=true;
  say('🍽️ Phục vụ bàn '+(table+1)+': '+item.name);
 }
@@ -552,7 +597,7 @@ const wall=mat('#ab8a62');cube(scene,14,4,.25,0,2,8,wall,false);cube(scene,.25,4
  const exitSign=new THREE.Mesh(new THREE.PlaneGeometry(1.8,.48),new THREE.MeshBasicMaterial({map:t,side:THREE.DoubleSide}));exitSign.rotation.y=Math.PI;exitSign.position.set(0,2.35,10.02);wcGroup.add(exitSign);
 })();;
 
-// V9.5: eight uploaded original photos in WC only, separate from main bar posters.
+// V9.6: eight uploaded original photos in WC only, separate from main bar posters.
 // Mount on unused back-wall and circulation wall zones, keeping cubicles, sinks and door clear.
 async function addWCPhotoGallery(){
  try{
@@ -585,8 +630,8 @@ async function addWCPhotoGallery(){
     loaded++;
    }finally{URL.revokeObjectURL(url)}
   }
-  console.info('WC gallery V9.5 loaded:',loaded,'/8');
- }catch(error){console.warn('WC gallery V9.5 unavailable:',error)}
+  console.info('WC gallery V9.6 loaded:',loaded,'/8');
+ }catch(error){console.warn('WC gallery V9.6 unavailable:',error)}
 }
 addWCPhotoGallery();
 
@@ -664,7 +709,7 @@ async function addApprovedPosters(){
  }catch(e){console.warn('Poster V4.4 chưa sẵn sàng',e)}
 }
 addApprovedPosters();
-/* V9.5: five additional original photographs, preserved as separate textures.
+/* V9.6: five additional original photographs, preserved as separate textures.
    The archive is uploaded separately as hoanggia-wall-photos-v70.zip. */
 async function addExtraWallPhotos(){
  try{
@@ -694,8 +739,8 @@ async function addExtraWallPhotos(){
     image.position.z=.025;group.add(image);loaded++;
    }finally{URL.revokeObjectURL(url)}
   }
-  console.info('HOANGGIA V9.5 wall photos:',loaded+'/5');
- }catch(e){console.warn('Ảnh tường V9.5 đang chờ ZIP được tải lên GitHub',e)}
+  console.info('HOANGGIA V9.6 wall photos:',loaded+'/5');
+ }catch(e){console.warn('Ảnh tường V9.6 đang chờ ZIP được tải lên GitHub',e)}
 }
 addExtraWallPhotos();
 
@@ -732,7 +777,7 @@ addExtraWallPhotos();
 })();
 
 for(const x of [-4.2,4.2]){cube(scene,2.3,1.7,.05,x,2.55,7.84,mat('#24433b'));for(let i=0;i<5;i++)cube(scene,2.4,.045,.09,x,1.9+i*.28,7.8,mat('#47675c'))}
-// V9.5: One unified vintage advertising sign inspired by the supplied reference.
+// V9.6: One unified vintage advertising sign inspired by the supplied reference.
 // Raised above the gallery; no text panels are allowed to overlap the photographs.
 const signCanvas=document.createElement('canvas');signCanvas.width=1536;signCanvas.height=360;
 const sg=signCanvas.getContext('2d');
@@ -986,7 +1031,7 @@ const foliage=new THREE.MeshStandardMaterial({color:0x416d39,roughness:1});
 const terracotta=new THREE.MeshStandardMaterial({color:0x98543b,roughness:1});
 const light=new THREE.MeshBasicMaterial({color:0xffd39a});
 for(const side of [-1,1]){
- // V9.5: removed 3D brick accent blocks that occluded wall artwork.
+ // V9.6: removed 3D brick accent blocks that occluded wall artwork.
  for(const z of [-5.8,-3.8,-1.8,.2,2.2,4.2]){
   const x=side*6.15;
   cylinder(scene,.18,.15,.28,x,.14,z,terracotta,9);
@@ -1313,7 +1358,7 @@ document.getElementById('questToggle').onclick=()=>{const p=document.getElementB
 document.getElementById('nextDayBtn').onclick=()=>{if(questDone()&&!blackoutActive)newRpgDay()};
 document.getElementById('drinkQuick').onclick=()=>consumeAtTable('drink');
 renderRpg();
-// V9.5: interruptible phone-call narrative. Choices have deterministic consequences.
+// V9.6: interruptible phone-call narrative. Choices have deterministic consequences.
 const phoneStories=[
  {name:'💼 Sếp gọi',questions:[
   {q:'Bản vẽ khách hàng sáng mai đã xong chưa?',choices:[['Em đã hoàn thành, em gửi lại ngay sau khi kiểm tra lần cuối.',12,'stay','Sếp ghi nhận thái độ chuyên nghiệp.'],['Em đang nhậu, mai tính sếp nhé!',-34,'caught','Sếp yêu cầu dừng cuộc vui để xử lý công việc.'],['Em chưa xong, em xin phép về hoàn thiện ngay.',16,'home','Giữ trách nhiệm với tiến độ.']]},
@@ -1505,7 +1550,7 @@ function animateDining(now){
 }
 document.getElementById('drink').onclick=()=>consumeAtTable('drink');
 document.getElementById('eat').onclick=()=>consumeAtTable('eat');
-// V9.5: keyboard, touch and standard browser Gamepad API share one action layer.
+// V9.6: keyboard, touch and standard browser Gamepad API share one action layer.
 addEventListener('keydown',e=>{
  const tag=document.activeElement?.tagName;
  if(tag==='INPUT'||tag==='TEXTAREA'||tag==='SELECT')return;
@@ -1583,6 +1628,6 @@ let prev=performance.now();let lastRender=0;function frame(now){
  const renderInterval=quality==='low'?1000/30:0;
  if(now-lastRender<renderInterval){requestAnimationFrame(frame);return}
  lastRender=now;
- adaptiveTick(now);tickPhone(now);animateService(now);updateSpatialAudio(now);audioAmbience(now);animateCrowd(now);animateDining(now);const dt=Math.min(.05,(now-prev)/1000);prev=now;pollGamepad(dt);const forward=(keys.w||keys.arrowup?1:0)-(keys.s||keys.arrowdown?1:0)-joyY-gamepadY,side=(keys.d?1:0)-(keys.a?1:0)+joyX+gamepadX;if(!seated&&!insideWC){px+=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)*dt*2.4;pz+=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)*dt*2.4;px=Math.max(-5.65,Math.min(5.65,px));pz=Math.max(-7.55,Math.min(5.9,pz));[px,pz]=resolvePlayerCollision(px,pz)}if(insideWC){px+=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)*dt*1.7;pz+=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)*dt*1.7;px=Math.max(-12.1,Math.min(-7.7,px));pz=Math.max(1.75,Math.min(4.25,pz))}if(keys.arrowleft)yaw+=dt*1.7;if(keys.arrowright)yaw-=dt*1.7;updateWCButton();camera.position.set(px,seated?1.12:1.65,pz);camera.rotation.order='YXZ';camera.rotation.y=yaw;camera.rotation.x=pitch;try{animateClink(now)}catch(animationError){clinkActive=false;cheerRig.visible=false;console.error('Lỗi cụng ly:',animationError);say('Lỗi hiệu ứng cụng ly — game vẫn tiếp tục')}try{renderer.render(scene,camera)}catch(renderError){console.error('Lỗi dựng hình:',renderError);const e=document.getElementById('error');e.style.display='block';e.textContent='Lỗi dựng hình: '+renderError.message;return}requestAnimationFrame(frame)}requestAnimationFrame(frame);say('V9.5 · Thêm bộ ảnh tường mới · Chọn bàn và trải nghiệm!');
+ adaptiveTick(now);tickPhone(now);animateService(now);updateSpatialAudio(now);audioAmbience(now);animateCrowd(now);animateFoodSteam(now);animateDining(now);const dt=Math.min(.05,(now-prev)/1000);prev=now;pollGamepad(dt);const forward=(keys.w||keys.arrowup?1:0)-(keys.s||keys.arrowdown?1:0)-joyY-gamepadY,side=(keys.d?1:0)-(keys.a?1:0)+joyX+gamepadX;if(!seated&&!insideWC){px+=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)*dt*2.4;pz+=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)*dt*2.4;px=Math.max(-5.65,Math.min(5.65,px));pz=Math.max(-7.55,Math.min(5.9,pz));[px,pz]=resolvePlayerCollision(px,pz)}if(insideWC){px+=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)*dt*1.7;pz+=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)*dt*1.7;px=Math.max(-12.1,Math.min(-7.7,px));pz=Math.max(1.75,Math.min(4.25,pz))}if(keys.arrowleft)yaw+=dt*1.7;if(keys.arrowright)yaw-=dt*1.7;updateWCButton();camera.position.set(px,seated?1.12:1.65,pz);camera.rotation.order='YXZ';camera.rotation.y=yaw;camera.rotation.x=pitch;try{animateClink(now)}catch(animationError){clinkActive=false;cheerRig.visible=false;console.error('Lỗi cụng ly:',animationError);say('Lỗi hiệu ứng cụng ly — game vẫn tiếp tục')}try{renderer.render(scene,camera)}catch(renderError){console.error('Lỗi dựng hình:',renderError);const e=document.getElementById('error');e.style.display='block';e.textContent='Lỗi dựng hình: '+renderError.message;return}requestAnimationFrame(frame)}requestAnimationFrame(frame);say('V9.6 · Thêm bộ ảnh tường mới · Chọn bàn và trải nghiệm!');
 }catch(err){const e=document.getElementById('error');e.style.display='block';e.textContent='Không khởi tạo được WebGL: '+err.message}
 </script></body></html>
