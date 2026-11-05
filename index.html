@@ -270,8 +270,10 @@ for(let i=0;i<tables.length;i++){
 const waiter=beerPerson(-2.6,4.7,1,19,true);
 const foodWorker=beerPerson(-4.25,6.93,1,23,true);
 const pourer=beerPerson(4.95,6.92,2,21,true);
-foodWorker.rotation.y=Math.PI+.25;
-pourer.rotation.y=Math.PI-.35;
+// NPC facial geometry faces local -Z; the serving counters face the customer aisle (-Z).
+// Keep both staff facing customers, not the rear wall.
+foodWorker.rotation.y=.12;
+pourer.rotation.y=-.12;
 const foodStaff=crowd.find(n=>n.seed===23),beerStaff=crowd.find(n=>n.seed===21);
 if(foodStaff){foodStaff.role='food';foodStaff.root.scale.setScalar(.95)}
 if(beerStaff){beerStaff.role='beer';beerStaff.root.scale.setScalar(.95)}
