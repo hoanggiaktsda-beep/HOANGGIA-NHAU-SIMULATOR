@@ -1,4 +1,4 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>BIA HƠI HOÀNG GIA · 3D V2</title><style>*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#19202a;color:white;font:14px system-ui}canvas{display:block;touch-action:none}#hud{position:fixed;top:12px;left:12px;background:#101820d9;padding:12px 14px;border-radius:12px;line-height:1.55;pointer-events:none}#controls{position:fixed;bottom:24px;left:18px;right:18px;display:flex;align-items:end;justify-content:space-between;gap:12px}#pad{width:116px;height:116px;flex:none;border:2px solid #ffffff99;border-radius:50%;display:grid;place-items:center;touch-action:none;background:#ffffff19}#nub{height:45px;width:45px;border-radius:50%;background:#e9b45e}#buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}button{border:0;background:#e9b45e;color:#30210c;font-weight:750;padding:13px 10px;border-radius:13px}#menu{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(350px,90vw);background:#26313d;padding:18px;border-radius:18px;box-shadow:0 12px 40px #0009}#menu button{margin:4px}#toast{position:fixed;top:25%;width:100%;text-align:center;font-weight:bold;text-shadow:0 2px 8px black;pointer-events:none}#error{display:none;position:fixed;inset:20% 8% auto;background:#421b1b;padding:20px;border-radius:12px;z-index:8}#aim{position:fixed;top:50%;left:50%;width:13px;height:13px;transform:translate(-50%,-50%);pointer-events:none}#aim:before,#aim:after{content:'';position:absolute;background:#fff9}#aim:before{width:13px;height:2px;top:5px}#aim:after{height:13px;width:2px;left:5px}@media(min-width:900px){#pad{opacity:.5}}</style></head><body><div id="hud">🍻 <b>BIA HƠI HOÀNG GIA · WEBGL V4.7</b><br>WASD: đi · Vuốt: nhìn · E: ngồi / vào WC<br><span id="state">Đang đứng · Chọn bàn</span><br><span id="score">Cụng ly: 0 · Món: 0</span><br><span id="assetStatus">Ảnh tường: đang tải...</span><br><button id="resetView" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">↺ Đặt lại góc nhìn</button></div><div id="aim"></div><div id="toast"></div><div id="error"></div><div id="controls"><div id="pad"><div id="nub"></div></div><div id="buttons"><button id="sit">🪑 Ngồi / Đứng</button><button id="order">📜 Gọi món</button><button id="cheer">🍻 Cụng ly</button><button id="dice">🎲 Xúc xắc</button></div></div><div id="menu"><h3>Thực đơn bia hơi</h3><button data-food="Lạc rang">🥜 Lạc rang</button><button data-food="Nem chua">🍖 Nem chua</button><button data-food="Gà nướng">🍗 Gà nướng</button><button data-food="Bia hơi">🍺 Bia hơi</button><p><button id="close">Đóng</button></p></div><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><script type="module">
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>BIA HƠI HOÀNG GIA · 3D V2</title><style>*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#19202a;color:white;font:14px system-ui}canvas{display:block;touch-action:none}#hud{position:fixed;top:12px;left:12px;background:#101820d9;padding:12px 14px;border-radius:12px;line-height:1.55;pointer-events:none}#controls{position:fixed;bottom:24px;left:18px;right:18px;display:flex;align-items:end;justify-content:space-between;gap:12px}#pad{width:116px;height:116px;flex:none;border:2px solid #ffffff99;border-radius:50%;display:grid;place-items:center;touch-action:none;background:#ffffff19}#nub{height:45px;width:45px;border-radius:50%;background:#e9b45e}#buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}button{border:0;background:#e9b45e;color:#30210c;font-weight:750;padding:13px 10px;border-radius:13px}#menu{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(350px,90vw);background:#26313d;padding:18px;border-radius:18px;box-shadow:0 12px 40px #0009}#menu button{margin:4px}#toast{position:fixed;top:25%;width:100%;text-align:center;font-weight:bold;text-shadow:0 2px 8px black;pointer-events:none}#error{display:none;position:fixed;inset:20% 8% auto;background:#421b1b;padding:20px;border-radius:12px;z-index:8}#aim{position:fixed;top:50%;left:50%;width:13px;height:13px;transform:translate(-50%,-50%);pointer-events:none}#aim:before,#aim:after{content:'';position:absolute;background:#fff9}#aim:before{width:13px;height:2px;top:5px}#aim:after{height:13px;width:2px;left:5px}@media(min-width:900px){#pad{opacity:.5}}</style></head><body><div id="hud">🍻 <b>BIA HƠI HOÀNG GIA · WEBGL V4.8</b><br>WASD: đi · Vuốt: nhìn · E: ngồi / vào WC<br><span id="state">Đang đứng · Chọn bàn</span><br><span id="score">Cụng ly: 0 · Món: 0</span><br><span id="assetStatus">Ảnh tường: đang tải...</span><br><button id="resetView" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">↺ Đặt lại góc nhìn</button></div><div id="aim"></div><div id="toast"></div><div id="error"></div><div id="controls"><div id="pad"><div id="nub"></div></div><div id="buttons"><button id="sit">🪑 Ngồi / Đứng</button><button id="order">📜 Gọi món</button><button id="cheer">🍻 Cụng ly</button><button id="dice">🎲 Xúc xắc</button></div></div><div id="menu"><h3>Thực đơn bia hơi</h3><button data-food="Lạc rang">🥜 Lạc rang</button><button data-food="Nem chua">🍖 Nem chua</button><button data-food="Gà nướng">🍗 Gà nướng</button><button data-food="Bia hơi">🍺 Bia hơi</button><p><button id="close">Đóng</button></p></div><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><script type="module">
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js';
 try{
 const scene=new THREE.Scene();scene.background=new THREE.Color('#182638');scene.fog=new THREE.Fog('#182638',14,40);
@@ -81,28 +81,38 @@ const wall=mat('#ab8a62');cube(scene,14,4,.25,0,2,8,wall,false);cube(scene,.25,4
  const sign=new THREE.Mesh(new THREE.PlaneGeometry(1.65,.58),new THREE.MeshBasicMaterial({map:t,side:THREE.DoubleSide}));sign.rotation.y=0;sign.position.set(0,3.25,7.56);wcGroup.add(sign);
  const guide=new THREE.Mesh(new THREE.PlaneGeometry(1.1,2.0),new THREE.MeshBasicMaterial({color:0xf0ce83,transparent:true,opacity:.28,side:THREE.DoubleSide,depthWrite:false}));guide.rotation.x=-Math.PI/2;guide.position.set(0,.019,6.35);wcGroup.add(guide);
  const light=new THREE.PointLight(0xffd9a3,1.5,4);light.position.set(0,2.8,6.8);wcGroup.add(light);
- // Separate WC room beyond the solid rear wall, entered through the interaction portal.
- cube(wcGroup,3.6,.15,5.2,0,-.08,12.6,floor,false);
- cube(wcGroup,3.6,3.25,.16,0,1.6,15.25,tile,false);
- cube(wcGroup,.16,3.25,5.2,-1.8,1.6,12.6,tile,false);
- cube(wcGroup,.16,3.25,5.2,1.8,1.6,12.6,tile,false);
- cube(wcGroup,3.6,.15,5.2,0,3.2,12.6,white,false);
- cube(wcGroup,1.25,.18,.6,-.78,.84,14.85,white,false);
- cube(wcGroup,.7,.5,.52,-.78,.55,14.7,white,false);
- cube(wcGroup,.6,.6,.08,-.78,1.7,15.12,new THREE.MeshStandardMaterial({color:0x9fb7b5,metalness:.75,roughness:.12}),false);
- cube(wcGroup,.7,.78,.72,.88,.65,14.55,white,false);
- cube(wcGroup,.74,.12,.78,.88,1.02,14.55,white,false);
- // Tile joints and a more recognizable ceramic sanitary suite.
- const grout=mat('#aeb3ad');
- for(let y=.35;y<3.05;y+=.48){cube(wcGroup,3.55,.014,.015,0,y,15.14,grout,false);for(let xx=-1.55;xx<1.7;xx+=.54)cube(wcGroup,.012,.46,.015,xx+(Math.round(y/.48)%2)*.22,y+.22,15.13,grout,false)}
- const ceramic=new THREE.MeshStandardMaterial({color:0xf4f4ed,roughness:.16,metalness:0});
- const chrome=new THREE.MeshStandardMaterial({color:0xb5c4c5,roughness:.18,metalness:.86});
- cylinder(wcGroup,.38,.35,.12,.88,1.04,14.55,ceramic,32);
- cylinder(wcGroup,.21,.24,.35,.88,.48,14.55,ceramic,32);
- cylinder(wcGroup,.34,.32,.13,-.78,.92,14.76,ceramic,32);
- cylinder(wcGroup,.035,.035,.22,-.78,1.06,14.9,chrome,16);
- cube(wcGroup,.13,.025,.08,-.78,1.18,14.87,chrome,false);
- cube(wcGroup,.46,.72,.035,-.78,1.73,15.07,chrome,false);
+ // V4.8: reference-based public restroom: grey porcelain, black HPL cubicles, oak vanity and two sinks.
+ const porcelain=mat('#85898b',.83),darkTile=mat('#545a5c',.72),joint=mat('#777d80',.9),hpl=mat('#1c2227',.48),oak=mat('#916a4b',.68),ceramic=new THREE.MeshStandardMaterial({color:0xf2f3f0,roughness:.22}),chrome=new THREE.MeshStandardMaterial({color:0xaebec4,roughness:.2,metalness:.82}),mirror=new THREE.MeshStandardMaterial({color:0x9eafb7,metalness:.9,roughness:.08});
+ cube(wcGroup,3.6,.12,5.2,0,-.06,12.6,darkTile,false);
+ cube(wcGroup,3.6,3.2,.12,0,1.6,15.2,porcelain,false);
+ for(const xx of [-1.78,1.78])cube(wcGroup,.12,3.2,5.2,xx,1.6,12.6,porcelain,false);
+ cube(wcGroup,3.6,.12,5.2,0,3.18,12.6,mat('#e5e5e3'),false);
+ // Porcelain 600x600 module grout grid.
+ for(let z=10.25;z<15.1;z+=.6)cube(wcGroup,3.45,.006,.012,0,.006,z,joint,false);
+ for(let x=-1.7;x<1.75;x+=.6)cube(wcGroup,.012,.006,4.9,x,.007,12.6,joint,false);
+ for(let y=.55;y<3.1;y+=.6){cube(wcGroup,3.45,.012,.012,0,y,15.12,joint,false);for(const xx of [-1.71,1.71])cube(wcGroup,.012,.012,5,xx,y,12.6,joint,false)}
+ // Two black compact-HPL cubicles on right, with an open circulation zone.
+ for(const z of [12.45,14.25]){
+  cube(wcGroup,.045,2.12,1.68,1.04,1.2,z,hpl,false);
+  cube(wcGroup,.045,2.12,1.68,1.73,1.2,z,hpl,false);
+  cube(wcGroup,.72,2.12,.045,1.38,1.2,z+.81,hpl,false);
+  cube(wcGroup,.06,.18,.07,1.09,1.12,z+.84,chrome,false);
+  cube(wcGroup,.52,.62,.64,1.37,.57,z+.26,ceramic,false);
+  cylinder(wcGroup,.25,.24,.1,1.37,.95,z+.26,ceramic,24);
+ }
+ // Two sinks along the opposite wall, oak vanity with white basins.
+ cube(wcGroup,.72,.6,2.3,-1.35,.73,13.42,oak,false);
+ cube(wcGroup,.86,.07,2.42,-1.32,1.07,13.42,ceramic,false);
+ for(const z of [12.82,14.02]){
+  cylinder(wcGroup,.27,.25,.065,-1.29,1.14,z,ceramic,32);
+  cylinder(wcGroup,.035,.035,.24,-1.62,1.25,z,chrome,12);
+  cube(wcGroup,.28,.035,.05,-1.5,1.37,z,chrome,false);
+  cube(wcGroup,.045,.86,.92,-1.685,1.86,z,mirror,false);
+ }
+ for(let z=10.75;z<15;z+=.6)cube(wcGroup,3.4,.008,.008,0,3.105,z,joint,false);
+ for(let x=-1.55;x<1.65;x+=.6)cube(wcGroup,.008,.008,4.85,x,3.105,12.6,joint,false);
+ for(const z of [11.1,12.6,14.1]){const lamp=new THREE.Mesh(new THREE.CircleGeometry(.12,20),new THREE.MeshBasicMaterial({color:0xfff4e0}));lamp.rotation.x=Math.PI/2;lamp.position.set(0,3.09,z);wcGroup.add(lamp)}
+ cube(wcGroup,.06,.2,.32,-1.66,1.35,11.6,hpl,false);
  const indoor=new THREE.PointLight(0xffedcb,2.3,7);indoor.position.set(0,2.85,12.6);wcGroup.add(indoor);
  const exitSign=new THREE.Mesh(new THREE.PlaneGeometry(1.8,.48),new THREE.MeshBasicMaterial({map:t,side:THREE.DoubleSide}));exitSign.rotation.y=Math.PI;exitSign.position.set(0,2.35,10.02);wcGroup.add(exitSign);
 })();;
