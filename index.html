@@ -1,4 +1,4 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>BIA HƠI HOÀNG GIA · 3D V2</title><style>*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#19202a;color:white;font:14px system-ui}canvas{display:block;touch-action:none}#hud{position:fixed;top:12px;left:12px;background:#101820d9;padding:12px 14px;border-radius:12px;line-height:1.55;pointer-events:none}#controls{position:fixed;bottom:24px;left:18px;right:18px;display:flex;align-items:end;justify-content:space-between;gap:12px}#pad{width:116px;height:116px;flex:none;border:2px solid #ffffff99;border-radius:50%;display:grid;place-items:center;touch-action:none;background:#ffffff19}#nub{height:45px;width:45px;border-radius:50%;background:#e9b45e}#buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}button{border:0;background:#e9b45e;color:#30210c;font-weight:750;padding:13px 10px;border-radius:13px}#menu{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(350px,90vw);background:#26313d;padding:18px;border-radius:18px;box-shadow:0 12px 40px #0009}#menu button{margin:4px}#toast{position:fixed;top:25%;width:100%;text-align:center;font-weight:bold;text-shadow:0 2px 8px black;pointer-events:none}#error{display:none;position:fixed;inset:20% 8% auto;background:#421b1b;padding:20px;border-radius:12px;z-index:8}#aim{position:fixed;top:50%;left:50%;width:13px;height:13px;transform:translate(-50%,-50%);pointer-events:none}#aim:before,#aim:after{content:'';position:absolute;background:#fff9}#aim:before{width:13px;height:2px;top:5px}#aim:after{height:13px;width:2px;left:5px}@media(min-width:900px){#pad{opacity:.5}}</style></head><body><div id="hud">🍻 <b>BIA HƠI HOÀNG GIA · WEBGL V3.7</b><br>WASD: đi · Vuốt: nhìn · E: ngồi<br><span id="state">Đang đứng · Chọn bàn</span><br><span id="score">Cụng ly: 0 · Món: 0</span><br><button id="resetView" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">↺ Đặt lại góc nhìn</button></div><div id="aim"></div><div id="toast"></div><div id="error"></div><div id="controls"><div id="pad"><div id="nub"></div></div><div id="buttons"><button id="sit">🪑 Ngồi / Đứng</button><button id="order">📜 Gọi món</button><button id="cheer">🍻 Cụng ly</button><button id="dice">🎲 Xúc xắc</button></div></div><div id="menu"><h3>Thực đơn bia hơi</h3><button data-food="Lạc rang">🥜 Lạc rang</button><button data-food="Nem chua">🍖 Nem chua</button><button data-food="Gà nướng">🍗 Gà nướng</button><button data-food="Bia hơi">🍺 Bia hơi</button><p><button id="close">Đóng</button></p></div><script type="module">
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>BIA HƠI HOÀNG GIA · 3D V2</title><style>*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#19202a;color:white;font:14px system-ui}canvas{display:block;touch-action:none}#hud{position:fixed;top:12px;left:12px;background:#101820d9;padding:12px 14px;border-radius:12px;line-height:1.55;pointer-events:none}#controls{position:fixed;bottom:24px;left:18px;right:18px;display:flex;align-items:end;justify-content:space-between;gap:12px}#pad{width:116px;height:116px;flex:none;border:2px solid #ffffff99;border-radius:50%;display:grid;place-items:center;touch-action:none;background:#ffffff19}#nub{height:45px;width:45px;border-radius:50%;background:#e9b45e}#buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}button{border:0;background:#e9b45e;color:#30210c;font-weight:750;padding:13px 10px;border-radius:13px}#menu{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(350px,90vw);background:#26313d;padding:18px;border-radius:18px;box-shadow:0 12px 40px #0009}#menu button{margin:4px}#toast{position:fixed;top:25%;width:100%;text-align:center;font-weight:bold;text-shadow:0 2px 8px black;pointer-events:none}#error{display:none;position:fixed;inset:20% 8% auto;background:#421b1b;padding:20px;border-radius:12px;z-index:8}#aim{position:fixed;top:50%;left:50%;width:13px;height:13px;transform:translate(-50%,-50%);pointer-events:none}#aim:before,#aim:after{content:'';position:absolute;background:#fff9}#aim:before{width:13px;height:2px;top:5px}#aim:after{height:13px;width:2px;left:5px}@media(min-width:900px){#pad{opacity:.5}}</style></head><body><div id="hud">🍻 <b>BIA HƠI HOÀNG GIA · WEBGL V3.8</b><br>WASD: đi · Vuốt: nhìn · E: ngồi<br><span id="state">Đang đứng · Chọn bàn</span><br><span id="score">Cụng ly: 0 · Món: 0</span><br><button id="resetView" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">↺ Đặt lại góc nhìn</button></div><div id="aim"></div><div id="toast"></div><div id="error"></div><div id="controls"><div id="pad"><div id="nub"></div></div><div id="buttons"><button id="sit">🪑 Ngồi / Đứng</button><button id="order">📜 Gọi món</button><button id="cheer">🍻 Cụng ly</button><button id="dice">🎲 Xúc xắc</button></div></div><div id="menu"><h3>Thực đơn bia hơi</h3><button data-food="Lạc rang">🥜 Lạc rang</button><button data-food="Nem chua">🍖 Nem chua</button><button data-food="Gà nướng">🍗 Gà nướng</button><button data-food="Bia hơi">🍺 Bia hơi</button><p><button id="close">Đóng</button></p></div><script type="module">
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js';
 try{
 const scene=new THREE.Scene();scene.background=new THREE.Color('#182638');scene.fog=new THREE.Fog('#182638',14,40);
@@ -119,6 +119,65 @@ for(const x of [-1.24,1.24])cube(prep,.012,.91,.67,x,1.44,.065,clear,false);
 cube(prep,2.48,.035,.63,0,1.42,.07,steel);
 for(const x of [-.88,-.3,.3,.88]){cylinder(prep,.18,.18,.04,x,1.46,.07,white);cylinder(prep,.12,.13,.07,x,1.52,.07,mat(x<0?'#9e6b37':'#547143'))}
 cube(prep,.9,.1,.45,-.72,1.01,-.15,wood);for(const x of [-.95,-.65,-.35])cylinder(prep,.10,.10,.05,x,1.08,-.1,white);
+// V3.8: food-counter merchandising, recognizable dishes, layered lighting and authentic prep accessories.
+// All meshes are small and share materials; existing counter geometry and circulation remain unchanged.
+(function enhanceFoodCounter(){
+ const ceramic=new THREE.MeshStandardMaterial({color:0xf2e6ce,roughness:.28});
+ const enamel=new THREE.MeshStandardMaterial({color:0xd8e0d8,roughness:.31});
+ const roast=new THREE.MeshStandardMaterial({color:0x9e4b20,roughness:.68});
+ const golden=new THREE.MeshStandardMaterial({color:0xc98636,roughness:.64});
+ const greens=new THREE.MeshStandardMaterial({color:0x376b36,roughness:.87});
+ const chili=new THREE.MeshStandardMaterial({color:0xb32c1c,roughness:.53});
+ const pale=new THREE.MeshStandardMaterial({color:0xd1b78b,roughness:.84});
+ const metal=new THREE.MeshStandardMaterial({color:0x555b57,metalness:.66,roughness:.36});
+ const lightMaterial=new THREE.MeshBasicMaterial({color:0xffdc9a});
+ function ball(x,y,z,rx,ry,rz,m,segments=9){const o=new THREE.Mesh(new THREE.SphereGeometry(1,segments,6),m);o.position.set(x,y,z);o.scale.set(rx,ry,rz);prep.add(o);return o}
+ function plate(x,y,z,r=.19){cylinder(prep,r,r,.022,x,y,z,ceramic,22);cylinder(prep,r*.83,r*.83,.009,x,y+.017,z,enamel,22)}
+ function dish(type,x,y,z){
+  plate(x,y,z,.21);
+  if(type===0){ // nem chua, red chili and fresh herbs
+   for(let j=0;j<7;j++){const a=j*2.4;const xx=x+Math.cos(a)*.11,zz=z+Math.sin(a)*.10;ball(xx,y+.045,zz,.058,.032,.035,j%3===0?chili:pale)}
+   for(let j=0;j<6;j++){const a=j*1.5;ball(x+Math.cos(a)*.14,y+.045,z+Math.sin(a)*.12,.035,.009,.018,greens)}
+  }else if(type===1){ // crispy golden fried chicken
+   for(let j=0;j<7;j++){const a=j*2.4;const xx=x+Math.cos(a)*.105,zz=z+Math.sin(a)*.1;ball(xx,y+.058,zz,.065,.045,.042,j%3===0?roast:golden)}
+   for(let j=0;j<4;j++)ball(x+(j-1.5)*.07,y+.096,z,.014,.009,.014,greens)
+  }else if(type===2){ // stir-fried greens
+   for(let j=0;j<13;j++){const a=j*2.39;ball(x+Math.cos(a)*.12,y+.045+(j%3)*.018,z+Math.sin(a)*.1,.065,.016,.022,greens)}
+   for(let j=0;j<4;j++)ball(x+(j-2)*.065,y+.08,z,.012,.011,.011,chili)
+  }else{ // roasted peanuts
+   for(let j=0;j<18;j++){const a=j*2.4,r=.025+.12*Math.sqrt(j/18);ball(x+Math.cos(a)*r,y+.042,z+Math.sin(a)*r,.024,.017,.017,j%4===0?golden:roast)}
+  }
+ }
+ // Replace visually empty shelf with prepared dishes and secondary shelf.
+ for(const [i,x] of [-.91,-.31,.31,.91].entries())dish(i,x,1.50,.075);
+ cube(prep,2.4,.035,.46,0,1.20,.075,metal,false);
+ dish(3,-.76,1.24,.07);dish(2,-.23,1.24,.07);dish(1,.30,1.24,.07);dish(0,.81,1.24,.07);
+ // Warm strip inside the display case, no extra real-time shadow maps.
+ cube(prep,2.42,.027,.045,0,1.875,.30,lightMaterial,false);
+ cube(prep,2.42,.02,.025,0,1.39,.31,lightMaterial,false);
+ // Front counter: small brass nameplate, horizontal trim and prep towel.
+ const brass=new THREE.MeshStandardMaterial({color:0xb18b4d,metalness:.65,roughness:.4});
+ cube(prep,2.72,.035,.045,0,.76,-.485,brass,false);
+ cube(prep,2.72,.035,.045,0,.13,-.485,brass,false);
+ cube(prep,.65,.28,.014,0,.46,-.51,brass,false);
+ const signCanvas=document.createElement('canvas');signCanvas.width=512;signCanvas.height=160;const g=signCanvas.getContext('2d');
+ g.fillStyle='#3d291b';g.fillRect(0,0,512,160);g.strokeStyle='#d6ae66';g.lineWidth=7;g.strokeRect(9,9,494,142);
+ g.textAlign='center';g.fillStyle='#ffe1a0';g.font='bold 49px system-ui';g.fillText('MỒI NHẬU',256,103);
+ const label=new THREE.Mesh(new THREE.PlaneGeometry(.61,.23),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(signCanvas),side:THREE.DoubleSide}));
+ label.position.set(0,.46,-.525);prep.add(label);
+ // Traditional bamboo utensil pots and cutting board on prep counter.
+ const bamboo=new THREE.MeshStandardMaterial({color:0xa87a3e,roughness:.9});
+ cylinder(prep,.085,.08,.20,1.22,1.02,-.28,bamboo,12);
+ for(let j=0;j<7;j++)cylinder(prep,.007,.007,.33,1.18+(j%3)*.033,1.25,-.31+Math.floor(j/3)*.03,bamboo,6);
+ cube(prep,.39,.028,.32,-1.06,.99,-.17,bamboo,false);
+ // Mini pendant shades above the display, visually grounded with an illuminated diffuser.
+ for(const x of [-.78,.78]){
+  cylinder(prep,.11,.16,.14,x,2.18,.12,metal,12);
+  cylinder(prep,.09,.09,.018,x,2.09,.12,lightMaterial,12);
+  cylinder(prep,.012,.012,.35,x,2.42,.12,metal,6);
+ }
+})();
+
 // serving signboards
 function panelText(label,x,y,z,width){const c=document.createElement('canvas');c.width=512;c.height=128;const q=c.getContext('2d');q.fillStyle='#472b1c';q.fillRect(0,0,512,128);q.fillStyle='#f3d8a4';q.font='bold 49px system-ui';q.textAlign='center';q.fillText(label,256,81);const o=new THREE.Mesh(new THREE.PlaneGeometry(width,.5),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(c)}));o.position.set(x,y,z);o.rotation.y=Math.PI;scene.add(o)}
 panelText('BIA HƠI • RÓT TẠI QUẦY',4.4,2.33,7.73,3.5);
@@ -310,6 +369,6 @@ addEventListener('keydown',e=>{keys[e.key.toLowerCase()]=true;if(e.key.toLowerCa
 let joyX=0,joyY=0;const pad=document.getElementById('pad'),nub=document.getElementById('nub');function movePad(e){const r=pad.getBoundingClientRect(),x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2,k=Math.min(1,46/Math.max(1,Math.hypot(x,y)));joyX=x*k/46;joyY=y*k/46;nub.style.transform='translate('+joyX*37+'px,'+joyY*37+'px)'}pad.addEventListener('pointerdown',e=>{pad.setPointerCapture(e.pointerId);movePad(e)});pad.addEventListener('pointermove',e=>{if(pad.hasPointerCapture(e.pointerId))movePad(e)});function reset(){joyX=joyY=0;nub.style.transform=''}pad.addEventListener('pointerup',reset);pad.addEventListener('pointercancel',reset);
 let look=null,lastX=0,lastY=0;renderer.domElement.addEventListener('pointerdown',e=>{look=e.pointerId;lastX=e.clientX;lastY=e.clientY;renderer.domElement.setPointerCapture(e.pointerId)});renderer.domElement.addEventListener('pointermove',e=>{if(e.pointerId!==look)return;yaw-=(e.clientX-lastX)*.004;pitch=Math.max(-.9,Math.min(.9,pitch-(e.clientY-lastY)*.003));lastX=e.clientX;lastY=e.clientY});renderer.domElement.addEventListener('pointerup',()=>look=null);
 addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
-let prev=performance.now();function frame(now){const dt=Math.min(.05,(now-prev)/1000);prev=now;const forward=(keys.w?1:0)-(keys.s?1:0)-joyY,side=(keys.d?1:0)-(keys.a?1:0)+joyX;if(!seated){px+=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)*dt*2.4;pz+=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)*dt*2.4;px=Math.max(-5.65,Math.min(5.65,px));pz=Math.max(-7.55,Math.min(5.9,pz))}if(keys.arrowleft)yaw+=dt*1.7;if(keys.arrowright)yaw-=dt*1.7;camera.position.set(px,seated?1.12:1.65,pz);camera.rotation.order='YXZ';camera.rotation.y=yaw;camera.rotation.x=pitch;try{animateClink(now)}catch(animationError){clinkActive=false;cheerRig.visible=false;console.error('Lỗi cụng ly:',animationError);say('Lỗi hiệu ứng cụng ly — game vẫn tiếp tục')}try{renderer.render(scene,camera)}catch(renderError){console.error('Lỗi dựng hình:',renderError);const e=document.getElementById('error');e.style.display='block';e.textContent='Lỗi dựng hình: '+renderError.message;return}requestAnimationFrame(frame)}requestAnimationFrame(frame);say('WebGL V3.7 · Đi vào sân vườn và chọn bàn');
+let prev=performance.now();function frame(now){const dt=Math.min(.05,(now-prev)/1000);prev=now;const forward=(keys.w?1:0)-(keys.s?1:0)-joyY,side=(keys.d?1:0)-(keys.a?1:0)+joyX;if(!seated){px+=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)*dt*2.4;pz+=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)*dt*2.4;px=Math.max(-5.65,Math.min(5.65,px));pz=Math.max(-7.55,Math.min(5.9,pz))}if(keys.arrowleft)yaw+=dt*1.7;if(keys.arrowright)yaw-=dt*1.7;camera.position.set(px,seated?1.12:1.65,pz);camera.rotation.order='YXZ';camera.rotation.y=yaw;camera.rotation.x=pitch;try{animateClink(now)}catch(animationError){clinkActive=false;cheerRig.visible=false;console.error('Lỗi cụng ly:',animationError);say('Lỗi hiệu ứng cụng ly — game vẫn tiếp tục')}try{renderer.render(scene,camera)}catch(renderError){console.error('Lỗi dựng hình:',renderError);const e=document.getElementById('error');e.style.display='block';e.textContent='Lỗi dựng hình: '+renderError.message;return}requestAnimationFrame(frame)}requestAnimationFrame(frame);say('WebGL V3.8 · Đi vào sân vườn và chọn bàn');
 }catch(err){const e=document.getElementById('error');e.style.display='block';e.textContent='Không khởi tạo được WebGL: '+err.message}
 </script></body></html>
