@@ -1,4 +1,4 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>BIA HƠI HOÀNG GIA · 3D V2</title><style>*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#19202a;color:white;font:14px system-ui}canvas{display:block;touch-action:none}#hud{position:fixed;top:12px;left:12px;background:#101820d9;padding:12px 14px;border-radius:12px;line-height:1.55;pointer-events:none}#controls{position:fixed;bottom:24px;left:18px;right:18px;display:flex;align-items:end;justify-content:space-between;gap:12px}#pad{width:116px;height:116px;flex:none;border:2px solid #ffffff99;border-radius:50%;display:grid;place-items:center;touch-action:none;background:#ffffff19}#nub{height:45px;width:45px;border-radius:50%;background:#e9b45e}#buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}button{border:0;background:#e9b45e;color:#30210c;font-weight:750;padding:13px 10px;border-radius:13px}#menu{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(350px,90vw);background:#26313d;padding:18px;border-radius:18px;box-shadow:0 12px 40px #0009}#menu button{margin:4px}#toast{position:fixed;top:25%;width:100%;text-align:center;font-weight:bold;text-shadow:0 2px 8px black;pointer-events:none}#error{display:none;position:fixed;inset:20% 8% auto;background:#421b1b;padding:20px;border-radius:12px;z-index:8}#aim{position:fixed;top:50%;left:50%;width:13px;height:13px;transform:translate(-50%,-50%);pointer-events:none}#aim:before,#aim:after{content:'';position:absolute;background:#fff9}#aim:before{width:13px;height:2px;top:5px}#aim:after{height:13px;width:2px;left:5px}@media(min-width:900px){#pad{opacity:.5}}</style></head><body><div id="hud">🍻 <b>BIA HƠI HOÀNG GIA · WEBGL V4.9</b><br>WASD: đi · Vuốt: nhìn · E: ngồi / vào WC<br><span id="state">Đang đứng · Chọn bàn</span><br><span id="score">Cụng ly: 0 · Món: 0</span><br><span id="assetStatus">Ảnh tường: đang tải...</span><br><button id="resetView" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">↺ Đặt lại góc nhìn</button></div><div id="aim"></div><div id="toast"></div><div id="error"></div><div id="controls"><div id="pad"><div id="nub"></div></div><div id="buttons"><button id="sit">🪑 Ngồi / Đứng</button><button id="order">📜 Gọi món</button><button id="cheer">🍻 Cụng ly</button><button id="dice">🎲 Xúc xắc</button></div></div><div id="menu"><h3>Thực đơn bia hơi</h3><button data-food="Lạc rang">🥜 Lạc rang</button><button data-food="Nem chua">🍖 Nem chua</button><button data-food="Gà nướng">🍗 Gà nướng</button><button data-food="Bia hơi">🍺 Bia hơi</button><p><button id="close">Đóng</button></p></div><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><script type="module">
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>BIA HƠI HOÀNG GIA · 3D V2</title><style>*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#19202a;color:white;font:14px system-ui}canvas{display:block;touch-action:none}#hud{position:fixed;top:12px;left:12px;background:#101820d9;padding:12px 14px;border-radius:12px;line-height:1.55;pointer-events:none}#controls{position:fixed;bottom:24px;left:18px;right:18px;display:flex;align-items:end;justify-content:space-between;gap:12px}#pad{width:116px;height:116px;flex:none;border:2px solid #ffffff99;border-radius:50%;display:grid;place-items:center;touch-action:none;background:#ffffff19}#nub{height:45px;width:45px;border-radius:50%;background:#e9b45e}#buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}button{border:0;background:#e9b45e;color:#30210c;font-weight:750;padding:13px 10px;border-radius:13px}#menu{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(350px,90vw);background:#26313d;padding:18px;border-radius:18px;box-shadow:0 12px 40px #0009}#menu button{margin:4px}#toast{position:fixed;top:25%;width:100%;text-align:center;font-weight:bold;text-shadow:0 2px 8px black;pointer-events:none}#error{display:none;position:fixed;inset:20% 8% auto;background:#421b1b;padding:20px;border-radius:12px;z-index:8}#aim{position:fixed;top:50%;left:50%;width:13px;height:13px;transform:translate(-50%,-50%);pointer-events:none}#aim:before,#aim:after{content:'';position:absolute;background:#fff9}#aim:before{width:13px;height:2px;top:5px}#aim:after{height:13px;width:2px;left:5px}@media(min-width:900px){#pad{opacity:.5}}</style></head><body><div id="hud">🍻 <b>BIA HƠI HOÀNG GIA · WEBGL V5.0</b><br>WASD: đi · Vuốt: nhìn · E: ngồi / vào WC<br><span id="state">Đang đứng · Chọn bàn</span><br><span id="score">Cụng ly: 0 · Món: 0</span><br><span id="assetStatus">Ảnh tường: đang tải...</span><br><button id="resetView" style="pointer-events:auto;padding:5px 9px;margin-top:6px;font-size:12px">↺ Đặt lại góc nhìn</button></div><div id="aim"></div><div id="toast"></div><div id="error"></div><div id="controls"><div id="pad"><div id="nub"></div></div><div id="buttons"><button id="sit">🪑 Ngồi / Đứng</button><button id="order">📜 Gọi món</button><button id="cheer">🍻 Cụng ly</button><button id="dice">🎲 Xúc xắc</button></div></div><div id="menu"><h3>Thực đơn bia hơi</h3><button data-food="Lạc rang">🥜 Lạc rang</button><button data-food="Nem chua">🍖 Nem chua</button><button data-food="Gà nướng">🍗 Gà nướng</button><button data-food="Bia hơi">🍺 Bia hơi</button><p><button id="close">Đóng</button></p></div><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><script type="module">
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js';
 try{
 const scene=new THREE.Scene();scene.background=new THREE.Color('#182638');scene.fog=new THREE.Fog('#182638',14,40);
@@ -256,12 +256,41 @@ for(const z of [-4,0,4])for(const x of [-4,-2,0,2,4]){
 
 // SERVICE ZONE: beer dispensing station on the right, glass display and food prep on the left
 const steel=mat('#858b88',.36,.75),tile=mat('#b0a08c'),dark=mat('#2c211c'),amber=mat('#d0a053',.28);
+// V5.0 - Hanoi bia hoi dispensing station: stainless boong, hand taps and inverted aqua glasses.
 const beerBar=new THREE.Group();beerBar.position.set(4.4,0,6.05);scene.add(beerBar);
-cube(beerBar,2.8,.88,.84,0,.44,0,woodDark);cube(beerBar,2.94,.075,.94,0,.91,0,wood);
-for(let x=-1.1;x<1.2;x+=.35)cube(beerBar,.028,.75,.02,x,.45,-.435,wood);
-cube(beerBar,2.6,.045,.45,0,1.48,.3,steel);for(const x of [-1.12,1.12])cube(beerBar,.045,.5,.045,x,1.2,.3,steel);
-for(const x of [-.9,-.35,.2,.75]){cylinder(beerBar,.13,.13,.45,x,1.18,.12,steel);cylinder(beerBar,.055,.055,.10,x,1.46,.12,amber);cylinder(beerBar,.025,.025,.28,x,1.64,.12,steel);cube(beerBar,.18,.035,.035,x+.07,1.74,.12,steel)}
-for(let x=-.9;x<=1;x+=.38){cylinder(beerBar,.075,.075,.14,x,1.06,-.28,amber);cylinder(beerBar,.073,.073,.025,x,1.145,-.28,white)}
+const inox=new THREE.MeshStandardMaterial({color:0xb2bec0,metalness:.88,roughness:.24});
+const brushed=new THREE.MeshStandardMaterial({color:0x858f91,metalness:.8,roughness:.36});
+const glassAqua=new THREE.MeshPhysicalMaterial({color:0x78c9c2,metalness:0,roughness:.16,transparent:true,opacity:.56,side:THREE.DoubleSide,depthWrite:false});
+const goldLabel=mat('#e5bb33',.7);
+cube(beerBar,3.05,.78,.98,0,.39,0,brushed);
+cube(beerBar,3.16,.055,1.10,0,.82,0,inox);
+cube(beerBar,3.10,.035,.045,0,.78,-.53,inox);
+for(const xx of [-1.46,1.46])cube(beerBar,.06,.74,.08,xx,.38,-.44,inox);
+// Large horizontal insulated stainless beer vessel behind the pouring taps.
+const boong=new THREE.Mesh(new THREE.CylinderGeometry(.57,.57,2.85,32),inox);
+boong.rotation.z=Math.PI/2;boong.position.set(0,1.43,.43);beerBar.add(boong);
+for(const xx of [-1.32,1.32]){const ring=new THREE.Mesh(new THREE.TorusGeometry(.57,.032,8,40),brushed);ring.rotation.y=Math.PI/2;ring.position.set(xx,1.43,.43);beerBar.add(ring)}
+cube(beerBar,1.05,.37,.055,0,1.42,-.145,goldLabel,false);
+cube(beerBar,.75,.1,.06,0,1.55,-.18,mat('#7a3b22'),false);
+// Traditional metal spigots and downward-facing pouring nozzles.
+for(const xx of [-.68,.68]){
+ cylinder(beerBar,.048,.048,.28,xx,1.32,-.22,inox,16);
+ const elbow=cylinder(beerBar,.032,.032,.33,xx,1.19,-.35,inox,12);elbow.rotation.x=Math.PI/2;
+ cylinder(beerBar,.029,.024,.17,xx,1.08,-.51,inox,12);
+ cylinder(beerBar,.035,.035,.19,xx,1.53,-.22,brushed,12);
+ cube(beerBar,.16,.045,.055,xx+.06,1.63,-.22,mat('#292d2d'),false);
+}
+// Stacks of distinctive thick-walled, inverted Hanoi bia-hoi glasses.
+const glassProfile=[[0,.005],[.078,.005],[.082,.018],[.084,.115],[.098,.19],[.101,.205],[.092,.205]].map(v=>new THREE.Vector2(...v));
+for(let row=0;row<3;row++)for(let col=0;col<11;col++){
+ const x=-1.32+col*.264,z=-.38+row*.265;
+ const g=new THREE.Group();g.position.set(x,.855,z);beerBar.add(g);
+ const cup=new THREE.Mesh(new THREE.LatheGeometry(glassProfile,16),glassAqua);cup.rotation.z=Math.PI;cup.position.y=.215;g.add(cup);
+ for(let j=0;j<8;j++){const angle=j*Math.PI/4;const rib=new THREE.Mesh(new THREE.CylinderGeometry(.005,.005,.12,5),glassAqua);rib.position.set(Math.cos(angle)*.09,.125,Math.sin(angle)*.09);g.add(rib)}
+}
+// Drip tray below taps, preserving clear service frontage.
+cube(beerBar,1.7,.025,.24,0,.856,-.46,brushed,false);
+for(let i=-7;i<=7;i++)cube(beerBar,.012,.008,.2,i*.1,.877,-.46,inox,false);
 const prep=new THREE.Group();prep.position.set(-4.45,0,6.0);scene.add(prep);
 cube(prep,2.9,.84,.92,0,.42,0,woodDark);cube(prep,3,.07,1,0,.88,0,steel);
 for(let x=-1.15;x<=1.15;x+=.58){cube(prep,.52,.38,.08,x,.43,-.48,mat('#786451'));cube(prep,.38,.055,.055,x,.61,-.53,steel)}
