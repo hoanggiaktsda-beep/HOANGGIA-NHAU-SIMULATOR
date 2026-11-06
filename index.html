@@ -1760,7 +1760,7 @@ function audioSip(){audioRustle(.36,.045,1100);audioTone(270,.14,.025,'sine',.15
 function audioFood(){audioTone(820,.12,.055,'triangle');audioTone(1150,.1,.038,'sine',.12);audioRustle(.3,.022,1600)}
 function audioPour(){audioRustle(1.2,.045,2200);audioTone(420,.3,.025,'triangle',.12)}
 function audioAmbience(now){
- if(!audioOn||!audioCtx||now-lastAmbient<1500)return;
+ if(!audioOn||!audioCtx||soundBed||now-lastAmbient<1500)return;
  lastAmbient=now;
  const wc=insideWC?.20:1,tableDistance=Math.min(...tables.map(p=>Math.hypot(px-p[0],pz-p[1])));
  const crowdLevel=wc*(.012+.025/(1+tableDistance*.22))*(spatialSamples.has('crowd')?0:1);
@@ -1878,8 +1878,8 @@ function startSoundBeds(){
 function updateSoundBeds(){
  if(!audioCtx||!soundBed)return;
  const wc=insideWC?.15:1,tableDist=Math.min(...tables.map(t=>Math.hypot(px-t[0],pz-t[1])));
- soundBed.gain.gain.setTargetAtTime(wc*(spatialSamples.has('crowd')?0:(.12+.08/(1+tableDist*.15))),audioCtx.currentTime,.35);
- roadBed.gain.gain.setTargetAtTime(wc*(spatialSamples.has('crowd')?0:.045),audioCtx.currentTime,.35);
+ soundBed.gain.gain.setTargetAtTime(wc*(spatialSamples.has('crowd')?0:(.055+.025/(1+tableDist*.15))),audioCtx.currentTime,.6);
+ roadBed.gain.gain.setTargetAtTime(wc*(spatialSamples.has('crowd')||spatialSamples.has('traffic')?0:.018),audioCtx.currentTime,.6);
 }
 function speakCheers(){
  if(!audioOn||!('speechSynthesis' in window))return false;
