@@ -870,12 +870,17 @@ function animateCrowd(time){
     n.wrists[1].updateWorldMatrix(true,true);
     const wristQ=n.wrists[1].getWorldQuaternion(new THREE.Quaternion());
     const mugPos=mug.getWorldPosition(new THREE.Vector3());
-    const toMouth=mouth.clone().sub(mugPos).setY(0).normalize();
-    if(toMouth.lengthSq()<.001)toMouth.copy(faceForward).negate().setY(0).normalize();
+    // Aim the cup rim toward the mouth in the horizontal plane; preserve a stable fallback.
+    const toMouth=mouth.clone().sub(mugPos).setY(0);
+    if(toMouth.lengthSq()<.0001)toMouth.copy(faceForward).setY(0);
+    if(toMouth.lengthSq()<.0001)toMouth.set(0,0,-1);
+    toMouth.normalize();
     const upright=new THREE.Vector3(0,1,0);
     const tilted=upright.clone().addScaledVector(toMouth,smooth*.52).normalize();
     const desired=new THREE.Quaternion().setFromUnitVectors(upright,tilted);
-    mug.quaternion.copy(wristQ.invert().multiply(desired));
+    const localCupQ=wristQ.invert().multiply(desired);
+    // Damped quaternion blending avoids abrupt mug rotations when the IK wrist changes.
+    mug.quaternion.slerp(localCupQ,1-Math.exp(-Math.max(.001,animDt)*13));
     if(n.root.userData.beerLiquid){
      const liquid=n.root.userData.beerLiquid,foam=n.root.userData.beerFoam;
      liquid.scale.y=1-smooth*.22;liquid.position.y=.057-smooth*.011;
