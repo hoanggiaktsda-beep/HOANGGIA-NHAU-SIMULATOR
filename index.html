@@ -857,7 +857,12 @@ function animateCrowd(time){
    // Limit the reach to the anatomical length of the upper arm and forearm.
    const maxReach=.49,reach=ikTarget.clone().sub(shoulderWorld);
    if(reach.length()>maxReach)ikTarget.copy(shoulderWorld).add(reach.setLength(maxReach));
-   solveArmIK(n.arms[1],n.elbows[1],n.wrists[1],ikTarget,6);
+   // Smooth the anatomical target across frames instead of snapping the elbow each tick.
+   // Each guest owns its own target so neighbouring characters never share pose state.
+   if(!n.drinkIKTarget)n.drinkIKTarget=ikTarget.clone();
+   const ikBlend=1-Math.exp(-Math.max(.001,animDt)*11);
+   n.drinkIKTarget.lerp(ikTarget,ikBlend);
+   solveArmIK(n.arms[1],n.elbows[1],n.wrists[1],n.drinkIKTarget,6);
    if(n.root.userData.handMug){
     const mug=n.root.userData.handMug;
     // Orient cup in WORLD space toward the drinker's face, then convert to wrist local.
